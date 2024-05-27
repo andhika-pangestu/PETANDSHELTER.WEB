@@ -1,0 +1,1 @@
+1. Go to www.netacad.com and login.

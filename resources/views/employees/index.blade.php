@@ -12,7 +12,7 @@
     <h1>Employees List</h1>
     <div class="container ">
         <h1 class="text-primary">Hello, Custom Bootstrap Colors!</h1>
-        <button class="btn btn-primary-900">Primary Button</button>
+        <button class="btn btn-success-900">Primary Button</button>
     </div>
     <table border="1" class="table table-striped table-bordered table">
         <thead class="bg-primary">

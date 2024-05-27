@@ -4,7 +4,6 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 
-// Define custom color
 $primary-50: #ffedea;
 $primary-100: #ffcec5;
 $primary-200: #ffac9e;
@@ -14,19 +13,95 @@ $primary-500: #ff582b;
 $primary-600: #e24d26;
 $primary-700: #c44120;
 $primary-800: #a6351b;
-$primary-900: #882916;
+$primary-900: #892914;
 
+$secondary-50: #FFF9EC;
+$secondary-100: #FDEBC3;
+$secondary-200: #FDE2A6;
+$secondary-300: #FCD47D;
+$secondary-400: #FBCC64;
+$secondary-500: #FABF3D; // Warna dasar secondary
+$secondary-600: #E4AE38;
+$secondary-700: #B2882B;
+$secondary-800: #8A6922;
+$secondary-900: #69501A;
+
+$accent-50: #F4FAFF;
+$accent-100: #E1F5FE;
+$accent-200: #CCE7FD;
+$accent-300: #A5DBFC;
+$accent-400: #7CCCFB;
+$accent-500: #4FBDF9; // Warna dasar accent
+$accent-600: #42A8DF;
+$accent-700: #3581B5;
+$accent-800: #27608A;
+$accent-900: #1A4668;
+
+$sky-50: #F4FAFF;
+$sky-100: #DDEFFE;
+$sky-200: #BBDFFB;
+$sky-300: #99D0F9;
+$sky-400: #77C0F7;
+$sky-500: #55B1F5; // Warna dasar sky
+$sky-600: #339BE3;
+$sky-700: #2277B8;
+$sky-800: #11538D;
+$sky-900: #003062;
+
+$warning-50: #FFF9EA;
+$warning-100: #FFECBE;
+$warning-200: #FFE39E;
+$warning-300: #FFD672;
+$warning-400: #FFCE57;
+$warning-500: #FFC22D; // Warna dasar warning
+$warning-600: #E8B129;
+$warning-700: #B58A20;
+$warning-800: #8C6B19;
+$warning-900: #6B5113;
+
+$danger-50: #FFF1F1;
+$danger-100: #FFD2D3;
+$danger-200: #FFBDBD;
+$danger-300: #FF9F9F;
+$danger-400: #FF8C8D;
+$danger-500: #FF6F70; // Warna dasar danger
+$danger-600: #E86566;
+$danger-700: #B54F50;
+$danger-800: #8C3D3E;
+$danger-900: #6B2F2F;
+
+$info-50: #e0f7fc;
+$info-100: #b3ebf8;
+$info-200: #80def3;
+$info-300: #4dd1ee;
+$info-400: #26c5ea;
+$info-500: #00b3f0;
+$info-600: #00A3DA;
+$info-700: #007FAA;
+$info-800: #006284;
+$info-900: #004B65;
+
+$success-50: #E6FAF4;
+$success-100: #B0EFDD;
+$success-200: #8AE7CD;
+$success-300: #54DBB6;
+$success-400: #33D5A8;
+$success-500: #00CA92; // Warna dasar success
+$success-600: #00B885;
+$success-700: #008F68;
+$success-800: #006F50;
+$success-900: #00553D;
 
 // Extend the Bootstrap color map
 $theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "success": $success,
-  "info": $info,
-  "warning": $warning,
-  "danger": $danger,
-  "light": $light,
-  "dark": $dark,
+  "primary": $primary-500,
+  "secondary": $secondary-500,
+  "success": $success-500,
+  "info": $info-500,
+  "warning": $warning-500,
+  "danger": $danger-500,
+  "accent": $accent-500,
+  "sky": $sky-500,
   "primary-50": $primary-50,
   "primary-100": $primary-100,
   "primary-200": $primary-200,
@@ -37,6 +112,76 @@ $theme-colors: (
   "primary-700": $primary-700,
   "primary-800": $primary-800,
   "primary-900": $primary-900,
+  "secondary-50": $secondary-50,
+  "secondary-100": $secondary-100,
+  "secondary-200": $secondary-200,
+  "secondary-300": $secondary-300,
+  "secondary-400": $secondary-400,
+  "secondary-500": $secondary-500,
+  "secondary-600": $secondary-600,
+  "secondary-700": $secondary-700,
+  "secondary-800": $secondary-800,
+  "secondary-900": $secondary-900,
+  "accent-50": $accent-50,
+  "accent-100": $accent-100,
+  "accent-200": $accent-200,
+  "accent-300": $accent-300,
+  "accent-400": $accent-400,
+  "accent-500": $accent-500,
+  "accent-600": $accent-600,
+  "accent-700": $accent-700,
+  "accent-800": $accent-800,
+  "accent-900": $accent-900,
+  "sky-50": $sky-50,
+  "sky-100": $sky-100,
+  "sky-200": $sky-200,
+  "sky-300": $sky-300,
+  "sky-400": $sky-400,
+  "sky-500": $sky-500,
+  "sky-600": $sky-600,
+  "sky-700": $sky-700,
+  "sky-800": $sky-800,
+  "sky-900": $sky-900,
+  "warning-50": $warning-50,
+  "warning-100": $warning-100,
+  "warning-200": $warning-200,
+  "warning-300": $warning-300,
+  "warning-400": $warning-400,
+  "warning-500": $warning-500,
+  "warning-600": $warning-600,
+  "warning-700": $warning-700,
+  "warning-800": $warning-800,
+  "warning-900": $warning-900,
+  "danger-50": $danger-50,
+  "danger-100": $danger-100,
+  "danger-200": $danger-200,
+  "danger-300": $danger-300,
+  "danger-400": $danger-400,
+  "danger-500": $danger-500,
+  "danger-600": $danger-600,
+  "danger-700": $danger-700,
+  "danger-800": $danger-800,
+  "danger-900": $danger-900,
+  "info-50": $info-50,
+  "info-100": $info-100,
+  "info-200": $info-200,
+  "info-300": $info-300,
+  "info-400": $info-400,
+  "info-500": $info-500,
+  "info-600": $info-600,
+  "info-700": $info-700,
+  "info-800": $info-800,
+  "info-900": $info-900,
+  "success-50": $success-50,
+  "success-100": $success-100,
+  "success-200": $success-200,
+  "success-300": $success-300,
+  "success-400": $success-400,
+  "success-500": $success-500,
+  "success-600": $success-600,
+  "success-700": $success-700,
+  "success-800": $success-800,
+  "success-900": $success-900
 );
 
 // Import the rest of Bootstrap
