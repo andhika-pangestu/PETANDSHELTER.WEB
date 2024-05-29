@@ -17,9 +17,10 @@ Route::get('/about', function () {
 
 
 
-Route::get('/', [DonationController::class, 'index'])->name('donation');
-Route::post('/donation/store', [DonationController::class, 'submitDonation'])->name('donation.store');
-Route::post('/notification/handler', [DonationController::class, 'notificationHandler'])->name('notification.handler');
+
+Route::get('/donate', [DonationController::class, 'showDonationPage']);
+Route::post('/donate', [DonationController::class, 'processDonation']);
+Route::post('/donate/notification', [DonationController::class, 'handleNotification']);
 
 
 
