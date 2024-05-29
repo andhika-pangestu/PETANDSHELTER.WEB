@@ -7,8 +7,11 @@
         <title>employees</title>
         <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-      </head>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
 <body>
+    <body>
+        <x-navbar></x-navbar>
     <h1>Employees List</h1>
     <div class="container ">
         <h1 class="text-primary">Hello, Custom Bootstrap Colors!</h1>
