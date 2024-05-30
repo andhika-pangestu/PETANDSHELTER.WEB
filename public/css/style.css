@@ -1,8 +1,8 @@
 @import 'bootstrap/scss/bootstrap';
 
-body {
-    background-color: rgb(31, 73, 109);
-}
+.list-unstyled a {
+    text-decoration: none;
+  }
 
 .navbar {
     position: fixed;
@@ -43,4 +43,4 @@ body {
     font-size: 21px; /* Sesuaikan ukuran font saat hover */
 }
 
-/* Tambahkan CSS tambahan sesuai kebutuhan Anda */
+

@@ -22,6 +22,10 @@ Route::get('/donate', [DonationController::class, 'showDonationPage']);
 Route::post('/donate', [DonationController::class, 'processDonation']);
 Route::post('/donate/notification', [DonationController::class, 'handleNotification']);
 
+Route::get('/kalender', function () {
+    return view('kalender');
+});
+
 
 
 

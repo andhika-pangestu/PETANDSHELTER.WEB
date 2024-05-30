@@ -11,7 +11,7 @@
     </head>
 <body>
     <body>
-        <x-navbar></x-navbar>
+     <x-navbar></x-navbar>
     <h1>Employees List</h1>
     <div class="container ">
         <h1 class="text-primary">Hello, Custom Bootstrap Colors!</h1>
