@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8f9fa;">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('img/icon.png') }}" alt="Logo" class="navbar-logo">
