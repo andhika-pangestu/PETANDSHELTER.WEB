@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DonationController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-use App\Http\Controllers\EmployeeController;
 
 Route::get('/employees', [EmployeeController::class, 'index']);
 

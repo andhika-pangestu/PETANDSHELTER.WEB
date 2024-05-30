@@ -10,40 +10,25 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
 <body>
-    <body>
-        <x-navbar></x-navbar>
-    <h1>Employees List</h1>
-    <div class="container ">
-        <h1 class="text-primary">Hello, Custom Bootstrap Colors!</h1>
-        <button class="btn btn-success-900">Primary Button</button>
+    <x-navbar></x-navbar>
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-12 col-lg-4"> <!-- Kolom yang berisi gambar -->
+                <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-12 col-lg-8"> <!-- Kolom yang berisi teks -->
+                <h1 class="display-2 fw-bold lh-1 mb-3">Berikan Cinta dan Bangun kebahagiaan</h1>
+                <p class="lead">Temukan sahabat sejati Anda dan berikan mereka kehidupan penuh kasih dengan mengadopsi hewan peliharaan yang membutuhkan rumah. Bergabunglah dengan kami untuk mendukung perlindungan hewan atau menjadi relawan hari ini, dan buat perbedaan nyata dalam kehidupan mereka..</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button type="button" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Primary</button>
+                    <button type="button" class="btn btn-outline-secondary-500 btn-lg px-4">Default</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <table border="1" class="table table-striped table-bordered table">
-        <thead class="bg-primary">
-                <th>Employee Number</th>
-                <th>Last Name</th>
-                <th>First Name</th>
-                <th>Extension</th>
-                <th>Email</th>
-                <th>Office Code</th>
-                <th>Reports To</th>
-                <th>Job Title</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($employees as $employee)
-                <tr>
-                    <td>{{ $employee->employeeNumber }}</td>
-                    <td>{{ $employee->lastName }}</td>
-                    <td>{{ $employee->firstName }}</td>
-                    <td>{{ $employee->extension }}</td>
-                    <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->officeCode }}</td>
-                    <td>{{ $employee->reportsTo }}</td>
-                    <td>{{ $employee->jobTitle }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    
+    
+
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
