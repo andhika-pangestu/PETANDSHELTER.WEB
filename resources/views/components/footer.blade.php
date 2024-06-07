@@ -1,3 +1,4 @@
+<div class="container">
 <section class="">
     <!-- Footer -->
     <footer class=" text-white">
@@ -10,9 +11,10 @@
             <h5 class="text-uppercase">PET AND SHELTER</h5>
   
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-              molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-              aliquam voluptatem veniam, est atque cumque eum delectus sint!
+              Platform online untuk adopsi hewan dari shelter terdekat. 
+              Pengguna dapat mencari hewan peliharaan berdasarkan berbagai 
+              kriteria dan melihat profil lengkap hewan. Platform ini juga menyediakan informasi tentang shelter dan panduan adopsi,
+              mempermudah proses adopsi dan mengurangi jumlah hewan terlantar.
             </p>
 
             <section class="mb-4">
@@ -51,28 +53,28 @@
   
             <ul class="list-unstyled mb-0 ">
                 <li>
-                    <a href="#!" class="text-white">Beranda</a>
+                    <a href="{{ url('/beranda') }}" class="text-white">Beranda</a>
                   </li>
               <li>
                 <a href="{{ url('/about') }}" class="text-white">Tentang Kami</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Shelter</a>
+                <a href="{{ url('/shelter') }}" class="text-white">Shelter</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Adopsi</a>
+                <a href="{{ url('/adopsi') }}" class="text-white">Adopsi</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Acara</a>
+                <a href="{{ url('/kalender') }}" class="text-white">Acara</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Donasi</a>
+                <a href="{{ url('/donasi') }}" class="text-white">Donasi</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Rescue</a>
+                <a href="{{ url('/rescue') }}" class="text-white">Rescue</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Tips</a>
+                <a href="{{ url('/tips') }}" class="text-white">Tips</a>
               </li>
             </ul>
           </div>
@@ -99,3 +101,4 @@
     </footer>
     <!-- Footer -->
   </section>
+</div>
