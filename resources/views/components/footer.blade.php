@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
 <section class="">
     <!-- Footer -->
     <footer class=" text-white">
@@ -94,7 +94,7 @@
       <!-- Grid container -->
   
       <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      <div class="text-center p-3 bg-primary-600">
         © 2024 Copyright PetandShelter
       </div>
       <!-- Copyright -->

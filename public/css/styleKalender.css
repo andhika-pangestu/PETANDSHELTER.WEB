@@ -84,7 +84,7 @@
 }
 
 .card-img-top{
-    border-radius: 30px;
+
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     object-fit: cover;
@@ -109,7 +109,6 @@
 }
 
 .section3 .card-img3 {
-    border-radius: 30px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     object-fit: cover;
@@ -121,12 +120,6 @@
     max-width: 90%;
     margin: 0 auto;
     
-}
-
-.section3 .btn-primary-500 {
-    border-radius: 20px;
-    float: right;
-    font-size: 14px;
 }
 
 .section3 .card-text,
