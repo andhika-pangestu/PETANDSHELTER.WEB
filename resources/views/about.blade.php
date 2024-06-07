@@ -15,6 +15,7 @@
     <h1>Employees List</h1>
     <div class="container ">
         <h1 class="text-primary">Hello, Custom Bootstrap Colors!</h1>
+        <img src="/images/ContentHeroes.png" alt="contenthero" width="700" height="500" loading="lazy">
         <button class="btn btn-success-900">Primary Button</button>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>

@@ -1,8 +1,8 @@
 <section class="">
     <!-- Footer -->
-    <footer class="bg-primary-500 text-white">
+    <footer class=" text-white">
       <!-- Grid container -->
-      <div class="container p-4">
+      <div class="container p-4 bg-primary-500">
         <!--Grid row-->
         <div class="row">
           <!--Grid column-->

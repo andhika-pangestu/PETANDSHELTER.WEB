@@ -1,69 +1,105 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Donation;
-use Midtrans\Config;
-use Midtrans\CoreApi;
-use Illuminate\Routing\Controller;
+//import Snap midtrans
+use Midtrans\Snap;
 
+//import model Donation
+use App\Models\Donation;
+
+//import Str
+use Illuminate\Support\Str;
+
+//import request
+use Illuminate\Http\Request;
 
 class DonationController extends Controller
 {
-    public function processDonation(Request $request)
+
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        // Validasi input
+        // Set midtrans configuration
+        \Midtrans\Config::$serverKey    = config('services.midtrans.serverKey');
+        \Midtrans\Config::$isProduction = config('services.midtrans.isProduction');
+        \Midtrans\Config::$isSanitized  = config('services.midtrans.isSanitized');
+        \Midtrans\Config::$is3ds        = config('services.midtrans.is3ds');
+    } 
+
+    /**
+     * index
+     *
+     * @return void
+     */
+    public function index()
+    {
+        //get data donations
+        $donations = Donation::latest()->paginate(10);
+
+        //render view
+        return view('donations.index', compact('donations'));
+    }
+
+    /**
+     * create
+     *
+     * @return void
+     */
+    public function create()
+    {
+        //render view
+        return view('donations.create');
+    }
+
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function store(Request $request)
+    {
         $request->validate([
-            'amount' => 'required|numeric|min:1000',
-            'donor_name' => 'required|string|max:255'
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'amount'    => 'required',
+            'note'      => 'required',
         ]);
 
-        // Buat donasi baru di database
+        //insert donation to database
         $donation = Donation::create([
-            'order_id' => 'order-' . time(),
-            'amount' => $request->input('amount'),
-            'donor_name' => $request->input('donor_name')
+            'invoice'   => 'INV-'.Str::upper(Str::random(5)),
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'amount'    => $request->amount,
+            'note'      => $request->note,
+            'status'    => 'PENDING',
         ]);
 
-        // Set konfigurasi Midtrans
-        Config::$serverKey = config('midtrans.server_key');
-        Config::$isProduction = config('midtrans.is_production');
-        Config::$isSanitized = config('midtrans.is_sanitized');
-        Config::$is3ds = config('midtrans.is_3ds');
-
-        // Siapkan data transaksi
-        $params = [
+        // Buat transaksi ke midtrans kemudian save snap tokennya.
+        $payload = [
             'transaction_details' => [
-                'order_id' => $donation->order_id,
-                'gross_amount' => $donation->amount,
+                'order_id'      => $donation->invoice,
+                'gross_amount'  => $donation->amount,
             ],
-            'payment_type' => 'gopay',
-            'gopay' => [
-                'enable_callback' => true,
-                'callback_url' => url('/donate/callback')
+            'customer_details' => [
+                'first_name'       => $donation->name,
+                'email'            => $donation->email,
             ]
         ];
 
-        // Panggil API Midtrans untuk membuat transaksi
-        try {
-            $response = CoreApi::charge($params);
+        //create snap token
+        $snapToken = Snap::getSnapToken($payload);
+        $donation->snap_token = $snapToken;
+        $donation->save();
 
-            if ($response->payment_type === 'gopay') {
-                if ($response->actions) {
-                    foreach ($response->actions as $action) {
-                        if ($action->name === 'generate-qr-code') {
-                            return view('donate', ['qr_url' => $action->url]);
-                        } elseif ($action->name === 'deeplink-redirect') {
-                            return redirect($action->url);
-                        }
-                    }
-                }
-            }
-
-        } catch (\Exception $e) {
-            return redirect('/donate')->with('error', $e->getMessage());
+        if ($donation) {
+            return redirect()->route('donations.index')->with('success', 'Donation created successfully');
         }
     }
 }

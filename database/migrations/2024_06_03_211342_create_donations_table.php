@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('donate', function (Blueprint $table) {
+        Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->string('checkout_link');
-            $table->string('external_id');
-            $table->string('status');
+            $table->string('invoice');
+            $table->string('name');
+            $table->string('email');
+            $table->bigInteger('amount');
+            $table->text('note');
+            $table->string('status')->default('PENDING');
+            $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('donate');
+        Schema::dropIfExists('donations');
     }
 };

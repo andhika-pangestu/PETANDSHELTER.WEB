@@ -185,69 +185,104 @@
   --success-900: var(--success-900);
 }
 
-.btn {
-    padding: auto;
-    border-radius: 30px; 
+
+
+.list-unstyled a {
+    text-decoration: none;
+  }
+
+
+.rounded {
+    border-radius: 15pxp;
 }
 
+.btn {
+    padding: auto;
+    border-radius: 30px;
+}
+.navbar-nav .nav-link {
+    color: #000;
+    transition: background-color 0.3s, font-size 0.3s;
+    position: relative;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Adjust this value to set the distance from text */
+    width: 100%;
+    height: 2px; /* Adjust this value to set the thickness of the line */
+    background-color:  var(--primary-500); /* Color of the indicator */
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: var(--primary-50);;
+    border-radius: 15px;
+    color: #000;
+}
+
+.nav-link-primary {
+    color: var(--primary-500); /* Bootstrap primary-500 color */
+}
+
+.nav-link-primary:hover {
+    background-color:  var(--primary-500); /* Darker shade for hover effect */
+    color: #fff;
+}
+
+.icon-background {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 17px;
+    margin-top: 42px;
+    width: 64px; 
+    height: 64px; 
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+
+/* Responsive font sizes */
+@media (max-width: 575.98px) { /* Extra small devices (portrait phones, less than 576px) */
     .navbar-nav .nav-link {
-        color: #000;
-        transition: background-color 0.3s, font-size 0.3s;
-        position: relative;
+        font-size: 14px;
     }
+}
 
-    .navbar-nav .nav-link.active::after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: -3px; /* Adjust this value to set the distance from text */
-        width: 100%;
-        height: 2px; /* Adjust this value to set the thickness of the line */
-        background-color:var(--primary-500); /* Color of the indicator */
+@media (min-width: 576px) and (max-width: 767.98px) { /* Small devices (landscape phones, 576px and up) */
+    .navbar-nav .nav-link {
+        font-size: 16px;
     }
+}
 
-    .navbar-nav .nav-link:hover {
-        background-color: var(--primary-50);
-        color: #000;
+@media (min-width: 768px) and (max-width: 991.98px) { /* Medium devices (tablets, 768px and up) */
+    .navbar-nav .nav-link {
+        font-size: 18px;
     }
+}
 
-    .nav-link-primary {
-        color: var(--primary-500); /* Bootstrap primary-500 color */
+@media (min-width: 992px) and (max-width: 1199.98px) { /* Large devices (desktops, 992px and up) */
+    .navbar-nav .nav-link {
+        font-size: 16px;
     }
+}
 
-    .nav-link-primary:hover {
-        background-color: var(--primary-500); /* Darker shade for hover effect */
-        color: #fff;
+@media (min-width: 1200px) { /* Extra large devices (large desktops, 1200px and up) */
+    .navbar-nav .nav-link {
+        font-size: 20px;
     }
-
-    /* Responsive font sizes */
-    @media (max-width: 575.98px) { /* Extra small devices (portrait phones, less than 576px) */
-        .navbar-nav .nav-link {
-            font-size: 14px;
-        }
-    }
-
-    @media (min-width: 576px) and (max-width: 767.98px) { /* Small devices (landscape phones, 576px and up) */
-        .navbar-nav .nav-link {
-            font-size: 16px;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 991.98px) { /* Medium devices (tablets, 768px and up) */
-        .navbar-nav .nav-link {
-            font-size: 18px;
-        }
-    }
-
-    @media (min-width: 992px) and (max-width: 1199.98px) { /* Large devices (desktops, 992px and up) */
-        .navbar-nav .nav-link {
-            font-size: 20px;
-        }
-    }
-
-    @media (min-width: 1200px) { /* Extra large devices (large desktops, 1200px and up) */
-        .navbar-nav .nav-link {
-            font-size: 22px;
-        }
-    }
+}
