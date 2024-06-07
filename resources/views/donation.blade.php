@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/services/service-4/assets/css/service-4.css">
     </head>
+    </head>
 <body>
     <x-navbar></x-navbar>
     <div class="container col-xxl-8 px-4 py-5">

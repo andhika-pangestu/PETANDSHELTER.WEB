@@ -244,53 +244,6 @@
     border-radius: 50%;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
 }
-/* JUSTIFY */
-.text-justify{
-    text-align: justify;
-}
-/* KALENDER CSS */
-.banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-}
-.banner-text {
-    font-size: 24px;
-    font-weight: bold;
-    margin-left: 130px;
-}
-.banner-image {
-    width: 200px;
-    height: auto;
-}
-.banner-image-dog{
-    width: 310px;
-    height: auto;
-    margin-right: 130px;
-}
-.blob {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    z-index: 0;
-    top: -50px;
-    left: -1px;
-}
-
-
-
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
-
 
 
 /* Responsive font sizes */
