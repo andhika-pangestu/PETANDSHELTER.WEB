@@ -1,180 +1,202 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>donation</title>
+        <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/services/service-4/assets/css/service-4.css">
 
-<head>
+    </head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Simple Donation with Midtrans</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="{{ !config('services.midtrans.isProduction') ? 'https://app.sandbox.midtrans.com/snap/snap.js' : 'https://app.midtrans.com/snap/snap.js' }}" data-client-key="{{ config('services.midtrans.clientKey') }}"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-weight: 200;
-            height: 100vh;
-            margin: 0;
-        }
-    </style>
-</head>
-
+    <title>PetandShelter | Acara</title>
+    <link rel="icon" href="img/icon-trans.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="css/styleKalender.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Online Donation</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#create">Donation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#list">Donation List</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="jumbotron jumbotron-fluid" style="background-color: #74b9ff; color: white;">
-        <div class="container">
-            <h1 class="display-4">Online Donation</h1>
-            <p class="lead">This is just a simple donation web with Midtrans.</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <form class="form-horizontal" id="donation" onsubmit="return submitForm();">
-            <!-- Form Name -->
-            <legend>Donation</legend>
-            @csrf
-            <div class="row">
-                <div class="col-md-4">
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="control-label" for="donor_name">Donor Name</label>
-                        <div>
-                            <input id="donor_name" name="donor_name" type="text" placeholder="Enter your name.." class="form-control input-md" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="control-label" for="donor_email">Donor Email</label>
-                        <div>
-                            <input id="donor_email" name="donor_email" type="email" placeholder="Enter your email.." class="form-control input-md" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <!-- Select Basic -->
-                    <div class="form-group">
-                        <label class="control-label" for="donation_type">Type</label>
-                        <div>
-                            <select id="donation_type" name="donation_type" class="form-control">
-                                <option value="infak_kemanusiaan">Infak Kemanusiaan</option>
-                                <option value="infak_pendidikan">Infak Pendidikan</option>
-                                <option value="infak_kesehatan">Infak Kesehatan</option>
-                            </select>
-                        </div>
-                    </div>
+    <x-navbar></x-navbar>
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-12 col-lg-4"> <!-- Kolom yang berisi gambar -->
+                <img src="images/ContentHeroes .png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="900" height="800" loading="lazy">
+            </div>
+            <div class="col-12 col-lg-8"> <!-- Kolom yang berisi teks -->
+                <h1 class="display-2 fw-bold lh-1 mb-3">Berikan Cinta dan Bangun kebahagiaan</h1>
+                <p class="fst-normal">Temukan sahabat sejati Anda dan berikan mereka kehidupan penuh kasih dengan mengadopsi hewan peliharaan yang membutuhkan rumah. Bergabunglah dengan kami untuk mendukung perlindungan hewan atau menjadi relawan hari ini, dan buat perbedaan nyata dalam kehidupan mereka..</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{{ route('adopsi') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Adopsi</a>
+                    <a href="{{ route('about') }}" class="btn btn-outline-secondary-500 btn-lg px-4">Tentang</a>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Prepended text-->
-                    <label for="amount">Amount</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Rp</span>
-                        </div>
-                        <input id="amount" name="amount" class="form-control" placeholder="" type="number" min="10000" max="999999999" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <!-- Textarea -->
-                    <div class="form-group">
-                        <label class="control-label" for="note">Note (Optional)</label>
-                        <div>
-                            <textarea class="form-control" id="note" name="note"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button id="submit" class="btn btn-success">Submit</button>
-        </form>
-
-        <br>
-
-        <table class="table table-striped" id="list">
-            <tr>
-                <th>ID</th>
-                <th>Donor Name</th>
-                <th>Amount</th>
-                <th>Donation Type</th>
-                <th>Status</th>
-                <th style="text-align: center;">Pay</th>
-            </tr>
-            @foreach ($donations as $donation)
-            <tr>
-                <td><code>{{ $donation->id }}</code></td>
-                <td>{{ $donation->donor_name }}</td>
-                <td>Rp. {{ number_format($donation->amount) }},-</td>
-                <td>{{ ucwords(str_replace('_', ' ', $donation->donation_type)) }}</td>
-                <td>{{ ucfirst($donation->status) }}</td>
-                <td style="text-align: center;">
-                    @if ($donation->status == 'pending')
-                    <button class="btn btn-success btn-sm" onclick="snap.pay('{{ $donation->snap_token }}')">Complete Payment</button>
-                    @endif
-                </td>
-            </tr>
-            @endforeach
-            <tr>
-                <td colspan="6">{{ $donations->links() }}</td>
-            </tr>
-        </table>
+        </div>
     </div>
     
-    <script>
-        function submitForm() {
-            $.post("{{ route('donation.store') }}", {
-                _method: 'POST',
-                _token: '{{ csrf_token() }}',
-                amount: $('input#amount').val(),
-                note: $('textarea#note').val(),
-                donation_type: $('select#donation_type').val(),
-                donor_name: $('input#donor_name').val(),
-                donor_email: $('input#donor_email').val(),
-            },
-            function (data, status) {
-                if (data.status == 'error') {
-                    alert(data.message);
-                } else {
-                    snap.pay(data.snap_token, {
-                        onSuccess: function (result) {
-                            location.reload();
-                        },
-                        onPending: function (result) {
-                            location.reload();
-                        },
-                        onError: function (result) {
-                            location.reload();
-                        }
-                    });
-                }
-            });
-            return false;
-        }
-    </script>
+    
+
+    <div class="container bg-accent-300 py-5 rounded-3">
+      <div class="row align-items-start text-center">
+        <div class="col-12 col-md-4 text-md-start mt-3 fw-bold">
+          <h3 class="fw-bold">Memberikan kasih sayang kepada hewan-hewan</h3>
+        </div>
+        <div class="col-12 col-md-4  text-md-start mt-3"> 
+          <h5 class="fw-bold">Beri Kehidupan</h5>
+          <p class="mb-0 fw-normal">Membawa kegembiraan tak ternilai bagi pemiliknya, memberikan mereka teman setia yang akan selalu ada di samping mereka dalam setiap petualangan kehidupan.</p>
+        </div>
+        <div class="col-12 col-md-4   text-md-start mt-3">
+          <h5 class="fw-bold">Sahabat Sejati di Rumah</h5>
+          <p class="mb-0 fw-normal">Hewan peliharaan memberikan kebahagiaan dan kehangatan, menjadi sahabat setia yang selalu ada di setiap momen hidup.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Service 4 - Bootstrap Brain Component -->
+<section class="bg-light py-5 py-xl-8">
+    <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+            <h3 class="fs-6 mb-2 text-secondary text-center text-uppercase">Apa saja yang kita kerjakan?</h3>
+            <h2 class="fs-3 mb-5 text-center">Kami juga menawarkan layanan yang kompeten dan berkualitas.</h2>
+            <hr class="w-50 mx-auto mb-2 mb-xl-4 border-dark-subtle">
+          </div>
+        </div>
+      </div>
+      
+      <div class="container overflow-hidden">
+        <div class="row gy-4 gy-xl-0">
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card border-0 border-bottom bg-accent-100 rounded-5 border-accent-500 shadow-sm h-100">
+              <div class="card-body text-center p-4 p-xxl-5">
+                <span class="icon-background bg-accent-500">
+                  <span class="material-symbols-outlined" style="font-size: 48px; color: white ">
+                    pets
+                  </span>
+                </span>
+                <h5 class="mb-2 fw-bold">Pet Adopt </h5>
+                <p class="mb-2">Adopsi hewan untuk menemanimu di rumah yang hangat</p>
+                <a href="{{ route('adopsi') }}" class="fw-bold text-decoration-none link-primary p-6">
+                  Cari tahu 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card border-0 border-bottom bg-primary-100 rounded-5 border-primary-500 shadow-sm h-100">
+              <div class="card-body text-center p-4 p-xxl-5">
+                <span class="icon-background bg-primary-500">
+                  <span class="material-symbols-outlined" style="font-size: 48px; color: white">
+                    emergency
+                  </span>
+                </span>
+                <h5 class="mb-2 fw-bold">ANIMAL RESCUE</h5>
+                <p class="mb-2">Butuh pertolongan hewan? hubungi kami saja</p>
+                <a href="{{ route('rescue') }}" class="fw-bold text-decoration-none link-primary p-6">
+                  Cari tahu 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card border-0 border-bottom bg-success-100 rounded-5 border-success-500 shadow-sm h-100">
+              <div class="card-body text-center p-4 p-xxl-5">
+                <span class="icon-background bg-success-500">
+                    <span class="material-symbols-outlined"  style="font-size: 48px; color: white">
+                        account_balance_wallet
+                        </span>
+                </span>
+                <h5 class="mb-2 fw-bold">DONATE</h5>
+                <p class="mb-2">Berikan Donasimu dalam bentuk moril dan material</p>
+                <a href="{{ route('donations.create') }}" class="fw-bold text-decoration-none link-primary p-6">
+                  Cari tahu 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card border-0 border-bottom bg-warning-100 rounded-5 border-warning-500 shadow-sm h-100">
+              <div class="card-body text-center p-4 p-xxl-5">
+                <span class="icon-background bg-warning-500">
+                    <span class="material-symbols-outlined" style="font-size: 48px; color: white ">
+                        volunteer_activism
+                    </span>
+                </span>
+                <h5 class="mb-2 fw-bold">Be Volunteer</h5>
+                <p class="mb-2">AIkut berkontribusi menyelamatkan hewan peliharaan</p>
+                <a href="#!" class="fw-bold text-decoration-none link-primary p-6">
+                  Cari tahu 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-12 col-lg-8">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-10">
+              <h3 class="fs-6 mb-2 text-secondary fw-bold text-uppercase">Apa saja yang kita kerjakan?</h3>
+              <h1 class="display-3 fw-bold lh-1 mb-3">ADOPSI HEWAN PELIHARAAN</h1>
+              <p class="fst-normal">Adopsi hewan peliharaan sekarang dan dapatkan kegembiraan tak ternilai dari 
+                memiliki teman setia yang akan selalu ada di samping Anda dalam setiap petualangan kehidupan.
+                 Jadi, jangan tunda lagi! </p>
+              <div class="justify-content-md-start">
+                <a href="{{ route('adopsi') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Adopsi</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <img src="img/pet.png" class="d-block mx-lg-auto img-fluid" alt="Gambar Hewan" width="900" height="800" loading="lazy">
+          </div>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="row flex-lg-row-reverse align-items-center">
+            <div class="col-lg-6">
+                <div class="lc-block">
+                    <img class="img-fluid rounded-5" src="img/shelterDog.jpg" loading="lazy" width="900" height="600">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="lc-block">
+                    <div editable="rich">
+                        <h1 class="fw-bold">Yuk Selamatkan Paw</h1>
+                        <p class=" text-justify">Ayo bergabung dengan kami dalam menyelamatkan hewan peliharaan! Gunakan website kami untuk melaporkan hewan yang membutuhkan bantuan dengan cepat dan mudah. Bersama-sama, kita bisa menjadi penyelamat bagi hewan-hewan yang butuh pertolongan!</p>
+                    </div>
+                </div>
+                <div class="-md-flex justify-content-md-start">
+                  <a href="{{ route('volunteer') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Jadi Volunteer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+    <x-footer> </x-footer>
+
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
-</html>
 </html>
