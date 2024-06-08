@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PetandShelter | List Adopsi</title>
+    <link rel="icon" href="img/icon-trans.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+{{-- navbar --}}
+<x-navbar></x-navbar>
+{{-- section1 --}}
+<div class="container">
+    <div class="row py-5">
+        <div class="col-lg-1 d-none d-lg-flex align-items-center">
+            <div class="lc-block d-flex" style="writing-mode: vertical-rl; transform:rotate(180deg)">
+                <a class="btn btn-link my-2 text-dark text-decoration-none" href="#" role="button">Facebook</a>
+                <a class="btn btn-link my-4 text-dark text-decoration-none" href="#" role="button">Twitter</a>
+                <a class="btn btn-link my-2 text-dark text-decoration-none" href="#" role="button">Youtube</a>
+            </div><!-- /lc-block -->
+        </div><!-- /col -->
+        <div class="col-sm-6 d-flex d-lg-none flex-sm-column align-items-center justify-content-around mb-4 mb-sm-0">
+            <div class="lc-block">
+                <a class="btn btn-link text-dark text-decoration-none" href="#" role="button">Facebook</a>
+
+            </div>
+            <div class="lc-block">
+                <a class="btn btn-link text-dark text-decoration-none" href="#" role="button">Twitter</a>
+
+            </div>
+            <div class="lc-block">
+                <a class="btn btn-link text-dark text-decoration-none" href="#" role="button">Youtube</a>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="lc-block ratio ratio-1x1">
+                <img style="object-fit:cover" class="img-fluid" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?crop=entropy&amp;cs=tinysrgb&amp;fit=crop&amp;fm=jpg&amp;ixid=MnwzNzg0fDB8MXxzZWFyY2h8N3x8d29tYW58ZW58MHwwfHx8MTYzNDU2NTUxOA&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1080&amp;h=768" alt="Photo by Atikh Bana">
+            </div><!-- /lc-block -->
+        </div><!-- /col -->
+        <div class="col-lg-4 offset-lg-1">
+            <div class="lc-block my-5">
+                <div editable="rich">
+                    <h2 class="rfs-25">Nunc et metus id ligula malesuada.</h2>
+                </div>
+            </div>
+            <div class="lc-block my-5">
+                <div editable="rich">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id ligula malesuada placerat sit amet quis.</p>
+                </div>
+            </div><!-- /lc-block -->
+            <div class="lc-block">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Contact Us</a>
+            </div><!-- /lc-block -->
+        </div><!-- /col -->
+    </div>
+
+{{-- section2 --}}
+  
+
+{{-- section3 --}}
+  
+</div>
+{{-- footer --}}
+<x-footer></x-footer>
+</body>
+</html>

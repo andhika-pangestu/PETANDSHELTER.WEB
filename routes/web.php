@@ -34,6 +34,10 @@ Route::get('/rescue', function () {
     return view('rescue');
 })->name('rescue');
 
+Route::get('/list', function () {
+    return view('list');
+})->name('list');
+
 
 Route::get('/about', function () {
     return view('about');
