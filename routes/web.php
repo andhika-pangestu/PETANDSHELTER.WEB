@@ -40,6 +40,10 @@ Route::get('/about', function () {
 })->name('about');
 
 
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
 Route::get('/donations', function () {
     return view('donations.create');
 });

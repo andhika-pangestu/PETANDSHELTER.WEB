@@ -140,7 +140,7 @@
                     </span>
                 </span>
                 <h5 class="mb-2 fw-bold">Be Volunteer</h5>
-                <p class="mb-2">AIkut berkontribusi menyelamatkan hewan peliharaan</p>
+                <p class="mb-2">Ikut berkontribusi menyelamatkan hewan peliharaan</p>
                 <a href="#!" class="fw-bold text-decoration-none link-primary p-6">
                   Cari tahu 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
