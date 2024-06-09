@@ -1,0 +1,77 @@
+ <div class="form-group">
+        <label for="hewanLain">Apakah anda memiliki hewan peliharaan lainnya di rumah?</label>
+        <select class="form-control" id="hewanLain" required>
+          <option selected disabled>Select item</option>
+          <option>Ya</option>
+          <option>Tidak</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="kepemilikanRumah">Kepemilikan rumah</label>
+        <select class="form-control" id="kepemilikanRumah" required>
+          <option selected disabled>Select item</option>
+          <option>Milik Sendiri</option>
+          <option>Sewa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dokterHewan">Apakah anda telah memiliki dokter hewan?</label>
+        <select class="form-control" id="dokterHewan" required>
+          <option selected disabled>Select item</option>
+          <option>Ya</option>
+          <option>Tidak</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="halamanBergarasi">Apakah anda memiliki halaman berpagar?</label>
+        <select class="form-control" id="halamanBergarasi" required>
+          <option selected disabled>Select item</option>
+          <option>Ya</option>
+          <option>Tidak</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="jumlahDewasa">Berapa banyak orang dewasa di rumah anda?</label>
+        <select class="form-control" id="jumlahDewasa" required>
+          <option selected disabled>Select item</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="jumlahAnak">Berapa banyak anak kecil di rumah anda?</label>
+        <select class="form-control" id="jumlahAnak" required>
+          <option selected disabled>Select item</option>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="alergiHewan">Adakah orang di rumah yang memiliki alergi pada bulu hewan?</label>
+        <select class="form-control" id="alergiHewan" required>
+          <option selected disabled>Select item</option>
+          <option>Ya</option>
+          <option>Tidak</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="hewanIndoorOutdoor">Akankah hewan ini menjadi hewan di dalam atau di luar?</label>
+        <select class="form-control" id="hewanIndoorOutdoor" required>
+          <option selected disabled>Select item</option>
+          <option>Di Dalam</option>
+          <option>Di Luar</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="kenapaMencariHewan"></label>
+        <textarea class="form-control" id="kenapaMencariHewan" rows="3" placeholder="" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="dimanaHewan">Dimana hewan ini akan menghabiskan sebagian besar waktunya?</label>
+        <textarea class="form-control" id="dimanaHewan" rows="3" placeholder="Tuliskan sejujurnya" required></textarea>
+      </div>
+      

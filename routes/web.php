@@ -59,6 +59,14 @@ Route::get('/kalender', function () {
     return view('kalender', compact('acara'));
 })->name('kalender');
 
+Route::get('/form', function () {
+    return view('form');
+})->name('form');
+
+
+Route::get('/thank', function () {
+    return view('thank');
+})->name('thank');
 
 use App\Http\Controllers\ProfileController;
 
@@ -98,3 +106,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('admin/acara/{acara}', [AcaraController::class, 'update'])->name('admin.acara.update');
     Route::delete('admin/acara/{acara}', [AcaraController::class, 'destroy'])->name('admin.acara.destroy');
 });
+
