@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class Shelter
+class mitra
 {
     /**
      * Handle an incoming request.
@@ -27,7 +27,7 @@ class Shelter
         if ($userRole == 1) {
             return redirect()->route('admin.dashboard');
         }
-        // Shelter
+        // mitra
         elseif ($userRole == 2) {
             return $next($request);
         }

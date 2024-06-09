@@ -85,10 +85,10 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified', 'admin'])->name('admin.dashboard');
 
-//buat shelter
-Route::get('/shelter/dashboard', function () {
-    return view('shelter.dashboard');
-})->middleware(['auth', 'verified',  'shelter'])->name('shelter.dashboard');
+//buat mitra
+Route::get('/mitra/dashboard', function () {
+    return view('mitra.dashboard');
+})->middleware(['auth', 'verified',  'mitra'])->name('mitra.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -106,4 +106,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('admin/acara/{acara}', [AcaraController::class, 'update'])->name('admin.acara.update');
     Route::delete('admin/acara/{acara}', [AcaraController::class, 'destroy'])->name('admin.acara.destroy');
 });
+
+use App\Http\Controllers\ShelterController;
+
+
+
+Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(function () {
+    Route::get('shelter', [ShelterController::class, 'index'])->name('shelter.index');
+    Route::get('shelter/create', [ShelterController::class, 'create'])->name('shelter.create');
+    Route::post('shelter', [ShelterController::class, 'store'])->name('shelter.store');
+    Route::get('shelter/{shelter}/edit', [ShelterController::class, 'edit'])->name('shelter.edit');
+    Route::put('shelter/{shelter}', [ShelterController::class, 'update'])->name('shelter.update');
+});
+
 

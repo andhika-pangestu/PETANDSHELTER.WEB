@@ -27,9 +27,9 @@ class Volunteer
         if ($userRole == 1) {
             return redirect()->route('admin.dashboard');
         }
-        // Shelter
+        // mitra
         elseif ($userRole == 2) {
-            return redirect()->route('shelter.dashboard');
+            return redirect()->route('mitra.dashboard');
         }
         // Volunteer
         elseif ($userRole == 3) {

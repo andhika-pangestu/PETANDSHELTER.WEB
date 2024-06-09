@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         }
         // Admin
         elseif ($loggedInUserRole == 2) {
-            return redirect()->intended(route('shelter.dashboard'));
+            return redirect()->intended(route('mitra.dashboard'));
         }
 
 

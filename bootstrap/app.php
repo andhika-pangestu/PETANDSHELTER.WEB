@@ -2,7 +2,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Http\Middleware\Shelter;
+use App\Http\Middleware\Mitra;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Volunteer;
 
@@ -16,7 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'admin' => Admin::class,
-            'shelter' => Shelter::class,
+            'mitra' => Mitra::class,
             'volunteer' => Volunteer::class,
         ]);
     })
