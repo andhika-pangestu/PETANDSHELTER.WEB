@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PetandShelter | Acara</title>
-    <link rel="icon" href="img/icon-trans.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-{{-- navbar --}}
-<x-navbar></x-navbar>
-{{-- section1 --}}
 
+<x-app-layout>
+  <x-slot name="main">
+   
 <div class="container col-xxl-10 px-4 py-5">
 
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-lg-8">
-      <h3 class="fs-6 mb-2 text-secondary fw-bold text-uppercase">Ada apa disini?</h3>
       <h1 class="display-3 text-primary ms-4 fw-bold lh-1 mb-3">Catat Setiap Kegembiraan Bersama Pet Calendar Kami!</h1>
     </div>
     <div class="col-lg-4">
@@ -243,7 +229,6 @@
   </div>
 
 </div>
-{{-- footer --}}
-<x-footer></x-footer>
-</body>
-</html>
+
+  <script src="{{ mix('js/app.js') }}"></script>
+</x-app-layout>

@@ -26,6 +26,7 @@ Route::get('/adopsi', function () {
 })->name('adopsi');
 
 
+
 Route::get('/volunteer', function () {
     return view('volunteer');
 })->name('volunteer');
@@ -48,8 +49,8 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::get('/donations', function () {
-    return view('donations.create');
+Route::get('/donasi', function () {
+    return view('donasi');
 });
 
 Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
@@ -60,6 +61,32 @@ Route::get('/kalender', function () {
 });
 
 
+use App\Http\Controllers\ProfileController;
 
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
+//buat volunteer
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified', 'volunteer'])->name('dashboard');
+
+//buat admin
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified', 'admin'])->name('admin.dashboard');
+
+//buat shelter
+Route::get('/shelter/dashboard', function () {
+    return view('shelter.dashboard');
+})->middleware(['auth', 'verified',  'shelter'])->name('shelter.dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
