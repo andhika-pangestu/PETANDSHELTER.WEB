@@ -17,10 +17,6 @@ Route::post('/finish', function(){
     return redirect()->route('welcome');
 })->name('donation.finish');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/adopsi', function () {
     return view('adopsi');
 })->name('adopsi');
@@ -56,9 +52,12 @@ Route::get('/donasi', function () {
 Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
 
 
+use App\Models\Acara;
+
 Route::get('/kalender', function () {
-    return view('kalender');
-});
+    $acara = Acara::orderBy('created_at', 'desc')->get();
+    return view('kalender', compact('acara'));
+})->name('kalender');
 
 
 use App\Http\Controllers\ProfileController;
@@ -90,3 +89,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+use App\Http\Controllers\Admin\AcaraController;
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/acara', [AcaraController::class, 'index'])->name('admin.acara');
+    Route::post('admin/acara', [AcaraController::class, 'store'])->name('admin.acara.store');
+    Route::put('admin/acara/{acara}', [AcaraController::class, 'update'])->name('admin.acara.update');
+    Route::delete('admin/acara/{acara}', [AcaraController::class, 'destroy'])->name('admin.acara.destroy');
+});

@@ -33,6 +33,7 @@
     </div>
   </div>
   
+
 <section class="bg-light py-5 py-xl-8">
   <div class="container">
       <div class="row justify-content-md-center">
@@ -166,5 +167,8 @@
       </div>
   </div>
 </section>
+
   <script src="{{ mix('js/app.js') }}"></script>
+
+
 </x-app-layout>
