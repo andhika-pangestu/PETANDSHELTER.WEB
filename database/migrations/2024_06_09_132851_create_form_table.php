@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cobain', function (Blueprint $table) {
+        Schema::create('form', function (Blueprint $table) {
             $table->id();
+            $table->string('Nama');
+            $table->text('deskripsi');
+            $table->string('gambar');
+            $table->date('tanggal');
+            $table->time('waktu');
+            $table->string('lokasi');
             $table->timestamps();
-            $table->string('nama');
         });
     }
 
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cobain');
+        Schema::dropIfExists('form');
     }
 };
