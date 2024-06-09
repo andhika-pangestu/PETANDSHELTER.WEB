@@ -13,57 +13,166 @@
 <body>
 {{-- navbar --}}
 <x-navbar></x-navbar>
+
 {{-- section1 --}}
-<div class="container">
-    <div class="row py-5">
-        <div class="col-lg-1 d-none d-lg-flex align-items-center">
-            <div class="lc-block d-flex" style="writing-mode: vertical-rl; transform:rotate(180deg)">
-                <a class="btn btn-link my-2 text-dark text-decoration-none" href="#" role="button">Facebook</a>
-                <a class="btn btn-link my-4 text-dark text-decoration-none" href="#" role="button">Twitter</a>
-                <a class="btn btn-link my-2 text-dark text-decoration-none" href="#" role="button">Youtube</a>
-            </div><!-- /lc-block -->
-        </div><!-- /col -->
-        <div class="col-sm-6 d-flex d-lg-none flex-sm-column align-items-center justify-content-around mb-4 mb-sm-0">
-            <div class="lc-block">
-                <a class="btn btn-link text-dark text-decoration-none" href="#" role="button">Facebook</a>
-
-            </div>
-            <div class="lc-block">
-                <a class="btn btn-link text-dark text-decoration-none" href="#" role="button">Twitter</a>
-
-            </div>
-            <div class="lc-block">
-                <a class="btn btn-link text-dark text-decoration-none" href="#" role="button">Youtube</a>
-
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 d-flex align-items-center mt-3 mb-5">
+            <!-- Tombol Back di Kiri -->
+            <button onclick="history.back()" class="btn btn-light">
+                <i class="fas fa-arrow-left fa-xl"></i>
+            </button>
+            <!-- Breadcrumb di Kanan -->
+            <nav aria-label="breadcrumb" class="ms-auto">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Shelter</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Adopsi</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+      <!-- Hero -->
+      <div class="justify-content-start">
+        <div class="p-5 shadow-4  bg-accent-500 ">
+            <div class="d-flex">
+                <div>
+                    <img src="img/tokopet.png" class="img-fluid">
+                </div>
+                <div class="ms-5 text-white">
+                    <h4 class="fw-bold mb-4">Cimekar Shelter</h4>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-map-location-dot fa-lg me-2"></i>
+                        <p class="mb-0">
+                            Jl. Melati No. 123
+                            Kab Bandung
+                            12345
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-calendar-days fa-lg me-2"></i>
+                        <p class="mb-0">
+                            Senin - Sabtu: 09.00 - 19.00
+                            Minggu: Libur
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-phone-volume fa-lg me-2"></i>
+                        <p class="mb-0">(021) 1234-5678</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6">
-            <div class="lc-block ratio ratio-1x1">
-                <img style="object-fit:cover" class="img-fluid" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?crop=entropy&amp;cs=tinysrgb&amp;fit=crop&amp;fm=jpg&amp;ixid=MnwzNzg0fDB8MXxzZWFyY2h8N3x8d29tYW58ZW58MHwwfHx8MTYzNDU2NTUxOA&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1080&amp;h=768" alt="Photo by Atikh Bana">
-            </div><!-- /lc-block -->
-        </div><!-- /col -->
-        <div class="col-lg-4 offset-lg-1">
-            <div class="lc-block my-5">
-                <div editable="rich">
-                    <h2 class="rfs-25">Nunc et metus id ligula malesuada.</h2>
-                </div>
-            </div>
-            <div class="lc-block my-5">
-                <div editable="rich">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id ligula malesuada placerat sit amet quis.</p>
-                </div>
-            </div><!-- /lc-block -->
-            <div class="lc-block">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Contact Us</a>
-            </div><!-- /lc-block -->
-        </div><!-- /col -->
     </div>
-
+    
+  <!-- Hero -->
 {{-- section2 --}}
-  
+<div class="row justify-content-center mt-5 ">
+    <div class="col-md-3 my-4 mx-4 ">
+        <div class="card cardpet text-white">
+            <img src="img/listpet1.jpg" class="card-img">
+            <div class="card-img-overlay">
+                 <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4 mx-4">
+        <div class="card cardpet">
+            <img src="img/listpet2.webp" class="card-img">
+            <div class="card-img-overlay">
+                <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4 mx-4">
+        <div class="card cardpet">
+            <img src="img/listpet3.jpg" class="card-img">
+            <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center ">
+    <div class="col-md-3 my-4 mx-4">
+        <div class="card cardpet">
+            <img src="img/listpet4.webp" class="card-img">
+            <div class="card-img-overlay">
+                <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4 mx-4">
+        <div class="card cardpet">
+            <img src="img/listpet5.jpg" class="card-img">
+            <div class="card-img-overlay">
+                <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4 mx-4">
+        <div class="card cardpet">
+            <img src="img/listpet6.webp" class="card-img">
+            <div class="card-img-overlay">
+                <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+            </div>
+        </div>
+    </div>
+</div>
 
 {{-- section3 --}}
-  
+<div class="row my-5">
+    <div class="col-md-2">
+        <h5 class="text-white bg-accent-500 p-3 rounded-end">Shelter lainnya</h5>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 g-4 "> <!-- Mengubah jumlah kolom menjadi 4 -->
+    <div class="col ">
+      <div class="card h-100 rounded-4">
+        <img src="img/tokopet.png" class="card-img-top img-fluid rounded-top-4 h-100" style="object-fit: cover;"> <!-- Menambah kelas img-fluid untuk membuat gambar responsif -->
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Pelangi Kasih</h5>
+          <h6 class="card-title">Cipadung</h6>
+          <p class="card-text">Jl. Cempaka No. 25, Bandung Timur</p>
+          <a href="#" class="btn btn-accent text-white">Lihat Shelter</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 rounded-4">
+        <img src="img/tokopet.png" class="card-img-top img-fluid rounded-top-4 h-100" style="object-fit: cover;"> <!-- Menambah kelas img-fluid untuk membuat gambar responsif -->
+        <div class="card-body">
+            <h5 class="card-title fw-bold">Shelter Anjing Damai</h5>
+            <h6 class="card-title">Bandung Utara</h6>
+            <p class="card-text">Jl. Cibiru Raya No. 89, Bandung</p> 
+            <a href="#" class="btn btn-accent text-white">Lihat Shelter</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 rounded-4">
+        <img src="img/tokopet.png" class="card-img-top img-fluid rounded-top-4 h-100" style="object-fit: cover;"> <!-- Menambah kelas img-fluid untuk membuat gambar responsif -->
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Hewan Bahagia</h5>
+          <h6 class="card-title">Bandung Selatan</h6>
+          <p class="card-text">Jl. Suryalaya No. 45, Bandung</p>
+          <a href="#" class="btn btn-accent text-white">Lihat Shelter</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 rounded-4">
+          <img src="img/tokopet.png" class="card-img-top img-fluid rounded-top-4 h-100" style="object-fit: cover;"> <!-- Menambah kelas img-fluid untuk membuat gambar responsif -->
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Shelter Hati Kecil</h5>
+          <h6 class="card-title">Bandung Timur</h6>
+          <p class="card-text"> Jl. Ciumbuleuit No. 123, Bandung</p>
+          <a href="#" class="btn btn-accent text-white">Lihat Shelter</a>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
 </div>
 {{-- footer --}}
 <x-footer></x-footer>

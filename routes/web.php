@@ -59,7 +59,10 @@ Route::get('/kalender', function () {
     return view('kalender');
 });
 
+Route::get('/form', function () {
+    return view('form');
+})->name('form');
 
-
-
-
+Route::get('/thank', function () {
+    return view('thank');
+})->name('thank');

@@ -19,7 +19,6 @@
 
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-lg-8">
-      <h3 class="fs-6 mb-2 text-secondary fw-bold text-uppercase">Ada apa disini?</h3>
       <h1 class="display-3 text-primary ms-4 fw-bold lh-1 mb-3">Catat Setiap Kegembiraan Bersama Pet Calendar Kami!</h1>
     </div>
     <div class="col-lg-4">
