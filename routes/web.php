@@ -23,6 +23,8 @@ Route::view('/donasi', 'donasi');
 Route::view('/form', 'form')->name('form');
 Route::view('/thank', 'thank')->name('thank');
 Route::view('/', 'welcome');
+Route::view('/shelter','shelter-home')->name('shelter');
+
 
 // Employees
 Route::get('/employees', [EmployeeController::class, 'index']);
@@ -127,13 +129,15 @@ Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(fun
     Route::get('shelter/{shelter}/edit', [ShelterController::class, 'edit'])->name('shelter.edit');
     Route::put('shelter/{shelter}', [ShelterController::class, 'update'])->name('shelter.update');
 
-    // Hewan Routes
+    // Rute Hewan
     Route::resource('hewan', HewanController::class)->except(['show']);
 
-    // Adopsi Routes
+    // Rute Adopsi
     Route::get('adopsi', [AdopsiController::class, 'index'])->name('adopsi.index');
     Route::post('adopsi/{adopsi}/approve', [AdopsiController::class, 'approve'])->name('adopsi.approve');
     Route::post('adopsi/{adopsi}/reject', [AdopsiController::class, 'reject'])->name('adopsi.reject');
+    Route::post('adopsi/{adopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
+    Route::post('adopsi/{adopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
 });
 
 // List Adopsi Routes

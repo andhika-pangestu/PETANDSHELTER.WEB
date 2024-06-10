@@ -62,7 +62,7 @@ class AdopsiController extends Controller
     {
         $adopsi = Adopsi::whereHas('hewan', function ($query) {
             $query->where('shelter_id', auth()->user()->shelter->id);
-        })->where('status', 'pending')->get();
+        })->get();
 
         return view('mitra.adopsi.index', compact('adopsi'));
     }
@@ -70,12 +70,55 @@ class AdopsiController extends Controller
     public function approve(Adopsi $adopsi)
     {
         $adopsi->update(['status' => 'approved']);
-        return redirect()->route('mitra.adopsi.index')->with('success', 'Permohonan adopsi disetujui.');
+        $adopsi->hewan->update(['status' => 'booking']);
+
+        return redirect($this->createWhatsappLink($adopsi, 'approved'));
     }
 
     public function reject(Adopsi $adopsi)
     {
         $adopsi->update(['status' => 'rejected']);
-        return redirect()->route('mitra.adopsi.index')->with('success', 'Permohonan adopsi ditolak.');
+
+        return redirect($this->createWhatsappLink($adopsi, 'rejected'));
+    }
+
+    public function teradopsi(Adopsi $adopsi)
+    {
+        $adopsi->update(['status' => 'teradopsi']);
+        $adopsi->hewan->update(['status' => 'teradopsi']);
+
+        return redirect($this->createWhatsappLink($adopsi, 'teradopsi'));
+    }
+
+    public function cancel(Adopsi $adopsi)
+    {
+        $adopsi->update(['status' => 'pending']);
+        $adopsi->hewan->update(['status' => 'tersedia']);
+
+        return redirect()->route('mitra.adopsi.index')->with('success', 'Adopsi dibatalkan, status hewan kembali tersedia.');
+    }
+
+    protected function createWhatsappLink($adopsi, $status)
+    {
+        $message = '';
+        switch ($status) {
+            case 'approved':
+                $message = "Permohonan adopsi Anda telah disetujui. Silakan datang dalam 3 hari ke depan pada jam operasional shelter.";
+                break;
+            case 'rejected':
+                $message = "Permohonan adopsi Anda telah ditolak.";
+                break;
+            case 'teradopsi':
+                $message = "Hewan adopsi Anda telah diambil. Terima kasih telah mengadopsi!";
+                break;
+            case 'canceled':
+                $message = "Permohonan adopsi Anda telah dibatalkan.";
+                break;
+        }
+
+        $phone = $adopsi->nomor_whatsapp;
+        $encodedMessage = urlencode($message);
+
+        return "https://wa.me/{$phone}?text={$encodedMessage}";
     }
 }

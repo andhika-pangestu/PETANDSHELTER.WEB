@@ -31,8 +31,8 @@
 
 <body>
 {{-- navbar --}}
-<x-navbar></x-navbar>
 
+@include('layouts.navbar2')
   <main id="main">
 
     <!--==========================
