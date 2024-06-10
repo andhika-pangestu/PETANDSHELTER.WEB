@@ -19,7 +19,7 @@
                     <a class="nav-link mx-2 fs-6 {{ request()->is('donasi') ? 'active' : '' }}" href="{{ url('/donasi') }}">Donasi</a>
                     <a class="nav-link mx-2 fs-6{{ request()->is('adopsi') ? 'active' : '' }}" href="{{ url('/adopsi') }}">Adopsi</a>
                     <a class="nav-link mx-2 fs-6 {{ request()->is('kalender') ? 'active' : '' }}" href="{{ url('/kalender') }}">Acara</a>
-                    <a class="nav-link mx-2  fs-6{{ request()->is('shelter') ? 'active' : '' }}" href="{{ url('/shelter') }}">Shelter</a>
+                    <a class="nav-link mx-2  fs-6{{ request()->is('shelter') ? 'active' : '' }}" href="{{ url('/shelter-home') }}">Shelter</a>
                     <a class="nav-link mx-2 fs-6{{ request()->is('tips') ? 'active' : '' }}" href="{{ url('/tips') }}">Tips</a>
                     <a class="nav-link mx-2  fs-6{{ request()->is('rescue') ? 'active' : '' }} nav-link-primary" href="{{ url('/rescue') }}">Rescue</a>
                 </div>

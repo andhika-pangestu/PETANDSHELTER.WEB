@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -29,16 +30,17 @@ class AuthenticatedSessionController extends Controller
 
         $loggedInUserRole = $request->user()->role;
 
-        // Admin
+        // Super Admin
         if ($loggedInUserRole == 1) {
             return redirect()->intended(route('admin.dashboard'));
         }
-        // Mitra
+        // Admin
         elseif ($loggedInUserRole == 2) {
             return redirect()->intended(route('mitra.dashboard'));
         }
 
-        // Volunteer
+
+        // Default redirection
         return redirect()->intended(route('dashboard'));
     }
 
