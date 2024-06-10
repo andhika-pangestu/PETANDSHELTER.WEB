@@ -22,12 +22,6 @@
                         <span class="link">Profile</span>
                     </a>
                 </li>
-                <li class="list">
-                    <a href="{{ route('mitra.shelter.index') }}" class="nav-link">
-                        <i class="bx bx-user icon"></i>
-                        <span class="link">shelter</span>
-                    </a>
-                </li>
                 <!-- Add more list items here -->
             </ul>
             <div class="bottom-content">

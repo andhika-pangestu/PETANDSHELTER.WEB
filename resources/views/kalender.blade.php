@@ -51,7 +51,7 @@
           <div class="card mb-3 rounded-5 h-100">
             <div class="row g-0 h-100">
               <div class="col-md-4">
-                <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
+                <img src="{{ Storage::url($item->gambar) }}" class="img-fluid rounded-start-5 h-100" alt="Event Image" style="object-fit: cover;">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
