@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AcaraController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\TipsController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
 use App\Http\Controllers\AdopsiController;
@@ -31,6 +32,48 @@ Route::post('/finish', function(){
     return redirect()->route('welcome');
 })->name('donation.finish');
 Route::resource('/donations', DonationController::class)->only(['index', 'create', 'store']);
+
+
+
+Route::get('/adopsi', function () {
+    return view('adopsi');
+})->name('adopsi');
+
+
+Route::get('/volunteer', function () {
+    return view('volunteer');
+})->name('volunteer');
+
+Route::get('/rescue', function () {
+    return view('rescue');
+})->name('rescue');
+
+Route::get('/shelter', function () {
+    return view('shelter-home');
+})->name('shelter');
+
+Route::get('/list', function () {
+    return view('list');
+})->name('list');
+
+Route::get('/tips', function () {
+    return view('tips');
+})->name('tips');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/donasi', function () {
+    return view('donasi');
+});
+
+Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
+
+
+use App\Models\Acara;
+
+
 
 // Kalender
 Route::get('/kalender', function () {
@@ -68,6 +111,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('user/{user}/edit', [AdminController::class, 'editUser'])->name('user.edit');
     Route::put('user/{user}', [AdminController::class, 'updateUser'])->name('user.update');
     Route::delete('user/{user}', [AdminController::class, 'deleteUser'])->name('user.delete');
+
+    // Admin Tips Routes
+    Route::get('tips', [TipsController::class, 'index'])->name('tips');
+    Route::post('tips', [TipsController::class, 'store'])->name('tips.store');
+    Route::put('tips/{tips}', [TipsController::class, 'update'])->name('tips.update');
+    Route::delete('tips/{tips}', [TipsController::class, 'destroy'])->name('tips.destroy');
 });
 
 // Shelter Routes for Mitra

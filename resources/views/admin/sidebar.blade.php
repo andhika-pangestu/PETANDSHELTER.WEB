@@ -29,6 +29,12 @@
                         <span class="link">Acara</span>
                     </a>
                 </li>
+                <li class="list">
+                    <a href="{{ route('admin.tips') }}" class="nav-link">
+                        <i class="bx bx-user icon"></i>
+                        <span class="link">Tips</span>
+                    </a>
+                </li>
                 <!-- Add more list items here -->
             </ul>
             <div class="bottom-content">
