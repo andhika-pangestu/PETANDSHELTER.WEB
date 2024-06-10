@@ -100,9 +100,6 @@
                 </div>
             @endfor
         </div>
-<<<<<<< Updated upstream
-    </div>
-=======
         @endforeach
     </div>
 </div>
@@ -117,4 +114,3 @@
 </script>
 </body>
 </html>
->>>>>>> Stashed changes
