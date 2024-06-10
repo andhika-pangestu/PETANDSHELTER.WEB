@@ -27,13 +27,56 @@ Route::get('/', function () {
 // Employees
 Route::get('/employees', [EmployeeController::class, 'index']);
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+
 // Donation Routes
+
 Route::post('/finish', function(){
     return redirect()->route('welcome');
 })->name('donation.finish');
 Route::resource('/donations', DonationController::class)->only(['index', 'create', 'store']);
 
+
+Route::get('/adopsi', function () {
+    return view('adopsi');
+})->name('adopsi');
+
+
+Route::get('/volunteer', function () {
+    return view('volunteer');
+})->name('volunteer');
+
+Route::get('/rescue', function () {
+    return view('rescue');
+})->name('rescue');
+
+Route::get('/list', function () {
+    return view('list');
+})->name('list');
+
+Route::get('/tips', function () {
+    return view('tips');
+})->name('tips');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/donasi', function () {
+    return view('donasi');
+});
+
+Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
+
+
+use App\Models\Acara;
+
+
 // Kalender
+
 Route::get('/kalender', function () {
     $acara = Acara::orderBy('created_at', 'desc')->get();
     return view('kalender', compact('acara'));
