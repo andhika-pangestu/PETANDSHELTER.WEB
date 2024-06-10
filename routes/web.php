@@ -8,7 +8,7 @@ use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
-use App\Models\Acara;
+
 
 // Halaman Umum
 Route::view('/welcome2', 'welcome2');
