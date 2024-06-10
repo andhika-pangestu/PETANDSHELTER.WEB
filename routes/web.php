@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TipsController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
+use App\Http\Controllers\RescueFormController;
 
 
 // Halaman Umum
@@ -75,6 +76,10 @@ Route::get('/donasi', function () {
 });
 
 Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
+
+Route::get('/rescue', [RescueFormController::class, 'create'])->name('rescue.create');
+Route::post('/rescue', [RescueFormController::class, 'store'])->name('rescue.store');
+Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
 
 
 use App\Models\Acara;
