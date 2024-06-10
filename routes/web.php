@@ -32,7 +32,7 @@ Route::get('/rescue', function () {
 })->name('rescue');
 
 Route::get('/shelter', function () {
-    return view('shelter');
+    return view('shelter-home');
 })->name('shelter');
 
 Route::get('/list', function () {
