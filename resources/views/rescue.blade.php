@@ -24,14 +24,14 @@
         </div>
     @endif
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     {{-- HERO --}}
 <section>
@@ -94,29 +94,30 @@
     <div class="container-fluid bg-secondary-300 rounded-top-4 mt-5" style="padding: 4%; margin-top:4% !important;">
         <h1 class="display-5 fw-bold text-center text-white">Rescue Form</h1>
         <div class="container-xl rounded-4 p-5 bg-white" >
-            <form id="rescueForm" class="row g-3">
+            <form method="POST" action="{{ route('rescue.store') }}" enctype="multipart/form-data">
+                @csrf
                 {{-- identifikasi --}}
                 <h2 class="fw-bold pt-3"> Identifikasi</h2>
                 <div class="row g-3 mt-0">
                     <div class=" col-md-6 mt-0">
                         <label for=""> Nama Hewan</label>
-                        <input type="text" class="form-control" id="" required placeholder="ex: baba">
+                        <input type="text" class="form-control" id="namaHewan" name="namaHewan" required placeholder="ex: baba">
                     </div>
                     <div class=" col-md-6 mt-0">
                         <label for=""> Berat Badan Hewan</label>
-                        <input type="number" class="form-control" id="" required placeholder="ex: 5kg">
+                        <input type="text" class="form-control" id="bbHewan" name="bbHewan" required placeholder="ex: 5kg">
                     </div>
                     <div class=" col-md-6">
                         <label for=""> Jenis Hewan</label>
-                        <input type="text" class="form-control" id="" required placeholder="ex: kucing">
+                        <input type="text" class="form-control" id="jenisHewan" name="jenisHewan" required placeholder="ex: kucing">
                     </div>
                     <div class=" col-md-6">
                         <label for=""> Deskripsi Hewan (Ciri Khusus)</label>
-                        <input type="text" class="form-control" id="" required placeholder="ex: tompel di ekor">
+                        <input type="text" class="form-control" id="deskripsiHewan" name="deskripsiHewan" required placeholder="ex: tompel di ekor">
                     </div>
                     <div class="  col-12">
                         <label for=""> Kondisi Hewan</label>
-                        <textarea class="form-control" required placeholder="ex: terperangkap di got" id="" style="height: 100px; resize:none;"></textarea>
+                        <textarea class="form-control" required placeholder="ex: terperangkap di got" id="kondisiHewan" name="kondisiHewan" style="height: 100px; resize:none;"></textarea>
                     </div>
                  </div>
                  
@@ -125,11 +126,11 @@
                  <div class="row g-3 mt-0">
                     <div class=" col-md-6 mt-0">
                         <label for=""> Tanggal lokasi Penemuan</label>
-                        <input type="text" class="form-control" id="" required placeholder="ex: 12 april 2024, batubatu" style="height: 100px; resize:none;">
+                        <textarea type="text" class="form-control" id="tglLokasiPenemuan" name="tglLokasiPenemuan" required placeholder="ex: 12 april 2024, batubatu" style="height: 100px; resize:none;"></textarea>
                     </div>
                      <div class="  col-md-6 mt-0">
                          <label for=""> Kondisi Lingkungan Hewan Ditemukan</label>
-                         <textarea class="form-control rows=3" required placeholder="ex: kotor, basah" id="" style="height: 100px; resize:none; "></textarea>
+                         <textarea class="form-control rows=3" type="text" required placeholder="ex: kotor, basah" id="kondisiLingkungan" name="kondisiLingkungan" style="height: 100px; resize:none; "></textarea>
                      </div>
                   </div>
                   
@@ -138,11 +139,11 @@
                     <div class="row g-3 mt-0">
                         <div class="input col-md-6 mt-0">
                             <label class="" for="">Foto Hewan</label>
-                            <input type="file" class="form-control" id="" multiple required>
+                            <input type="file" class="form-control" id="fotoHewan" name="fotoHewan" multiple required>
                           </div>
                         <div class="input col-md-6 mt-0">
                             <label class=""> Foto Lokasi Hewan Ditemukan</label>
-                            <input type="file" class="form-control" id="" multiple required>
+                            <input type="file" class="form-control" id="fotoLokasi" name="fotoLokasi" multiple required>
                         </div>
                     </div>
 
@@ -151,22 +152,22 @@
                 <div class="row g-3 mt-0">
                     <div class=" col-md-6 mt-0">
                         <label for=""> Nama Pelapor</label>
-                        <input type="text" class="form-control" id="" required placeholder="ex: Anggiel">
+                        <input type="text" class="form-control" id="namaPelapor" name="namaPelapor" required placeholder="ex: Anggiel">
                     </div>
                     <div class=" col-md-6 mt-0">
                         <label for=""> Usia Pelapor</label>
-                        <input type="number" class="form-control" id="" required placeholder="ex: 26">
+                        <input type="text" class="form-control" id="usiaPelapor" name="usiaPelapor" required placeholder="ex: 26">
                     </div>
                     <div class=" col-md-6">
                         <label for=""> Nomor Telepon</label>
-                        <input type="number" class="form-control" id="" name="" pattern="[0-9]{10,15}" placeholder="ex: 0892313842" required>
+                        <input type="text" class="form-control" id="nomorTelp" name="nomorTelp" pattern="[0-9]{10,15}" placeholder="ex: 0892313842" required>
                     </div>
                     <div class="col-md-6">
                         <label for=""> Jenis Kelamin</label>
-                        <select class="form-select text-">
+                        <select class="form-select text-" id="jenisKelamin" name="jenisKelamin">
                             <option selected disabled>Jenis Kelamin</option>
-                            <option value="">Pria</option>
-                            <option value="">Wanita</option>
+                            <option value="pria">Pria</option>
+                            <option value="wanita">Wanita</option>
                         </select>
                     </div>
                  </div>
