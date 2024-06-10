@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AcaraController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\TipsController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
 
@@ -112,6 +113,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('user/{user}/edit', [AdminController::class, 'editUser'])->name('user.edit');
     Route::put('user/{user}', [AdminController::class, 'updateUser'])->name('user.update');
     Route::delete('user/{user}', [AdminController::class, 'deleteUser'])->name('user.delete');
+
+    // Admin Tips Routes
+    Route::get('tips', [TipsController::class, 'index'])->name('tips');
+    Route::post('tips', [TipsController::class, 'store'])->name('tips.store');
+    Route::put('tips/{tips}', [TipsController::class, 'update'])->name('tips.update');
+    Route::delete('tips/{tips}', [TipsController::class, 'destroy'])->name('tips.destroy');
 });
 
 // Shelter Routes for Mitra
