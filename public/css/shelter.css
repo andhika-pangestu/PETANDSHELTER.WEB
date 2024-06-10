@@ -1,7 +1,0 @@
-.shadow-primary {
- box-shadow: rgba(91, 214, 226, 0.6) 0px 8px 24px !important; /* Change the color values to match your primary color */
-}
-.no-border {
-    border: none !important;
-    box-shadow: none !important;
-}

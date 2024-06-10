@@ -4,47 +4,26 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tips and Tricks</title>
+        <title>PetandShelter | Tips</title>
+        <link rel="icon" href="img/icon-trans.png" />
         <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        <link rel="stylesheet" href="css/styleTips.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/services/service-4/assets/css/service-4.css">
-    </head>
-    </head>
-<body>
-    <x-navbar></x-navbar>
-    
-        <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-        <!-- Libraries Stylesheet -->
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
-
-        <!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status"></div>
-        </div>
-        <!-- Spinner End -->
-
-
+<body>
         <!-- Navbar start -->
-    
+         <x-navbar></x-navbar>
         <!-- Navbar End -->
-
 
         <!-- Main Post Section Start -->
         <div class="container-fluid py-5">
@@ -211,114 +190,171 @@
                 </div>
             </div>
         </div>
-        <!-- Main Post Section End -->
-
-
-        <!-- Latest News Start -->
-        <div class="container-fluid latest-news py-5">
-            <div class="container py-5">
-                <h2 class="mb-4">Latest Article</h2>
-                <div class="latest-news-carousel owl-carousel">
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/gigi.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">Jaga Kesehatan Gigi dan Mulut Anabul, Yuk!</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Mika</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
+    <!-- Latest News Start -->
+    <div class="container-fluid latest-news py-5 h-100">
+        <div class="container py-5">
+            <h2 class="mb-4">Latest Article</h2>
+            <div class="latest-news-carousel owl-carousel">
+                <div class="latest-news-item">
+                    <div class="bg-light rounded">
+                        <div class="rounded-top overflow-hidden">
+                            <img src="img/gigi.jpg" class="img-zoomin img-fluid rounded-top" alt="">
                         </div>
-                    </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/mudik.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">Tips Aman Mudik Bareng Anabul</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Manda</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/mainan.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">DIY Mainan untuk Si Lucu</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Rully</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/hilang.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">Anabul Hilang....</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Dhika</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/sosialisasi.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4 ">Anabulku Introvert, Cara Bersosialisasi Gimana, Ya?</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Oroz</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
+                        <div class="d-flex flex-column p-4">
+                            <a href="#" class="h4">Jaga Kesehatan Gigi dan Mulut Anabul, Yuk!</a>
+                            <br>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="small text-body link-hover">by Mika</a>
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="latest-news-item">
+                    <div class="bg-light rounded">
+                        <div class="rounded-top overflow-hidden">
+                            <img src="img/mudik.jpg" class="img-zoomin img-fluid rounded-top" alt="">
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <a href="#" class="h4">Tips Aman Mudik Bareng Anabul</a>
+                            <br>
+                            <br>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="small text-body link-hover">by Manda</a>
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="latest-news-item">
+                    <div class="bg-light rounded">
+                        <div class="rounded-top overflow-hidden">
+                            <img src="img/mainann.jpg" class="img-zoomin img-fluid rounded-top" alt="">
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <a href="#" class="h4">DIY Mainan untuk Si Lucu</a>
+                            <br><br>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="small text-body link-hover">by Rully</a>
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="latest-news-item">
+                    <div class="bg-light rounded">
+                        <div class="rounded-top overflow-hidden">
+                            <img src="img/hilang.jpg" class="img-zoomin img-fluid rounded-top" alt="">
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <a href="#" class="h4">Anabul Hilang.... Jangan Panik!</a>
+                            <br><br>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="small text-body link-hover">by Dhika</a>
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="latest-news-item">
+                    <div class="bg-light rounded">
+                        <div class="rounded-top overflow-hidden">
+                            <img src="img/sosialisasi.jpg" class="img-zoomin img-fluid rounded-top" alt="">
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <a href="#" class="h4 ">Anabulku Introvert, Cara Bersosialisasi Gimana, Ya?</a>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="small text-body link-hover">by Oroz</a>
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
+    </div>
+</div>
         <!-- Latest News End -->
-
-
+        <!-- Main Post Section End -->
 
         <!-- Footer Start -->
-      
+        <x-footer></x-footer>
         <!-- Footer End -->
-
-
-        <!-- Copyright Start -->
-
-        <!-- Copyright End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary border-2 border-white rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".latest-news-carousel").owlCarousel({
+                    autoplay: true,
+                    smartSpeed: 2000,
+                    center: false,
+                    dots: true,
+                    loop: true,
+                    margin: 25,
+                    nav: true,
+                    navText: [
+                        '<i class="bi bi-arrow-left"></i>',
+                        '<i class="bi bi-arrow-right"></i>'
+                    ],
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        576: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 3
+                        },
+                        1200: {
+                            items: 4
+                        }
+                    }
+                });
 
+                $(".whats-carousel").owlCarousel({
+                    autoplay: true,
+                    smartSpeed: 2000,
+                    center: false,
+                    dots: true,
+                    loop: true,
+                    margin: 25,
+                    nav: true,
+                    navText: [
+                        '<i class="bi bi-arrow-left"></i>',
+                        '<i class="bi bi-arrow-right"></i>'
+                    ],
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        576: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 2
+                        },
+                        1200: {
+                            items: 2
+                        }
+                    }
+                });
+            });
+        </script>
+        
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
     </body>
-
-</html>
 </html>
