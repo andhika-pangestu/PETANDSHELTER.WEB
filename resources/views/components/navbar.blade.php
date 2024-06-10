@@ -12,15 +12,15 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Beranda</a>
-                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="{{ url('/about') }}">Tentang</a>
-                    <a class="nav-link {{ request()->is('donasi') ? 'active' : '' }}" href="{{ url('/donasi') }}">Donasi</a>
-                    <a class="nav-link {{ request()->is('adopsi') ? 'active' : '' }}" href="{{ url('/adopsi') }}">Adopsi</a>
-                    <a class="nav-link {{ request()->is('kalender') ? 'active' : '' }}" href="{{ url('/kalender') }}">Acara</a>
-                    <a class="nav-link {{ request()->is('shelter') ? 'active' : '' }}" href="{{ url('/shelter') }}">Shelter</a>
-                    <a class="nav-link {{ request()->is('tips') ? 'active' : '' }}" href="{{ url('/tips') }}">Tips</a>
-                    <a class="nav-link {{ request()->is('rescue') ? 'active' : '' }} nav-link-primary" href="{{ url('/rescue') }}">Rescue</a>
+                <div class="navbar-nav ms-auto ">
+                    <a class="nav-link mx-2 fs-6 {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Beranda</a>
+                    <a class="nav-link mx-2 fs-6 {{ request()->is('about') ? 'active' : '' }}" href="{{ url('/about') }}">Tentang</a>
+                    <a class="nav-link mx-2 fs-6 {{ request()->is('donasi') ? 'active' : '' }}" href="{{ url('/donasi') }}">Donasi</a>
+                    <a class="nav-link mx-2 fs-6{{ request()->is('adopsi') ? 'active' : '' }}" href="{{ url('/adopsi') }}">Adopsi</a>
+                    <a class="nav-link mx-2 fs-6 {{ request()->is('kalender') ? 'active' : '' }}" href="{{ url('/kalender') }}">Acara</a>
+                    <a class="nav-link mx-2  fs-6{{ request()->is('shelter') ? 'active' : '' }}" href="{{ url('/shelter') }}">Shelter</a>
+                    <a class="nav-link mx-2 fs-6{{ request()->is('tips') ? 'active' : '' }}" href="{{ url('/tips') }}">Tips</a>
+                    <a class="nav-link mx-2  fs-6{{ request()->is('rescue') ? 'active' : '' }} nav-link-primary" href="{{ url('/rescue') }}">Rescue</a>
                 </div>
             </div>
         </div>
