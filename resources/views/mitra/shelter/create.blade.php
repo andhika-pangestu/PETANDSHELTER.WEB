@@ -1,5 +1,7 @@
+@include('layouts.head')
 
 <div class="container">
+    @include('mitra.sidebar')
     <h1>{{ isset($shelter) ? 'Edit' : 'Buat' }} Shelter</h1>
 
     <form action="{{ isset($shelter) ? route('mitra.shelter.update', $shelter->id) : route('mitra.shelter.store') }}" method="POST" enctype="multipart/form-data">

@@ -21,6 +21,13 @@
                         <i class="bx bx-user icon"></i>
                         <span class="link">Profile</span>
                     </a>
+                    
+                </li>
+                <li class="list">
+                    <a href="{{ route('admin.acara') }}" class="nav-link">
+                        <i class="bx bx-user icon"></i>
+                        <span class="link">Acara</span>
+                    </a>
                 </li>
                 <!-- Add more list items here -->
             </ul>
