@@ -1,109 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PetandShelter | Shelter Detail</title>
-    <link rel="icon" href="/img/icon-trans.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PetandShelter | Form Adopsi</title>
+        <link rel="icon" href="img/icon-trans.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        <link rel="stylesheet" href="{{ asset('css/shelter.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/services/service-4/assets/css/service-4.css">
+
+    </head>
 <body>
-{{-- navbar --}}
-<x-navbar></x-navbar>
+    {{-- NAVBAR --}}
+    <x-navbar></x-navbar>
 
-{{-- section1 --}}
-<div class="container mt-3">
-    <div class="row">
-        <div class="col-12 d-flex align-items-center mt-3 mb-5">
-            <!-- Tombol Back di Kiri -->
-            <button onclick="history.back()" class="btn btn-light">
-                <i class="fas fa-arrow-left fa-xl"></i>
-            </button>
-            <!-- Breadcrumb di Kanan -->
-            <nav aria-label="breadcrumb" class="ms-auto">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Shelter</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $shelter->nama_shelter }}</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Hero -->
-    <div class="justify-content-start">
-        <div class="p-5 shadow-4 bg-accent-500">
-            <div class="d-flex">
-                <div>
-                    <img src="{{ asset('uploads/' . $shelter->foto) }}" alt="Foto Shelter" class="img-thumbnail img-fluid" style="width: 200px; height: 200px; object-fit: cover;">
+    {{-- HERO --}}
+    <section>
+        <div class="container col-xxl-8 px-5 py-5 pt-0 mt-0" >
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5 mt-5 pt-0" >
+                <div class="col-12 col-lg-6 px-0"> <!-- Kolom yang berisi gambar -->
+                    <img src="images/ShelterHeroes.png" class="d-block mx-lg-auto" alt="Bootstrap Themes" style="height: 400px; width: 100%; object-fit:contain;" loading="lazy">
+                    {{-- statistic hero --}}
+                    <div class="row align-items-end g-4 pt-1 "style="margin-top: -85px;" >
+                        <div class="col-sm-3 mb-3 mb-sm-0">
+                            <div class="card border-0 shadow shadow-primary rounded-4">
+                                <div class="card-body text-center">
+                                    <h1 class="card-title text-accent fw-bold mb-0" >20</h1>
+                                    <p class="card-content fs-5 fw-bold text-accent mb-0 ">Mitra</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="ms-5 text-white">
-                    
-                    <h4 class="fw-bold mb-4">{{ $shelter->nama_shelter }}</h4>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-map-location-dot fa-lg me-2"></i>
-                        <p class="mb-0">{{ $shelter->alamat_jalan }}, {{ $shelter->kota }}</p>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-calendar-days fa-lg me-2"></i>
-                        <p class="mb-0">Senin - Sabtu: 09.00 - 19.00<br>Minggu: Libur</p>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-phone-volume fa-lg me-2"></i>
-                        <p class="mb-0">{{ $shelter->nomor_telepon }}</p>
+                <div class="col-12 col-lg-6 px-0"> <!-- Kolom yang berisi teks -->
+                    <p class="fst-normal text-accent">Mencari shelter disekitarmu</p>
+                    <h1 class="display-3 fw-bold lh-1 mb-3">Temukan Shelter Terdekat</h1>
+                    <p class="fst-normal">Temukan shelter dan temukan pilihan hewan hewan yang bisa kamu adopsi sekarang juga</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <form class="d-flex">
+                            <div class="input-group shadow-primary rounded-end-4">
+                                <input class="form-control me-2 no-border" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-accent " type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Hero -->
+    </section>
 
-    {{-- section2 --}}
-    <div class="row justify-content-center mt-5">
-        @foreach($shelter->hewan as $hewan)
-        <div class="col-md-3 my-4 mx-4">
-            <div class="card cardpet text-white">
-                <img src="{{ Storage::url($hewan->foto) }}" class="card-img">
-                <div class="card-img-overlay">
-                    <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+
+    <div class="w-100 bg-accent" style="height: 50px; "></div>
+
+    <div class=" container  col-xxl-12 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-12 col-lg-4 overflow-hidden">
+                <img src="images/Sheltergroup.png" class="d-block mx-lg-auto img-fluid" alt="Gambar Hewan"loading="lazy">
+            </div>
+            <div class="col-12 col-lg-7">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-10">
+                <h3 class="fs-6 mb-2 text-secondary fw-bold text-uppercase">Need Help?</h3>
+                <h1 class="display-3 fw-bold lh-1 mb-4">Ada apa kira kira?</h1>
+                <p class="fst-normal" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione impedit fugit vitae dolores, suscipit rem esse totam quae deserunt tempora ex, a mollitia provident sit non at dolor minus neque unde natus veritatis modi? Reiciendis tenetur architecto corporis corrupti iste optio atque illum rem eaque possimus veniam qui quo quos maxime fugiat dolorum, sapiente voluptates temporibus ipsam? Facere nihil minus et molestiae soluta totam, temporibus consequuntur corporis voluptatem placeat similique deleniti labore quae necessitatibus quod ullam! Perspiciatis, dolore. Animi necessitatibus quod ipsam eligendi laboriosam odit porro est quo repellat ipsa recusandae vitae consectetur consequuntur, possimus voluptas sed libero accusantium numquam?</p>
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
 
-    {{-- section3 --}}
-    <div class="row my-5">
-        <div class="col-md-2">
-            <h5 class="text-white bg-accent-500 p-3 rounded-end">Shelter lainnya</h5>
+    <div class="container-fluid col-xxl-12 py-5 ">
+        <div class="col-12 col-lg-3 bg-accent rounded-4">
+            <p class=" fw-bold fs-4 py-2 ps-3 mb-4">ini shelter sekitar, nama</p>
         </div>
     </div>
-
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-        @foreach($shelters as $otherShelter)
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <img src="/img/tokopet.png" class="card-img-top img-fluid rounded-top-4 h-100" style="object-fit: cover;">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">{{ $otherShelter->nama_shelter }}</h5>
-                    <h6 class="card-title">{{ $otherShelter->kota }}</h6>
-                    <p class="card-text">{{ $otherShelter->alamat_jalan }}</p>
-                    <a href="{{ route('shelter.show', $otherShelter->id) }}" class="btn btn-accent text-white">Lihat Shelter</a>
+    
+    <div class="container py-3">
+        <div class="row">
+            @for ($i = 0; $i < 5; $i++)
+                <div class="col-lg-3 py-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="images/shelterimg.png" class="card-img-top" alt="..." style="height: 200px; object-fit: cover; image-rendering: auto;">
+                        <div class="card-body">
+                            <h5 class="card-title">Cimekar Shelter</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Kota Bandung</li>
+                            <li class="list-group-item">Jalan Cimekar RT02 RT08</li>
+                        </ul>
+                        <div class="d-flex justify-content-start ps-2 py-2">
+                            <a href="/shelter" class="btn btn-secondary">Go to Shelter Page</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endfor
         </div>
-        @endforeach
     </div>
-</div>
-
-{{-- footer --}}
-<x-footer></x-footer>
-
-<script>
-    function redirectToAdoptionPage() {
-        window.location.href = "/adoption-page"; // Sesuaikan URL tujuan
-    }
-</script>
-</body>
-</html>
