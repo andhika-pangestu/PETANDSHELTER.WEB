@@ -43,27 +43,29 @@
 </div>
 </div>
 
-<div class="container py-3">
-<div class="row">
-    @for ($i = 0; $i < 5; $i++)
-        <div class="col-lg-3 py-4">
-            <div class="card" style="width: 18rem;">
-                <img src="images/shelterimg.png" class="card-img-top" alt="..." style="height: 200px; object-fit: cover; image-rendering: auto;">
-                <div class="card-body">
-                    <h5 class="card-title">Cimekar Shelter</h5>
+
+    <div class="container py-3">
+        <div class="row">
+            @foreach ($shelters as $shelter)
+                <div class="col-lg-3 py-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('uploads/' . $shelter->foto) }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover; image-rendering: auto;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $shelter->nama_shelter }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ $shelter->kota }}</li>
+                            <li class="list-group-item">{{ $shelter->alamat_jalan }}</li>
+                        </ul>
+                        <div class="d-flex justify-content-start ps-2 py-2">
+                            <a href="/shelter" class="btn btn-secondary">Go to Shelter Page</a>
+                        </div>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Kota Bandung</li>
-                    <li class="list-group-item">Jalan Cimekar RT02 RT08</li>
-                </ul>
-                <div class="d-flex justify-content-start ps-2 py-2">
-                    <a href="/shelter" class="btn btn-secondary">Go to Shelter Page</a>
-                </div>
+            @endforeach
             </div>
-        </div>
-        @endfor
-    </div>
-</div>>
+        </div>>
+
 
 <div class="w-100 bg-accent" style="height: 50px; "></div>
 <div class=" container  col-xxl-12 px-4 py-5">
