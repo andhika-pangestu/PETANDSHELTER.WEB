@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Shelter;
 use Auth;
+use App\Models\Hewan;
+use App\Models\Shelter;
+use Illuminate\Http\Request;
 
 class ShelterController extends Controller
 {
@@ -93,4 +94,16 @@ class ShelterController extends Controller
 
         return redirect()->route('mitra.shelter.index')->with('success', 'Shelter berhasil diperbarui.');
     }
+
+    public function show($id)
+    {
+        $shelter = Shelter::findOrFail($id);
+        $hewan = Hewan::where('shelter_id', $id)->get();
+
+        return view('shelter.show', compact('shelter', 'hewan'));
+        $otherShelters = Shelter::where('id', '!=', $id)->get();
+        return view('shelter', compact('shelter', 'otherShelters'));
+    }
+
+
 }

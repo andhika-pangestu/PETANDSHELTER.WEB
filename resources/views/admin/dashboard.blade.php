@@ -14,5 +14,91 @@
 </head>
 <body>
 @include('admin.sidebar')
+
+<div class="container">
+    <h1>Dashboard Admin</h1>
+
+    <h2>Users</h2>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($users as $user)
+            <tr>
+                <td>{{ $user->id }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->role }}</td>
+                <td>
+                    <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary">Edit</a>
+                    <form action="{{ route('admin.user.delete', $user->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <h2>Password Reset Tokens</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Token</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($passwordResetTokens as $token)
+            <tr>
+                <td>{{ $token->email }}</td>
+                <td>{{ $token->token }}</td>
+                <td>{{ $token->created_at }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <h2>Sessions</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>IP Address</th>
+                <th>User Agent</th>
+                <th>Last Activity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($sessions as $session)
+            <tr>
+                <td>{{ $session->id }}</td>
+                <td>{{ $session->user_id }}</td>
+                <td>{{ $session->ip_address }}</td>
+                <td>{{ $session->user_agent }}</td>
+                <td>{{ $session->last_activity }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+
 </body>
 </html>
