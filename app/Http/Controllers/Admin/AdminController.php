@@ -32,7 +32,7 @@ class AdminController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('admin.index')->with('success', 'User berhasil diperbarui.');
+        return redirect()->route('admin.dashboard')->with('success', 'User berhasil diperbarui.');
     }
 
     public function deleteUser(User $user)

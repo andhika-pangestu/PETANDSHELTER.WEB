@@ -36,9 +36,10 @@
         <div class="p-5 shadow-4 bg-accent-500">
             <div class="d-flex">
                 <div>
-                    <img src="{{ asset('storage/shelter_photos/' . $shelter->foto) }}">
+                    <img src="{{ asset('uploads/' . $shelter->foto) }}" alt="Foto Shelter" class="img-thumbnail img-fluid" style="width: 200px; height: 200px; object-fit: cover;">
                 </div>
                 <div class="ms-5 text-white">
+                    
                     <h4 class="fw-bold mb-4">{{ $shelter->nama_shelter }}</h4>
                     <div class="d-flex align-items-center mb-3">
                         <i class="fa-solid fa-map-location-dot fa-lg me-2"></i>

@@ -51,7 +51,7 @@
           <div class="card mb-3 rounded-5 h-100">
             <div class="row g-0 h-100">
               <div class="col-md-4">
-                <img src="{{ asset('storage/shelter_photos/' . $shelter->foto) }}" class="img-fluid">
+                <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
