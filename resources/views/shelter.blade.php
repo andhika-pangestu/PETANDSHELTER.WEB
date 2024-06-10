@@ -100,4 +100,21 @@
                 </div>
             @endfor
         </div>
+<<<<<<< Updated upstream
     </div>
+=======
+        @endforeach
+    </div>
+</div>
+
+{{-- footer --}}
+<x-footer></x-footer>
+
+<script>
+    function redirectToAdoptionPage() {
+        window.location.href = "/adoption-page"; // Sesuaikan URL tujuan
+    }
+</script>
+</body>
+</html>
+>>>>>>> Stashed changes
