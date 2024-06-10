@@ -47,7 +47,7 @@
             <div class="col-md-6 mb-4 ">
                 <div class="card bg-accent-500 rounded-3 ">
                     <div class="card-body ">
-                        <h2 class="card-title fw-boldc text-white ">MAU NGIRIM PAKET?</h2>
+                        <h2 class="card-title fw-bold text-white ">MAU NGIRIM PAKET?</h2>
                         <p class="card-text text-white ">kamu bisa kirim barang untuk kebutuhan shelter ke alamat dibawah ini</p>
                         <p class="card-text ">Agus Wijaya, Jl. Melati No. 45, RT 05/RW 03, Kel. Sukamaju, Kec. Sukasari, Kota Bandung, 40283, Jawa Barat</p>
                     </div>
