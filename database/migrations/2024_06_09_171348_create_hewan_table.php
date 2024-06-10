@@ -1,27 +1,30 @@
 <?php
-namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class Hewan extends Model
+class CreateHewanTable extends Migration
 {
-    use HasFactory;
-
-    protected $table = 'hewan';
-
-    protected $fillable = [
-        'shelter_id',
-        'nama_hewan',
-        'jenis_hewan',
-        'foto',
-        'deskripsi',
-        'status', // Tambahkan ini
-        'kesehatan', // Tambahkan ini
-    ];
-
-    public function shelter()
+    public function up()
     {
-        return $this->belongsTo(Shelter::class);
+        Schema::create('hewan', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('shelter_id');
+            $table->string('nama_hewan');
+            $table->string('jenis_hewan');
+            $table->string('foto')->nullable();
+            $table->text('deskripsi');
+            $table->string('status')->default('tersedia');
+            $table->string('kesehatan')->default('sehat');
+            $table->timestamps();
+
+            $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('hewan');
     }
 }
