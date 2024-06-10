@@ -35,9 +35,6 @@
                             <img src="img/patpat.jpg" class="img-fluid rounded img-zoomin w-100" alt="">
                             <div class="d-flex justify-content-center px-4 position-absolute flex-wrap" style="bottom: 10px; left: 0;">
                                 <a href="#" class="text-white me-3 link-hover"><i class="fa fa-clock"></i> 06 minute read</a>
-                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-eye"></i> 3.5k Views</a>
-                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-comment-dots"></i> 05 Comment</a>
-                                <a href="#" class="text-white link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>
                             </div>
                         </div>
                         <div class="border-bottom py-3">
@@ -68,7 +65,6 @@
                                     <div class="d-flex flex-column">
                                         <a href="#" class="h3">Cara Memilih Hewan Peliharaan yang Tepat untuk Keluarga Anda</a>
                                         <p class="mb-0 fs-5"><i class="fa fa-clock"> 06 minute read</i> </p>
-                                        <p class="mb-0 fs-5"><i class="fa fa-eye"> 3.5k Views</i></p>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +82,6 @@
                                     <div class="d-flex flex-column">
                                         <a href="#" class="h4 mb-2">Tips Merawat Anak Anjing: Panduan untuk Pemula</a>
                                         <p class="fs-5 mb-0"><i class="fa fa-clock"> 06 minute read</i> </p>
-                                        <p class="fs-5 mb-0"><i class="fa fa-eye"> 3.5k Views</i></p>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -100,7 +95,6 @@
                                             <div class="features-content d-flex flex-column">
                                                 <a href="#" class="h6">Tips Menyiapkan Rumah untuk Kedatangan Hewan Adopsi</a>
                                                 <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                                <small><i class="fa fa-eye"> 3.5k Views</i></small>
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +110,6 @@
                                             <div class="features-content d-flex flex-column">
                                                 <a href="#" class="h6">Tips Memilih Makanan yang Tepat untuk Anjing dan Kucing</a>
                                                 <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                                <small><i class="fa fa-eye"> 3.5k Views</i></small>
                                             </div>
                                         </div>
                                     </div>
@@ -132,7 +125,6 @@
                                             <div class="features-content d-flex flex-column">
                                                 <a href="#" class="h6">Aktivitas Menyenangkan yang Bisa Anda Lakukan dengan Anjing Anda</a>
                                                 <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                                <small><i class="fa fa-eye"> 3.5k Views</i></small>
                                             </div>
                                         </div>
                                     </div>
@@ -148,7 +140,6 @@
                                             <div class="features-content d-flex flex-column">
                                                 <a href="#" class="h6">Mengenal Bahasa Tubuh Kucing: Apa yang Mereka Coba Katakan?</a>
                                                 <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                                <small><i class="fa fa-eye"> 3.5k Views</i></small>
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +155,6 @@
                                             <div class="features-content d-flex flex-column">
                                                 <a href="#" class="h6">Tips Memperkenalkan Hewan Peliharaan Baru pada Hewan Lama</a>
                                                 <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                                <small><i class="fa fa-eye"> 3.5k Views</i></small>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +170,6 @@
                                             <div class="features-content d-flex flex-column">
                                                 <a href="#" class="h6">Cara Mengatasi Stres dan Kecemasan pada Hewan Peliharaan</a>
                                                 <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                                <small><i class="fa fa-eye"> 3.5k Views</i></small>
                                             </div>
                                         </div>
                                     </div>
@@ -290,5 +279,59 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
-    </body>
+
+    {{-- BUAT NAMPILIN --}}
+
+    @include('admin.sidebar')
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="my-3">Postingan Tips</h1>
+                <!-- Bagian Form -->
+                <form id="form" action="{{ route('admin.tips.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" id="method" name="_method" value="POST">
+                    <!-- Input dan elemen form lainnya -->
+                </form>
+
+                <!-- Bagian Menampilkan Data dari Database -->
+                <div class="row mt-5">
+                    <?php foreach ($tips as $item): ?>
+                        <div class="col-12 col-md-6 col-lg-4 my-3">
+                            <!-- Card untuk menampilkan data -->
+                            <div class="card h-100">
+                                <!-- Masukkan gambar dan info lainnya -->
+                                <div class="card-body">
+                                    <!-- Judul, deskripsi, tanggal, dan tombol aksi -->
+                                    <h5 class="card-title"><?php echo $item['judul']; ?></h5>
+                                    <p class="card-text"><?php echo $item['deskripsi']; ?></p>
+                                    <p class="card-text"><small class="text-muted"><?php echo $item['tanggal']; ?></small></p>
+                                    <button class="btn btn-warning" onclick="editTips(<?php echo json_encode($item); ?>)">Edit</button>
+                                    <form action="{{ route('admin.tips.destroy', $item['id']) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script untuk fungsi editTips -->
+    <script>
+        function editTips(tips) {
+            document.getElementById('judul').value = tips.judul;
+            document.getElementById('deskripsi').value = tips.deskripsi;
+            document.getElementById('tanggal').value = tips.tanggal;
+            document.getElementById('form').action = '/admin/tips/' + tips.id;
+            document.getElementById('method').value = 'PUT';
+        }
+    </script>
+</body>
+
 </html>

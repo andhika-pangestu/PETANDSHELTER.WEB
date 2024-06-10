@@ -36,8 +36,8 @@ class TipsController extends Controller {
     public function update(Request $request, Tips $tips)
     {
         $request->validate([
-            'judul' => 'required',
-            'deskripsi' => 'required',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:1000',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'tanggal' => 'required|date',
         ]);
@@ -55,6 +55,7 @@ class TipsController extends Controller {
 
         return redirect()->route('admin.tips')->with('success', 'Postingan berhasil diupdate.');
     }
+    
 
     public function destroy(Tips $tips)
     {
