@@ -18,8 +18,15 @@
                 </li>
                 <li class="list">
                     <a href="{{ route('profile.edit') }}" class="nav-link">
-                        <i class="bx bx-user icon"></i>
+                        <i class="bx bx-mouse-alt icon"></i> 
                         <span class="link">Profile</span>
+                    </a>
+                    
+                </li>
+                <li class="list">
+                    <a href="{{ route('admin.acara') }}" class="nav-link">
+                        <i class="bx bx-user icon"></i>
+                        <span class="link">Acara</span>
                     </a>
                 </li>
                 <!-- Add more list items here -->
