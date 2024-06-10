@@ -11,7 +11,7 @@ Route::get('/employees', [EmployeeController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::post('/finish', function(){
     return redirect()->route('welcome');
@@ -20,7 +20,6 @@ Route::post('/finish', function(){
 Route::get('/adopsi', function () {
     return view('adopsi');
 })->name('adopsi');
-
 
 
 Route::get('/volunteer', function () {
@@ -35,11 +34,9 @@ Route::get('/list', function () {
     return view('list');
 })->name('list');
 
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
+Route::get('/tips', function () {
+    return view('tips');
+})->name('tips');
 
 Route::get('/login', function () {
     return view('login');
