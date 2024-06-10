@@ -84,7 +84,7 @@
         @foreach($shelters as $otherShelter)
         <div class="col">
             <div class="card h-100 rounded-4">
-                <img src="/img/tokopet.png" class="card-img-top img-fluid rounded-top-4 h-100" style="object-fit: cover;">
+                <img src="{{ asset('uploads/' . $otherShelter->foto) }}" class="card-img-top img-fluid rounded-top-4 h-100" style="object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title fw-bold">{{ $otherShelter->nama_shelter }}</h5>
                     <h6 class="card-title">{{ $otherShelter->kota }}</h6>

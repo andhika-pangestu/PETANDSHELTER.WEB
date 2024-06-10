@@ -10,9 +10,10 @@ class AcaraController extends Controller
 
     public function index()
     {
-        $acara = Acara::orderBy('created_at', 'desc')->get();
+        $acara = Acara::orderBy('tanggal')->orderBy('waktu')->get();
         return view('admin.acara', compact('acara'));
     }
+    
     
 
     public function store(Request $request)
