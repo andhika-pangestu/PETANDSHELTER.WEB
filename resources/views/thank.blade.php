@@ -17,7 +17,7 @@
 <div class="container text-center mt-5">
     <h1>Terima Kasih!</h1>
     <p>Permohonan adopsi Anda telah berhasil dikirim. Kami akan menghubungi Anda segera untuk informasi lebih lanjut.</p>
-    <a href="{{ route('home') }}" class="btn btn-primary">Kembali ke Beranda</a>
+    <a href="{{ url('/') }}" class="btn btn-primary">Kembali ke Beranda</a>
 </div>
 
 {{-- footer --}}

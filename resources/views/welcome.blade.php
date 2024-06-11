@@ -137,7 +137,7 @@
               memiliki teman setia yang akan selalu ada di samping Anda dalam setiap petualangan kehidupan.
                Jadi, jangan tunda lagi! </p>
             <div class="justify-content-md-start">
-              <a href="{{ route('adopsi') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Adopsi</a>
+              <a href="{{ url('/shelter') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Adopsi</a>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@
                   </div>
               </div>
               <div class="-md-flex justify-content-md-start">
-                <a href="{{ route('volunteer') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Jadi Volunteer</a>
+                <a href="{{ route('rescue') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Rescue</a>
               </div>
           </div>
       </div>

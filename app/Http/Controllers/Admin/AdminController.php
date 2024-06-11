@@ -13,32 +13,13 @@ class AdminController extends Controller
         $users = User::all();
         $passwordResetTokens = DB::table('password_reset_tokens')->get();
         $sessions = DB::table('sessions')->get();
+        $topDonations = DB::table('donations')
+                          ->select('name', 'email', 'amount', 'invoice', 'status', DB::raw('@rank := @rank + 1 AS rank'))
+                          ->where('status', 'SUCCESS')
+                          ->orderBy('amount', 'desc')
+                          ->limit(10)
+                          ->get();
 
-        return view('admin.dashboard', compact('users', 'passwordResetTokens', 'sessions'));
-    }
-
-    public function editUser(User $user)
-    {
-        return view('admin.editUser', compact('user'));
-    }
-
-    public function updateUser(Request $request, User $user)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'role' => 'required|integer',
-        ]);
-
-        $user->update($request->all());
-
-        return redirect()->route('admin.dashboard')->with('success', 'User berhasil diperbarui.');
-    }
-
-    public function deleteUser(User $user)
-    {
-        $user->delete();
-
-        return redirect()->route('admin.index')->with('success', 'User berhasil dihapus.');
+        return view('admin.dashboard', compact('users', 'passwordResetTokens', 'sessions', 'topDonations'));
     }
 }
