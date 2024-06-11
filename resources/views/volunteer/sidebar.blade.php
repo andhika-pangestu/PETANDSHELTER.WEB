@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet and Shelter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link rel="stylesheet" href="../css/styleDashboard.css">
-    <link rel="stylesheet" href="css/styleDashboard.css">
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-
 <nav>
     <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
@@ -27,7 +11,7 @@
         <div class="sidebar-content">
             <ul class="lists">
                 <li class="list">
-                    <a href="{{ route('mitra.shelter.index') }}" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="bx bx-home-alt icon"></i>
                         <span class="link">Dashboard</span>
                     </a>
@@ -35,7 +19,7 @@
                 
                 <li class="list">
                     <a href="{{ route('mitra.shelter.index') }}" class="nav-link">
-                        <i class='bx bx-calendar-event icon' ></i>
+                        <i class='bx bx-home-heart icon' ></i>
                         <span class="link">Shelter</span>
                     </a>
                 </li>
@@ -43,11 +27,10 @@
             </ul>
             <div class="bottom-content">
                 <li class="list">
-                    <a href="{{ route('mitra.shelter.index') }}" class="nav-link">
+                    <a href="{{ route('profile.edit') }}" class="nav-link">
                         <i class="bx bx-user icon"></i>
                         <span class="link">Profile</span>
                     </a>
-                    
                 </li>
                 <li class="list">
                     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -11,11 +11,12 @@
         <div class="sidebar-content">
             <ul class="lists">
                 <li class="list">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="bx bx-home-alt icon"></i>
                         <span class="link">Dashboard</span>
                     </a>
                 </li>
+<<<<<<< Updated upstream
                 <li class="list">
                     <a href="{{ route('profile.edit') }}" class="nav-link">
                         <i class="bx bx-mouse-alt icon"></i> 
@@ -23,9 +24,12 @@
                     </a>
                     
                 </li>
+=======
+                
+>>>>>>> Stashed changes
                 <li class="list">
                     <a href="{{ route('admin.acara') }}" class="nav-link">
-                        <i class="bx bx-user icon"></i>
+                        <i class='bx bx-calendar-event icon' ></i>
                         <span class="link">Acara</span>
                     </a>
                 </li>
@@ -39,10 +43,11 @@
             </ul>
             <div class="bottom-content">
                 <li class="list">
-                    <a href="#" class="nav-link">
-                        <i class="bx bx-cog icon"></i>
-                        <span class="link">Settings</span>
+                    <a href="{{ route('profile.edit') }}" class="nav-link">
+                        <i class="bx bx-user icon"></i>
+                        <span class="link">Profile</span>
                     </a>
+                    
                 </li>
                 <li class="list">
                     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

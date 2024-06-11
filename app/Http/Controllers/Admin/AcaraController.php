@@ -1,20 +1,31 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Acara;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AcaraController extends Controller
 {
-
     public function index()
     {
+<<<<<<< Updated upstream
         $acara = Acara::orderBy('tanggal')->orderBy('waktu')->get();
         return view('admin.acara', compact('acara'));
     }
     
     
+=======
+        $today = Carbon::today();
+        $acara = Acara::where('tanggal', '>=', $today)
+                      ->orderBy('tanggal', 'asc')
+                      ->orderBy('waktu', 'asc')
+                      ->get();
+        return view('admin.acara', compact('acara'));
+    }
+>>>>>>> Stashed changes
 
     public function store(Request $request)
     {
