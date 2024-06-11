@@ -150,3 +150,6 @@ Route::post('adopsi/{hewan}', [AdopsiController::class, 'store'])->name('adopsi.
 
 // Authentication Routes
 require __DIR__.'/auth.php';
+
+
+
