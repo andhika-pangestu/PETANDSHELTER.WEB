@@ -144,17 +144,17 @@ Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(fun
 
     // Rute Hewan
     Route::resource('hewan', HewanController::class)->except(['show']);
-
-    // Rute Adopsi
-    Route::get('adopsi', [AdopsiController::class, 'index'])->name('adopsi.index');
-    Route::post('adopsi/{adopsi}/approve', [AdopsiController::class, 'approve'])->name('adopsi.approve');
-    Route::post('adopsi/{adopsi}/reject', [AdopsiController::class, 'reject'])->name('adopsi.reject');
-    Route::post('adopsi/{adopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
-    Route::post('adopsi/{adopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
-    Route::get('approved-adopsi', [AdopsiController::class, 'showApprovedAdopsi'])->name('approved_adopsi.index');
-    Route::post('approved-adopsi/{approvedAdopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
-    Route::post('approved-adopsi/{approvedAdopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
+   // Rute untuk melihat hewan teradopsi
+   Route::get('shelter/adopted_pets', [ShelterController::class, 'showAdoptedPets'])->name('shelter.adopted_pets');
+   // Rute Adopsi
+     Route::get('adopsi', [AdopsiController::class, 'index'])->name('adopsi.index');
+     Route::post('adopsi/{adopsi}/approve', [AdopsiController::class, 'approve'])->name('adopsi.approve');
+     Route::post('adopsi/{adopsi}/reject', [AdopsiController::class, 'reject'])->name('adopsi.reject');
+     Route::get('approved-adopsi', [AdopsiController::class, 'showApprovedAdopsi'])->name('approved_adopsi.index');
+     Route::post('approved-adopsi/{adopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
+     Route::post('approved-adopsi/{adopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
 });
+
 
 // List Adopsi Routes
 Route::get('/list', [ListAdopsiController::class, 'index'])->name('list');

@@ -1,7 +1,7 @@
 @include('layouts.head')
 
 <div class="container">
-    <h1>Daftar Permohonan Adopsi</h1>
+    <h1>Daftar Permohonan Adopsi yang Menunggu Persetujuan</h1>
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -29,7 +29,6 @@
                 <th>Jumlah Anak</th>
                 <th>Alergi Bulu</th>
                 <th>Lokasi Hewan Luar</th>
-                <th>Status</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -53,36 +52,18 @@
                 <td>{{ $a->jumlah_anak }}</td>
                 <td>{{ $a->alergi_bulu }}</td>
                 <td>{{ $a->lokasi_hewan_luar }}</td>
-                <td>{{ ucfirst($a->status) }}</td>
                 <td>
-                    @if($a->status == 'pending')
-                        <form action="{{ route('mitra.adopsi.approve', $a) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            <button type="submit" class="btn btn-success">Setujui</button>
-                        </form>
-                        <form action="{{ route('mitra.adopsi.reject', $a) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Tolak</button>
-                        </form>
-                    @elseif($a->status == 'approved')
-                        <form action="{{ route('mitra.adopsi.teradopsi', $a) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">Teradopsi</button>
-                        </form>
-                        <form action="{{ route('mitra.adopsi.cancel', $a) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            <button type="submit" class="btn btn-warning">Cancel</button>
-                        </form>
-                    @elseif($a->status == 'canceled')
-                        <form action="{{ route('mitra.adopsi.approve', $a) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            <button type="submit" class="btn btn-success">Setujui Lagi</button>
-                        </form>
-                    @else
-                        {{ ucfirst($a->status) }}
-                    @endif
+                    <form action="{{ route('mitra.adopsi.approve', $a) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Setujui</button>
+                    </form>
+                    <form action="{{ route('mitra.adopsi.reject', $a) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Tolak</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+</div>
