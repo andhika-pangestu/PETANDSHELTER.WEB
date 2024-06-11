@@ -14,6 +14,9 @@ use App\Http\Controllers\ListAdopsiController;
 use App\Http\Controllers\RescueFormController;
 
 use App\Http\Controllers\AdopsiController;
+use App\Http\Controllers\RescueFormController;
+use App\Http\Controllers\ShelterViewController;
+
 
 
 // Halaman Umum
@@ -76,6 +79,8 @@ Route::get('/donasi', function () {
 
 Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
 
+
+// Rescue Form Routes
 Route::get('/rescue', [RescueFormController::class, 'create'])->name('rescue.create');
 Route::post('/rescue', [RescueFormController::class, 'store'])->name('rescue.store');
 Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
@@ -162,5 +167,6 @@ Route::post('adopsi/{hewan}', [AdopsiController::class, 'store'])->name('adopsi.
 // Authentication Routes
 require __DIR__.'/auth.php';
 
-
+//show shelter
+Route::get('/shelter', [ShelterViewController::class, 'showShelterData']);
 
