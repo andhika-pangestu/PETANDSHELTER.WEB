@@ -17,7 +17,7 @@
     </head>
 <body>
     {{-- NAVBAR --}}
-    <x-navbar></x-navbar>
+    <x-navigation></x-navigation>
 
     {{-- HERO --}}
 <section>

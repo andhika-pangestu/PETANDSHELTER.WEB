@@ -18,7 +18,6 @@
 <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Bootstrap CSS File -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Libraries CSS Files -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet">
@@ -32,7 +31,7 @@
 <body>
 {{-- navbar --}}
 
-@include('layouts.navbar2')
+@include('navigation')
   <main id="main">
 
     <!--==========================

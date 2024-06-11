@@ -1,4 +1,6 @@
 @include('layouts.head')
+@include('layouts.head')
+
 <div class="container">
     <h1>Daftar Permohonan Adopsi yang Disetujui</h1>
 
@@ -16,6 +18,18 @@
                 <th>Alamat</th>
                 <th>Nomor WhatsApp</th>
                 <th>Hewan yang Diadopsi</th>
+                <th>Hewan Pertama</th>
+                <th>Jenis Rumah</th>
+                <th>Alasan Tertarik</th>
+                <th>Hewan Lain</th>
+                <th>Kepemilikan Rumah</th>
+                <th>Lokasi Hewan</th>
+                <th>Dokter Hewan</th>
+                <th>Halaman Berpagar</th>
+                <th>Jumlah Orang Dewasa</th>
+                <th>Jumlah Anak</th>
+                <th>Alergi Bulu</th>
+                <th>Lokasi Hewan Luar</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -27,6 +41,18 @@
                 <td>{{ $a->alamat }}</td>
                 <td>{{ $a->nomor_whatsapp }}</td>
                 <td>{{ $a->hewan->nama_hewan }} ({{ $a->hewan->jenis_hewan }})</td>
+                <td>{{ $a->hewan_pertama }}</td>
+                <td>{{ $a->jenis_rumah }}</td>
+                <td>{{ $a->alasan_tertarik }}</td>
+                <td>{{ $a->hewan_lain }}</td>
+                <td>{{ $a->kepemilikan_rumah }}</td>
+                <td>{{ $a->lokasi_hewan }}</td>
+                <td>{{ $a->dokter_hewan }}</td>
+                <td>{{ $a->halaman_berpagar }}</td>
+                <td>{{ $a->jumlah_orang_dewasa }}</td>
+                <td>{{ $a->jumlah_anak }}</td>
+                <td>{{ $a->alergi_bulu }}</td>
+                <td>{{ $a->lokasi_hewan_luar }}</td>
                 <td>
                     <form action="{{ route('mitra.adopsi.teradopsi', $a) }}" method="POST" style="display:inline-block;">
                         @csrf
@@ -34,7 +60,7 @@
                     </form>
                     <form action="{{ route('mitra.adopsi.cancel', $a) }}" method="POST" style="display:inline-block;">
                         @csrf
-                        <button type="submit" class="btn btn-danger">Cancel</button>
+                        <button type="submit" class="btn btn-warning">Cancel</button>
                     </form>
                 </td>
             </tr>
@@ -42,4 +68,3 @@
         </tbody>
     </table>
 </div>
-

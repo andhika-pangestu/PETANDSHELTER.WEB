@@ -12,7 +12,7 @@
 </head>
 <body>
 {{-- navbar --}}
-<x-navbar></x-navbar>
+<x-navigation></x-navigation>
 
 {{-- section1 --}}
 <div class="container mt-3">

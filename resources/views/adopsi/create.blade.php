@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-{{-- navbar --}}
-<x-navbar></x-navbar>
+{{-- navigation --}}
+<x-navigation></x-navigation>
 {{-- section1 --}}
 <div class="container">
     <div class="row">
@@ -63,10 +63,13 @@
                         <p class="mb-0">Vaksin: Belum Vaksin</p>
                         </div>
                         <div class="d-flex align-items-center mb-3">
-                        <p class="mb-0">Kesehatan: Sehat</p>
+                        <p class="mb-0">Kesehatan:  {{ $hewan->kesehatan }}</p>
                         </div>
                         <div class="d-flex align-items-center mb-3">
                         <p class="mb-0">Lokasi: {{ $hewan->shelter->alamat_jalan }}, {{ $hewan->shelter->kota }}</p>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <p class="mb-0">Status: {{ $hewan->status }}</p>
                         </div>
                     </div>
                 </div>

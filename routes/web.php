@@ -138,6 +138,9 @@ Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(fun
     Route::post('adopsi/{adopsi}/reject', [AdopsiController::class, 'reject'])->name('adopsi.reject');
     Route::post('adopsi/{adopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
     Route::post('adopsi/{adopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
+    Route::get('approved-adopsi', [AdopsiController::class, 'showApprovedAdopsi'])->name('approved_adopsi.index');
+    Route::post('approved-adopsi/{approvedAdopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
+    Route::post('approved-adopsi/{approvedAdopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
 });
 
 // List Adopsi Routes
