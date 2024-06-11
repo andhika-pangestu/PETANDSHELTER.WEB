@@ -186,7 +186,47 @@
 }
 
 
-
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    background: #343a40;
+    color: #fff;
+    transition: width 0.3s;
+}
+.sidebar.collapsed {
+    width: 80px;
+}
+.sidebar .nav-link {
+    color: #fff;
+}
+.sidebar .nav-link:hover {
+    background: #495057;
+}
+.sidebar .nav-item .nav-icon {
+    width: 40px;
+}
+.sidebar.collapsed .nav-item .nav-text {
+    display: none;
+}
+.content {
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+}
+.content.collapsed {
+    margin-left: 80px;
+}
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    left: 260px;
+    cursor: pointer;
+}
+.collapsed .toggle-btn {
+    left: 90px;
+}
 
 .list-unstyled a {
     text-decoration: none;
@@ -245,6 +285,60 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
+/* LIST ADOPSI */
+.cardpet{
+    width: 300px;
+    height: 440px ;
+    overflow: hidden;
+    position: relative;
+}
+
+.cardpet img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.adoption-button {
+    position: absolute;
+    margin-bottom: -110px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 290px; /* Sesuaikan dengan posisi yang diinginkan */
+    padding: 10px 52px;
+    background-color: #fff; /* Warna latar belakang tombol */
+    color: black; /* Warna teks tombol */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: none; /* Sembunyikan tombol secara default */
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+  
+  .cardpet:hover .adoption-button {
+    display: block; /* Tampilkan tombol saat kartu di-hover */
+    filter: none; /* Hapus blur pada tombol saat kartu di-hover */
+}
+
+/* Efek blur pada gambar saat kartu di-hover */
+.cardpet:hover img,
+.cardpet:hover .teks {
+    filter: blur(2px);
+}
+
+
+.adoption-button:hover {
+    background-color: #3581B5; /* Warna latar belakang saat di-hover */
+    color: #fff;
+}
+
+.text-justify{
+    text-align: justify;
+}
 
 /* Responsive font sizes */
 @media (max-width: 575.98px) { /* Extra small devices (portrait phones, less than 576px) */

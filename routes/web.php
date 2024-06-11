@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DonationController;
@@ -9,7 +10,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TipsController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
+
 use App\Http\Controllers\RescueFormController;
+
+use App\Http\Controllers\AdopsiController;
 
 
 // Halaman Umum
@@ -22,24 +26,19 @@ Route::view('/login', 'login')->name('login');
 Route::view('/donasi', 'donasi');
 Route::view('/form', 'form')->name('form');
 Route::view('/thank', 'thank')->name('thank');
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
+Route::view('/shelter','shelter-home')->name('shelter');
+
 
 // Employees
 Route::get('/employees', [EmployeeController::class, 'index']);
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-
 // Donation Routes
-
 Route::post('/finish', function(){
     return redirect()->route('welcome');
 })->name('donation.finish');
 Route::resource('/donations', DonationController::class)->only(['index', 'create', 'store']);
+
 
 
 Route::get('/adopsi', function () {
@@ -85,8 +84,8 @@ Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
 use App\Models\Acara;
 
 
-// Kalender
 
+// Kalender
 Route::get('/kalender', function () {
     $acara = Acara::orderBy('created_at', 'desc')->get();
     return view('kalender', compact('acara'));
@@ -138,13 +137,30 @@ Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(fun
     Route::get('shelter/{shelter}/edit', [ShelterController::class, 'edit'])->name('shelter.edit');
     Route::put('shelter/{shelter}', [ShelterController::class, 'update'])->name('shelter.update');
 
-    // Hewan Routes
+    // Rute Hewan
     Route::resource('hewan', HewanController::class)->except(['show']);
+
+    // Rute Adopsi
+    Route::get('adopsi', [AdopsiController::class, 'index'])->name('adopsi.index');
+    Route::post('adopsi/{adopsi}/approve', [AdopsiController::class, 'approve'])->name('adopsi.approve');
+    Route::post('adopsi/{adopsi}/reject', [AdopsiController::class, 'reject'])->name('adopsi.reject');
+    Route::post('adopsi/{adopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
+    Route::post('adopsi/{adopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
+    Route::get('approved-adopsi', [AdopsiController::class, 'showApprovedAdopsi'])->name('approved_adopsi.index');
+    Route::post('approved-adopsi/{approvedAdopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
+    Route::post('approved-adopsi/{approvedAdopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
 });
 
 // List Adopsi Routes
 Route::get('/list', [ListAdopsiController::class, 'index'])->name('list');
 Route::get('/shelter/{id}', [ListAdopsiController::class, 'show'])->name('shelter.show');
 
+// Adopsi Routes for Public
+Route::get('adopsi/{hewan}/create', [AdopsiController::class, 'create'])->name('adopsi.create');
+Route::post('adopsi/{hewan}', [AdopsiController::class, 'store'])->name('adopsi.store');
+
 // Authentication Routes
 require __DIR__.'/auth.php';
+
+
+

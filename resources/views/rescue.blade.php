@@ -17,12 +17,16 @@
     </head>
 <body>
     {{-- NAVBAR --}}
+
     <x-navbar></x-navbar>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
+
+    <x-navigation></x-navigation>
+
 
     {{-- HERO --}}
 <section>

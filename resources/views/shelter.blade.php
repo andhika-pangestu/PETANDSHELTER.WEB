@@ -12,7 +12,7 @@
 </head>
 <body>
 {{-- navbar --}}
-<x-navbar></x-navbar>
+<x-navigation></x-navigation>
 
 {{-- section1 --}}
 <div class="container mt-3">
@@ -39,7 +39,6 @@
                     <img src="{{ asset('uploads/' . $shelter->foto) }}" alt="Foto Shelter" class="img-thumbnail img-fluid" style="width: 200px; height: 200px; object-fit: cover;">
                 </div>
                 <div class="ms-5 text-white">
-                    
                     <h4 class="fw-bold mb-4">{{ $shelter->nama_shelter }}</h4>
                     <div class="d-flex align-items-center mb-3">
                         <i class="fa-solid fa-map-location-dot fa-lg me-2"></i>
@@ -66,7 +65,7 @@
             <div class="card cardpet text-white">
                 <img src="{{ Storage::url($hewan->foto) }}" class="card-img">
                 <div class="card-img-overlay">
-                    <div class="adoption-button" onclick="redirectToAdoptionPage()">ADOPSI</div>     
+                    <div class="adoption-button" onclick="redirectToAdoptionPage({{ $hewan->id }})">ADOPSI</div>     
                 </div>
             </div>
         </div>
@@ -101,8 +100,8 @@
 <x-footer></x-footer>
 
 <script>
-    function redirectToAdoptionPage() {
-        window.location.href = "/adoption-page"; // Sesuaikan URL tujuan
+    function redirectToAdoptionPage(hewanId) {
+        window.location.href = "/adopsi/" + hewanId + "/create";
     }
 </script>
 </body>

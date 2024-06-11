@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-{{-- navbar --}}
+{{-- navigation --}}
 <x-navigation></x-navigation>
 {{-- section1 --}}
 <div class="container">
@@ -33,25 +33,23 @@
     </div>
     <div class="row my-5">
         <div class="col-md-4">
-            <h3 class="text-black fw-bold">Cimekar Shelter</h3>
+            <h3 class="text-black fw-bold">{{ $hewan->shelter->nama_shelter }}</h3>
         </div>
     </div>
 {{-- section2 --}}
     <div class="card">
-        <h5 class="card-header">American-Ringtail</h5>
+        <h5 class="card-header">{{ $hewan->nama_hewan }}</h5>
         <div class="card-body">
-          <p class="card-text lh-lg">Cemong adalah kucing American Ringtail yang memiliki ciri khas ekor melingkar atau berbentuk cincin. 
-            Bulunya lembut dan tebal dengan warna dominan abu-abu, dilengkapi dengan mata yang besar dan ekspresif. American Ringtail dikenal sebagai kucing yang cerdas, ramah, 
-            dan suka bermain. Cemong adalah kucing yang menyenangkan untuk dipelihara dan akan menjadi teman setia dalam keluarga.</p>
+          <p class="card-text lh-lg">{{ $hewan->deskripsi }}</p>
         </div>
 
         <div class="justify-content-start">
                 <div class="d-flex p-5">
                     <div  style="width: 300px; height: 300px; overflow: hidden;">
-                        <img src="img/listpet6.webp" class="img-fluid">
+                        <img src="{{ Storage::url($hewan->foto) }}" class="img-fluid">
                     </div>
                     <div class="ms-5 ">
-                        <h4 class="fw-bold mb-4">CEMONG</h4>
+                        <h4 class="fw-bold mb-4">{{ $hewan->nama_hewan }}</h4>
                         <div class="d-flex align-items-center mb-3">
                         <p class="mb-0">Jenis Kelamin: Jantan</p>
                         </div>
@@ -65,17 +63,21 @@
                         <p class="mb-0">Vaksin: Belum Vaksin</p>
                         </div>
                         <div class="d-flex align-items-center mb-3">
-                        <p class="mb-0">Kesehatan: Sehat</p>
+                        <p class="mb-0">Kesehatan:  {{ $hewan->kesehatan }}</p>
                         </div>
                         <div class="d-flex align-items-center mb-3">
-                        <p class="mb-0">Lokasi: Perumahan Megarahayu D3, Bandung</p>
+                        <p class="mb-0">Lokasi: {{ $hewan->shelter->alamat_jalan }}, {{ $hewan->shelter->kota }}</p>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <p class="mb-0">Status: {{ $hewan->status }}</p>
                         </div>
                     </div>
                 </div>
         </div>
 
     <div class="container px-5 mt-5">
-    <form id="adoptionForm">
+    <form action="{{ route('adopsi.store', $hewan) }}" method="POST">
+      @csrf
       <!-- Informasi Kontak Anda -->
       <h3 class="fw-bold">Informasi Kontak Anda</h3>
       <div class="row g-2 my-2">
@@ -100,8 +102,6 @@
             <input type="tel" class="form-control" id="whatsapp" name="nomor_whatsapp" placeholder="08xxxxxxxxxx" required>
         </div>
         </div>
-        
-        
       </div>
 
       <!-- Tentang Keluarga Baru Hewan -->
@@ -109,7 +109,7 @@
       <p class="text-body-secondary">Harap beritahu kami sedikit tentang dimana hewan ini akan tinggal (Kami tahu keadaan berubah)</p>
       <div class="row g-2 my-2">
         <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Apakah ini hewan pertama anda?</label>
+          <label for="hewanPertama" class="form-label">Apakah ini hewan pertama anda?</label>
           <select class="form-select" id="hewanPertama" name="hewan_pertama" required>
               <option selected disabled>Silahkan Pilih</option>
               <option>Ya</option>
@@ -118,7 +118,7 @@
       </div>
       
       <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Jenis rumah</label>
+          <label for="jenisRumah" class="form-label">Jenis rumah</label>
           <select class="form-select" id="jenisRumah" name="jenis_rumah" required>
               <option selected disabled>Silahkan Pilih</option>
               <option>Rumah</option>
@@ -129,16 +129,15 @@
       </div>
       
       <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Kenapa anda tertarik mencari hewan?</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alasan_tertarik" placeholder="Tuliskan sejujurnya" required></textarea>
+          <label for="alasanTertarik" class="form-label">Kenapa anda tertarik mencari hewan?</label>
+          <textarea class="form-control" id="alasanTertarik" rows="3" name="alasan_tertarik" placeholder="Tuliskan sejujurnya" required></textarea>
       </div>
-      
       </div>
 
       <div class="row g-2 my-2">
         <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Apakah anda memiliki hewan peliharaan lainnya di rumah?</label>
-          <select class="form-select" id="hewanPertama" name="hewan_lain" required>
+          <label for="hewanLain" class="form-label">Apakah anda memiliki hewan peliharaan lainnya di rumah?</label>
+          <select class="form-select" id="hewanLain" name="hewan_lain" required>
               <option selected disabled>Silahkan Pilih</option>
               <option>Ya</option>
               <option>Tidak</option>
@@ -146,8 +145,8 @@
       </div>
       
       <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Kepemilikan <br> Rumah</label>
-          <select class="form-select" id="jenisRumah" name="kepemilikan_rumah" required>
+          <label for="kepemilikanRumah" class="form-label">Kepemilikan <br> Rumah</label>
+          <select class="form-select" id="kepemilikanRumah" name="kepemilikan_rumah" required>
               <option selected disabled>Silahkan Pilih</option>
               <option>Rumah</option>
               <option>Apartemen</option>
@@ -155,15 +154,14 @@
       </div>
       
       <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Dimana hewan ini akan menghabiskan sebagian besar waktunya?</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" name="lokasi_hewan" rows="3" placeholder="Tuliskan sejujurnya" required></textarea>
+          <label for="lokasiHewan" class="form-label">Dimana hewan ini akan menghabiskan sebagian besar waktunya?</label>
+          <textarea class="form-control" id="lokasiHewan" name="lokasi_hewan" rows="3" placeholder="Tuliskan sejujurnya" required></textarea>
       </div>
-      
       </div>
 
       <div class="row g-2 my-2">
         <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Apakah anda telah memiliki dokter hewan?</label>
+          <label for="dokterHewan" class="form-label">Apakah anda telah memiliki dokter hewan?</label>
           <select class="form-select" id="dokterHewan" name="dokter_hewan" required>
               <option selected disabled>Silahkan Pilih</option>
               <option>Ya</option>
@@ -172,7 +170,7 @@
       </div>
       
       <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Apakah anda memiliki halaman berpagar</label>
+          <label for="halamanBerpagar" class="form-label">Apakah anda memiliki halaman berpagar</label>
           <select class="form-select" id="halamanBerpagar" name="halaman_berpagar" required>
               <option selected disabled>Silahkan Pilih</option>
               <option>Ya</option>
@@ -181,7 +179,7 @@
       </div>
       
       <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Berapa banyak orang dewasa di rumah anda?</label>
+          <label for="jumlahOrangDewasa" class="form-label">Berapa banyak orang dewasa di rumah anda?</label>
           <select class="form-select" id="jumlahOrangDewasa" name="jumlah_orang_dewasa" required>
               <option selected disabled>Silahkan Pilih</option>
               <option>1</option>
@@ -189,23 +187,21 @@
               <option>3</option>
           </select>
       </div>
-      
       </div>
       
       <div class="row g-2 my-2">
         <div class="col-md">
-            <label for="exampleFormControlInput1" class="form-label">Berapa banyak anak kecil <br> di rumah anda?</label>
-            <select class="form-select" id="banyakAnak" name="jumlah_anak" required>
+            <label for="jumlahAnak" class="form-label">Berapa banyak anak kecil <br> di rumah anda?</label>
+            <select class="form-select" id="jumlahAnak" name="jumlah_anak" required>
                 <option selected disabled>Silahkan Pilih</option>
                 <option>0</option>
                 <option>1</option>
                 <option>2</option>
-                <!-- Dan seterusnya -->
             </select>
         </div>
     
         <div class="col-md">
-            <label for="exampleFormControlInput1" class="form-label">Adakah orang di rumah yang memiliki alergi pada bulu hewan?</label>
+            <label for="alergiBulu" class="form-label">Adakah orang di rumah yang memiliki alergi pada bulu hewan?</label>
             <select class="form-select" id="alergiBulu" name="alergi_bulu" required>
                 <option selected disabled>Silahkan Pilih</option>
                 <option>Ya</option>
@@ -214,8 +210,8 @@
         </div>
     
         <div class="col-md">
-            <label for="exampleFormControlInput1" class="form-label">Akankah hewan ini menjadi hewan didalam atau diluar?</label>
-            <select class="form-select" id="lokasiHewan" name="lokasi_hewan" required>
+            <label for="lokasiHewanLuar" class="form-label">Akankah hewan ini menjadi hewan didalam atau diluar?</label>
+            <select class="form-select" id="lokasiHewanLuar" name="lokasi_hewan_luar" required>
                 <option selected disabled>Silahkan Pilih</option>
                 <option>Didalam</option>
                 <option>Diluar</option>
@@ -223,11 +219,11 @@
         </div>
     </div>
     
-    <!-- Komitmen Kepemilikan-->
+    <!-- Komitmen Kepemilikan -->
     <h3 class="fw-bold mt-5">Komitmen Kepemilikan</h3>
     <div class="row g-2 my-2 mb-4">
       <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label text-justify">Tempat kotoran hewan sudah akan tersedia saat hewan dibawa kerumah pada tanggal yang ditentukan di situs web. 
+          <label for="bawaPulang" class="form-label text-justify">Tempat kotoran hewan sudah akan tersedia saat hewan dibawa kerumah pada tanggal yang ditentukan di situs web. 
               Bisakah anda membawa pulang hewan ini dalam waktu 2-3 hari dari waktu tersebut? </label>
           <select class="form-select" id="bawaPulang" name="bawa_pulang" required>
               <option selected disabled>Silahkan Pilih</option>
@@ -237,7 +233,7 @@
       </div>
   
       <div class="col-md ms-3">
-          <label for="exampleFormControlInput1" class="form-label  text-justify">Hewan ini membutuhkan perawatan profesional. Setiap 3 minggu, dan biayanya Rp 250.000,00 setiap kali. 
+          <label for="perawatan" class="form-label text-justify">Hewan ini membutuhkan perawatan profesional. Setiap 3 minggu, dan biayanya Rp 250.000,00 setiap kali. 
               Kurangnya perawatan dapat menyebabkan sakit yang serius. Apakah anda berkomitmen terhadap biaya yang diperlukan ini?</label>
           <select class="form-select" id="perawatan" name="perawatan" required>
               <option selected disabled>Silahkan Pilih</option>
@@ -250,7 +246,7 @@
 
   <div class="row g-2 my-2">
     <div class="col-md">
-        <label for="exampleFormControlInput1" class="form-label text-justify">Bisakah anda menjemput hewan anda secara langsung di Shelter Kami? *</label>
+        <label for="jemputHewan" class="form-label text-justify">Bisakah anda menjemput hewan anda secara langsung di Shelter Kami? *</label>
         <select class="form-select" id="jemputHewan" name="jemput_hewan" required>
             <option selected disabled>Silahkan Pilih</option>
             <option>Ya</option>
@@ -259,7 +255,7 @@
     </div>
 
     <div class="col-md ms-3">
-        <label for="exampleFormControlInput1" class="form-label  text-justify">Apakah anda setuju untuk memberikan kami laporan dan foto tindak lanjut dari waktu ke waktu?</label>
+        <label for="laporanFoto" class="form-label text-justify">Apakah anda setuju untuk memberikan kami laporan dan foto tindak lanjut dari waktu ke waktu?</label>
         <select class="form-select" id="laporanFoto" name="laporan_foto" required>
             <option selected disabled>Silahkan Pilih</option>
             <option>Ya</option>
@@ -268,8 +264,7 @@
     </div>
 
     <div class="col-md ms-3">
-        <label for="exampleFormControlInput1" class="form-label  text-justify">
-            Apakah Anda setuju untuk menghubungi kami jika perlu mengembalikan hewan ini alasan apa pun?</label>
+        <label for="hubungiKembali" class="form-label text-justify">Apakah Anda setuju untuk menghubungi kami jika perlu mengembalikan hewan ini alasan apa pun?</label>
         <select class="form-select" id="hubungiKembali" name="hubungi_kembali" required>
             <option selected disabled>Silahkan Pilih</option>
             <option>Ya</option>
@@ -278,8 +273,7 @@
     </div>
 </div>
 
-
-      <!-- Lembar Persetujuan-->
+      <!-- Lembar Persetujuan -->
     <h3 class="fw-bold mt-5">Lembar Persetujuan</h3>
     <p class="text-body-secondary">Saya dengan ini menyatakan bahwa saya telah memilih untuk mengadopsi hewan peliharaan yang telah dipilih. Saya menyadari bahwa adopsi ini bersifat permanen dan saya bertanggung jawab penuh atas kesejahteraan hewan tersebut.</p>
     <div class="row g-2 my-2 mb-4">
@@ -320,16 +314,14 @@
 
       <div class="row g-2 my-2">
         <div class="col-md">
-          <label for="exampleFormControlInput1" class="form-label">Berikan informasi relevan yang menurut Anda akan membantu kami dalam menempatkan hewan di rumah anda!</label>
+          <label for="informasiRelevan" class="form-label">Berikan informasi relevan yang menurut Anda akan membantu kami dalam menempatkan hewan di rumah anda!</label>
           <textarea class="form-control" id="informasiRelevan" name="informasi_relevan" rows="3" placeholder="Tuliskan sejujurnya" required></textarea>
       </div>
       
       <div class="col-md ms-3">
-          <label for="exampleFormControlInput1" class="form-label">Apakah Anda memiliki pertanyaan lain yang ingin Anda ajukan kepada kami atau ada informasi tambahan yang Anda butuhkan terkait Adopsi ini? </label>
+          <label for="pertanyaanTambahan" class="form-label">Apakah Anda memiliki pertanyaan lain yang ingin Anda ajukan kepada kami atau ada informasi tambahan yang Anda butuhkan terkait Adopsi ini? </label>
           <textarea class="form-control" id="pertanyaanTambahan" name="pertanyaan_tambahan" rows="3" placeholder="Tuliskan sejujurnya" required></textarea>
       </div>
-      
-
       </div>
 
       <div class="col-12 mt-3">
@@ -350,30 +342,10 @@
       </div>
     </form>
   </div>
-</div> <!--continer section2-->       
+</div> <!--container section2-->       
 </div>
 </div>
 {{-- footer --}}
 <x-footer></x-footer>
-<script>
-    document.getElementById('adoptionForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Mencegah form submit default
-
-        console.log('Form submitted'); // Check if the event listener is triggered
-
-        // Validasi semua field form
-        const form = event.target;
-        if (form.checkValidity()) {
-            console.log('Form is valid'); // Check if form validation works
-            // Jika valid, alihkan ke halaman thank you
-            window.location.href = 'thank';
-        } else {
-            console.log('Form is invalid'); // Check if form validation works
-            // Jika tidak valid, tampilkan pesan error
-            alert('Mohon isi semua field yang diperlukan.');
-        }
-    });
-</script>
-
 </body>
 </html>

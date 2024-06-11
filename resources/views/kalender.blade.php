@@ -1,5 +1,6 @@
 <x-app-layout>
 <x-slot name="acara">
+  @include('navigation')
 {{-- section1 --}}
 <div class="container col-xxl-10 px-4 py-5">
 

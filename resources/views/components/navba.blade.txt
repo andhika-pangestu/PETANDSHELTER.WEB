@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand me-auto" href="{{ url('/') }}">
-            <img src="{{ asset('img/icon-black.png') }}" alt="Logo" class="navbar-logo img-fluid " style="max-width: 60px; height: auto;">
+            <img src="{{ asset('img/icon-black.png') }}" alt="Logo" class="navbar-logo img-fluid -2" style="max-width: 60px; height: auto;">
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
