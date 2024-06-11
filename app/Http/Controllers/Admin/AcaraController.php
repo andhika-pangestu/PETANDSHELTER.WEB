@@ -11,13 +11,6 @@ class AcaraController extends Controller
 {
     public function index()
     {
-<<<<<<< Updated upstream
-        $acara = Acara::orderBy('tanggal')->orderBy('waktu')->get();
-        return view('admin.acara', compact('acara'));
-    }
-    
-    
-=======
         $today = Carbon::today();
         $acara = Acara::where('tanggal', '>=', $today)
                       ->orderBy('tanggal', 'asc')
@@ -25,7 +18,6 @@ class AcaraController extends Controller
                       ->get();
         return view('admin.acara', compact('acara'));
     }
->>>>>>> Stashed changes
 
     public function store(Request $request)
     {

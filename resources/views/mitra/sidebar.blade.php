@@ -39,6 +39,24 @@
                         <span class="link">Shelter</span>
                     </a>
                 </li>
+                <li class="list">
+                    <a href="{{ route('mitra.adopsi.index') }}" class="nav-link">
+                        <i class="fa-solid fa-house-medical icon"></i>
+                        <span class="link">Adopsi</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ route('mitra.hewan.index') }}" class="nav-link">
+                        <i class="fa-solid fa-paw icon"></i>
+                        <span class="link">Daftar Hewan</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{{ route('mitra.shelter.index') }}" class="nav-link">
+                        <i class="fa-solid fa-user-check icon"></i>
+                        <span class="link">Cek Status</span>
+                    </a>
+                </li>
                 <!-- Add more list items here -->
             </ul>
             <div class="bottom-content">

@@ -16,17 +16,7 @@
                         <span class="link">Dashboard</span>
                     </a>
                 </li>
-<<<<<<< Updated upstream
-                <li class="list">
-                    <a href="{{ route('profile.edit') }}" class="nav-link">
-                        <i class="bx bx-mouse-alt icon"></i> 
-                        <span class="link">Profile</span>
-                    </a>
-                    
-                </li>
-=======
                 
->>>>>>> Stashed changes
                 <li class="list">
                     <a href="{{ route('admin.acara') }}" class="nav-link">
                         <i class='bx bx-calendar-event icon' ></i>
