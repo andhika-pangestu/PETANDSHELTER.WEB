@@ -67,7 +67,7 @@
                                 <label for="message" class="form-label">Catatan</label>
                                 <textarea class="form-control @error('note') is-invalid @enderror" id="notes" rows="3" name="note" placeholder="masukan catatan kamu untuk kami">{{ old('note') }}</textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Donate Now</button>
+                            <button type="submit" class="btn btn-primary text-white">Donate Now</button>
                         </form>
                     </div>
                 </div>

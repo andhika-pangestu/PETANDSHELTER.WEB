@@ -3,13 +3,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tips;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request; // Tambahkan ini
+use Illuminate\Support\Facades\Storage; // Tambahkan ini jika Anda menggunakan Storage
 
 class TipsController extends Controller {
+    // Method untuk halaman admin
     public function index(){
         $tips = Tips::orderBy('created_at', 'desc')->get();
         return view('admin.tips', compact('tips'));
+    }
+
+    // Method untuk halaman publik
+    public function showPublic(){
+        $tips = Tips::orderBy('created_at', 'desc')->get();
+        return view('tips', compact('tips'));
     }
 
     public function store(Request $request)
@@ -55,14 +62,13 @@ class TipsController extends Controller {
 
         return redirect()->route('admin.tips')->with('success', 'Postingan berhasil diupdate.');
     }
-    
 
     public function destroy(Tips $tips)
     {
         if ($tips->gambar) {
             Storage::delete($tips->gambar);
         }
-        
+
         $tips->delete();
         return redirect()->route('admin.tips')->with('success', 'Postingan berhasil dihapus.');
     }

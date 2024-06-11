@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\TipsController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
 
-
 // Halaman Umum
 Route::view('/welcome2', 'welcome2');
 Route::view('/about', 'about')->name('about');
@@ -32,19 +31,15 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-
 // Donation Routes
-
 Route::post('/finish', function(){
     return redirect()->route('welcome');
 })->name('donation.finish');
 Route::resource('/donations', DonationController::class)->only(['index', 'create', 'store']);
 
-
 Route::get('/adopsi', function () {
     return view('adopsi');
 })->name('adopsi');
-
 
 Route::get('/volunteer', function () {
     return view('volunteer');
@@ -58,9 +53,8 @@ Route::get('/list', function () {
     return view('list');
 })->name('list');
 
-Route::get('/tips', function () {
-    return view('tips');
-})->name('tips');
+// Update route untuk halaman tips publik
+Route::get('/tips', [TipsController::class, 'showPublic'])->name('tips');
 
 Route::get('/login', function () {
     return view('login');
@@ -70,14 +64,11 @@ Route::get('/donasi', function () {
     return view('donasi');
 });
 
-Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
-
+Route::resource('/donations', DonationController::class, ['only' => ['index', 'create', 'store']]);
 
 use App\Models\Acara;
 
-
 // Kalender
-
 Route::get('/kalender', function () {
     $acara = Acara::orderBy('created_at', 'desc')->get();
     return view('kalender', compact('acara'));

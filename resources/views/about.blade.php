@@ -232,11 +232,11 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="member">
-              <img src="img/catt.jpg" class="img-fluid" alt="">
+              <img src="img/Bruakakkaka.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Andhika Pangestu</h4>
-                  <span>Product Manager</span>
+                  <span>Polisi Militer</span>
                   <div class="social">
                     <a href=""><i class="fa fa-twitter"></i></a>
                     <a href=""><i class="fa fa-facebook"></i></a>
@@ -268,7 +268,7 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
             <div class="member">
-              <img src="img/rully.jpg" class="img-fluid" alt="">
+              <img src="img/yaALLAAAH.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Rully Bagja Abdurrahman Assides</h4>

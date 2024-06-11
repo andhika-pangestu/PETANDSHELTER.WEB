@@ -1,337 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>PetandShelter | Tips</title>
-        <link rel="icon" href="img/icon-trans.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-        <link rel="stylesheet" href="https://your-website.com/css/style.css">
-        <link rel="stylesheet" href="css/styleTips.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/services/service-4/assets/css/service-4.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PetandShelter | Tips</title>
+    <link rel="icon" href="img/icon-trans.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="css/styleTips.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/services/service-4/assets/css/service-4.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
 <body>
-        <!-- Navbar start -->
-         <x-navbar></x-navbar>
-        <!-- Navbar End -->
+    <!-- Navbar start -->
+    <x-navbar></x-navbar>
+    <!-- Navbar End -->
 
-        <!-- Main Post Section Start -->
-        <div class="container-fluid py-5">
-            <div class="container py-5">
-                <div class="row g-4">
-                    <div class="col-lg-7 col-xl-8 mt-0">
-                        <div class="position-relative overflow-hidden rounded">
-                            <img src="img/patpat.jpg" class="img-fluid rounded img-zoomin w-100" alt="">
+    <!-- Main Post Section Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-7 col-xl-8 mt-0">
+                    @if ($tips->isNotEmpty())
+                        @php
+                            $latestTip = $tips->shift();
+                        @endphp
+                        <div class="position-relative overflow-hidden rounded mb-4">
+                            <img src="{{ Storage::url($latestTip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt="">
                             <div class="d-flex justify-content-center px-4 position-absolute flex-wrap" style="bottom: 10px; left: 0;">
                                 <a href="#" class="text-white me-3 link-hover"><i class="fa fa-clock"></i> 06 minute read</a>
+                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-eye"></i> 3.5k Views</a>
+                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-comment-dots"></i> 05 Comment</a>
+                                <a href="#" class="text-white link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>
                             </div>
                         </div>
                         <div class="border-bottom py-3">
-                            <a href="#" class="display-4 text-dark mb-0 link-hover">Petting A Dog: Tips And Tricks</a>
+                            <a href="#" class="display-4 text-dark mb-0 link-hover">{{ $latestTip->judul }}</a>
                         </div>
-                        <p class="mt-3 mb-4">What dog does not like to be petted? Most dogs love the attention of their favorite person, while others tend to be more independent and require less affection. 
-                            But in general, the owner and the animal both feel relaxed when petting is done. Oxytocin, a hormone released when a mother looks at or touches her infant, 
-                            is stimulated by it and can assist in slowing the heart rate. 
-                            <br>
-                            It’s important to understand that different dogs have different levels of touch sensitivity. Some dogs may experience mild irritation or even stress when being stroked or petted in particular locations. Pay attention to the dog’s body language. If a dog is moving their head away, licking their lips or growling, and you see the tension in their face, it might be a way of them telling you to stop petting them. 
-                            Others, meanwhile, might want to be petted more than anything else. The dog is likely to be open to petting if it stays close to you and has actually brushed up against or sniffed your hand a few times.
-                            It’s important to avoid startling a dog you don’t know as you go closer. Crouch down and bend your body sideways to appear as unthreatening as possible. The important thing is to not stand and bend over the dog. When you squat down, reach out your hand and invite the dog to come to you. You can pet a dog if it approaches you while wagging his tail. It’s best to leave him alone if he just stands there, backs off, or pulls his head away.
-                            Follow the same non-threatening approach when meeting a dog for the first time, whether it’s a friend’s dog or a dog at the park. Squat down, offer your hand, and wait for the dog to approach you. You should also be completely relaxed. You can also keep treats on hand, which is typically useful. Another approach is to ask the dog to sit.
-                            <br> Children can be rough with dogs, which they may not enjoy. Some dogs tolerate pulling on their ears, large hugs, or even jumping on their backs, while others do not. 
-                            Whether it’s your dog or someone else’s dog, always draw the line and think of the dog’s personal space in mind when petting them.
-                        </p>
-                        <div class="bg-light p-4 rounded">
-                            <div class="news-2">
-                                <h3 class="mb-4">Top Artikel</h3>
-                            </div>
-                            <div class="row g-4 align-items-center">
-                                <div class="col-md-6">
-                                    <div class="rounded overflow-hidden">
-                                        <img src="img/pilih.jpg" class="img-fluid rounded img-zoomin w-100" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex flex-column">
-                                        <a href="#" class="h3">Cara Memilih Hewan Peliharaan yang Tepat untuk Keluarga Anda</a>
-                                        <p class="mb-0 fs-5"><i class="fa fa-clock"> 06 minute read</i> </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-xl-4">
-                       <div class="bg-light rounded p-4 pt-0">
-                            <div class="row g-4">
-                                <div class="col-12">
-                                    <div class="rounded overflow-hidden">
-                                        <img src="img/puppy.jpg" class="img-fluid rounded img-zoomin w-100" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex flex-column">
-                                        <a href="#" class="h4 mb-2">Tips Merawat Anak Anjing: Panduan untuk Pemula</a>
-                                        <p class="fs-5 mb-0"><i class="fa fa-clock"> 06 minute read</i> </p>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="img/rumah.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">Tips Menyiapkan Rumah untuk Kedatangan Hewan Adopsi</a>
-                                                <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="img/makanananjing.jpeg" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">Tips Memilih Makanan yang Tepat untuk Anjing dan Kucing</a>
-                                                <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="img/aktivitas.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">Aktivitas Menyenangkan yang Bisa Anda Lakukan dengan Anjing Anda</a>
-                                                <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="img/bahasatubuh.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">Mengenal Bahasa Tubuh Kucing: Apa yang Mereka Coba Katakan?</a>
-                                                <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="img/ketemu.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">Tips Memperkenalkan Hewan Peliharaan Baru pada Hewan Lama</a>
-                                                <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="img/stress.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">Cara Mengatasi Stres dan Kecemasan pada Hewan Peliharaan</a>
-                                                <small><i class="fa fa-clock"> 06 minute read</i> </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                       </div>
-                    </div>
+                        <p class="mt-3 mb-4">{{ $latestTip->deskripsi }}</p>
+                    @else
+                        <p class="text-center">Tidak ada tips yang tersedia.</p>
+                    @endif
                 </div>
-            </div>
-        </div>
-        <!-- Main Post Section End -->
-
-
-        <!-- Latest News Start -->
-        <div class="container-fluid latest-news py-5">
-            <div class="container py-5">
-                <h2 class="mb-4">Latest Article</h2>
-                <div class="latest-news-carousel owl-carousel">
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/gigi.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">Jaga Kesehatan Gigi dan Mulut Anabul, Yuk!</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Mika</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
+                <div class="col-lg-5 col-xl-4">
+                    <div class="bg-light rounded p-4 pt-0">
+                        <div class="row g-4">
+                            @foreach ($tips as $tip)
+                                <div class="col-12">
+                                    <div class="rounded overflow-hidden mb-3">
+                                        <img src="{{ Storage::url($tip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt="">
+                                    </div>
+                                    <div class="d-flex flex-column mb-3">
+                                        <a href="#" class="h4 mb-2">{{ $tip->judul }}</a>
+                                        <p class="fs-5 mb-0">{{ $tip->deskripsi }}</p>
+                                        <p class="fs-5 mb-0"><i class="fa fa-clock"></i> 06 minute read</p>
+                                        <p class="fs-5 mb-0"><i class="fa fa-eye"></i> 3.5k Views</p>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/mudik.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">Tips Aman Mudik Bareng Anabul</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Manda</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/mainan.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">DIY Mainan untuk Si Lucu</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Rully</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/hilang.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">Anabul Hilang....</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Dhika</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="img/sosialisasi.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4 ">Anabulku Introvert, Cara Bersosialisasi Gimana, Ya?</a>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="small text-body link-hover">by Oroz</a>
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Apr 8, 2024</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Latest News End -->
-
-        <!-- Footer Start -->
-        <x-footer></x-footer>
-        <!-- Footer End -->
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary border-2 border-white rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
-        <!-- JavaScript Libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>        
-
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-
-    {{-- BUAT NAMPILIN --}}
-
-    @include('admin.sidebar')
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="my-3">Postingan Tips</h1>
-                <!-- Bagian Form -->
-                <form id="form" action="{{ route('admin.tips.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" id="method" name="_method" value="POST">
-                    <!-- Input dan elemen form lainnya -->
-                </form>
-
-                <!-- Bagian Menampilkan Data dari Database -->
-                <div class="row mt-5">
-                    <?php foreach ($tips as $item): ?>
-                        <div class="col-12 col-md-6 col-lg-4 my-3">
-                            <!-- Card untuk menampilkan data -->
-                            <div class="card h-100">
-                                <!-- Masukkan gambar dan info lainnya -->
-                                <div class="card-body">
-                                    <!-- Judul, deskripsi, tanggal, dan tombol aksi -->
-                                    <h5 class="card-title"><?php echo $item['judul']; ?></h5>
-                                    <p class="card-text"><?php echo $item['deskripsi']; ?></p>
-                                    <p class="card-text"><small class="text-muted"><?php echo $item['tanggal']; ?></small></p>
-                                    <button class="btn btn-warning" onclick="editTips(<?php echo json_encode($item); ?>)">Edit</button>
-                                    <form action="{{ route('admin.tips.destroy', $item['id']) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Latest News End -->
+    <!-- Main Post Section End -->
 
-    <!-- Script untuk fungsi editTips -->
+    <!-- Footer Start -->
+    <x-footer></x-footer>
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
-        function editTips(tips) {
-            document.getElementById('judul').value = tips.judul;
-            document.getElementById('deskripsi').value = tips.deskripsi;
-            document.getElementById('tanggal').value = tips.tanggal;
-            document.getElementById('form').action = '/admin/tips/' + tips.id;
-            document.getElementById('method').value = 'PUT';
-        }
-    </script>
-</body>
+        $(document).ready(function(){
+            $(".latest-news-carousel").owlCarousel({
+                autoplay: true,
+                smartSpeed: 2000,
+                center: false,
+                dots: true,
+                loop: true,
+                margin: 25,
+                nav: true,
+                navText: [
+                    '<i class="bi bi-arrow-left"></i>',
+                    '<i class="bi bi-arrow-right"></i>'
+                ],
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 4
+                    }
+                }
+            });
 
+            $(".whats-carousel").owlCarousel({
+                autoplay: true,
+                smartSpeed: 2000,
+                center: false,
+                dots: true,
+                loop: true,
+                margin: 25,
+                nav: true,
+                navText: [
+                    '<i class="bi bi-arrow-left"></i>',
+                    '<i class="bi bi-arrow-right"></i>'
+                ],
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 2
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
 </html>
