@@ -14,7 +14,7 @@ use App\Http\Controllers\ListAdopsiController;
 use App\Http\Controllers\RescueFormController;
 
 use App\Http\Controllers\AdopsiController;
-use App\Http\Controllers\RescueFormController;
+
 use App\Http\Controllers\ShelterViewController;
 
 
