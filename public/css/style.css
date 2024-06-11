@@ -370,3 +370,15 @@
         font-size: 20px;
     }
 }
+
+/*shelter-home */
+.shadow-shelter {
+    box-shadow: rgba(145, 228, 236, 1) 0px 8px 24px !important;
+}
+.card-shelter {
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.card-shelter:hover {
+    box-shadow: rgba(145, 228, 236, 1) 0px 24px 32px !important; /* Stronger shadow on hover */
+}

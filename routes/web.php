@@ -169,4 +169,5 @@ require __DIR__.'/auth.php';
 
 //show shelter
 Route::get('/shelter', [ShelterViewController::class, 'showShelterData']);
+Route::get('/search', [ShelterViewController::class, 'search'])->name('search.shelters');
 
