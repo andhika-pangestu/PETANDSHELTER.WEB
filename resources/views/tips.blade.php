@@ -35,12 +35,9 @@
                             $latestTip = $tips->shift();
                         @endphp
                         <div class="position-relative overflow-hidden rounded mb-4">
-                            <img src="{{ Storage::url($latestTip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt="">
+                            <img src="{{ Storage::url($latestTip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt="{{ $latestTip->judul }}" style="object-fit: cover;">
                             <div class="d-flex justify-content-center px-4 position-absolute flex-wrap" style="bottom: 10px; left: 0;">
                                 <a href="#" class="text-white me-3 link-hover"><i class="fa fa-clock"></i> 06 minute read</a>
-                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-eye"></i> 3.5k Views</a>
-                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-comment-dots"></i> 05 Comment</a>
-                                <a href="#" class="text-white link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>
                             </div>
                         </div>
                         <div class="border-bottom py-3">
@@ -57,14 +54,12 @@
                             @foreach ($tips as $tip)
                                 <div class="col-12">
                                     <div class="rounded overflow-hidden mb-3">
-                                        <img src="{{ Storage::url($tip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt="">
+                                        <img src="{{ Storage::url($tip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt = "{{ $tip->judul }}" style="object-fit: cover;">
+
                                     </div>
                                     <div class="d-flex flex-column mb-3">
                                         <a href="#" class="h4 mb-2">{{ $tip->judul }}</a>
-                                        <p class="fs-5 mb-0">{{ $tip->deskripsi }}</p>
-                                        <p class="fs-5 mb-0"><i class="fa fa-clock"></i> 06 minute read</p>
-                                        <p class="fs-5 mb-0"><i class="fa fa-eye"></i> 3.5k Views</p>
-                                    </div>
+                                 </div>
                                 </div>
                             @endforeach
                         </div>
@@ -75,6 +70,38 @@
     </div>
     <!-- Latest News End -->
     <!-- Main Post Section End -->
+
+    <!-- Latest News Start -->
+    <div class="container-fluid latest-news py-5 h-100">
+        <div class="container py-5">
+            <h2 class="mb-4">Latest Article</h2>
+            <div class="latest-news-carousel owl-carousel">
+                @foreach ($tips as $tip)
+                <div class="latest-news-item">
+                    <div class="bg-light rounded">
+                        <div class="rounded-top overflow-hidden">
+                            <img src="{{ Storage::url($tip->gambar) }}" class="img-zoomin img-fluid rounded-top" alt="{{ $tip->judul }}"  style="object-fit: cover;">
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <a href="#" class="h4">{{ $tip->judul }}</a>
+                            <br>
+                            <div class="d-flex justify-content-between">
+                                <!-- Tampilkan nama penulis jika ada -->
+                                @if ($tip->author)
+                                    <a href="#" class="small text-body link-hover">by {{ $tip->author->name }}</a>
+                                @else
+                                    <span class="small text-body">Penulis tidak tersedia</span>
+                                @endif
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> {{ $tip->created_at->format('M d, Y') }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Latest News End -->
 
     <!-- Footer Start -->
     <x-footer></x-footer>
@@ -119,41 +146,9 @@
                     }
                 }
             });
-
-            $(".whats-carousel").owlCarousel({
-                autoplay: true,
-                smartSpeed: 2000,
-                center: false,
-                dots: true,
-                loop: true,
-                margin: 25,
-                nav: true,
-                navText: [
-                    '<i class="bi bi-arrow-left"></i>',
-                    '<i class="bi bi-arrow-right"></i>'
-                ],
-                responsiveClass: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    576: {
-                        items: 1
-                    },
-                    768: {
-                        items: 2
-                    },
-                    992: {
-                        items: 2
-                    },
-                    1200: {
-                        items: 2
-                    }
-                }
-            });
         });
     </script>
-    
+
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>

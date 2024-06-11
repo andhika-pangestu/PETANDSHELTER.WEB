@@ -1,20 +1,25 @@
-<?php 
+<?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tips;
-use Illuminate\Http\Request; // Tambahkan ini
-use Illuminate\Support\Facades\Storage; // Tambahkan ini jika Anda menggunakan Storage
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
-class TipsController extends Controller {
+class TipsController extends Controller
+{
     // Method untuk halaman admin
-    public function index(){
+    public function index()
+    {
         $tips = Tips::orderBy('created_at', 'desc')->get();
         return view('admin.tips', compact('tips'));
     }
 
     // Method untuk halaman publik
-    public function showPublic(){
+    public function showPublic()
+    {
         $tips = Tips::orderBy('created_at', 'desc')->get();
         return view('tips', compact('tips'));
     }
@@ -28,13 +33,15 @@ class TipsController extends Controller {
             'tanggal' => 'required|date'
         ]);
 
-        $path = $request->file('gambar')->store('public/images');
+        // Dapatkan id pengguna yang sedang masuk
+        $userId = Auth::id();
 
         Tips::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'gambar' => $path,
+            'gambar' => $request->file('gambar')->store('public/images'),
             'tanggal' => $request->tanggal,
+            'user_id' => $userId,
         ]);
 
         return redirect()->route('admin.tips')->with('success', 'Postingan berhasil ditambahkan.');
