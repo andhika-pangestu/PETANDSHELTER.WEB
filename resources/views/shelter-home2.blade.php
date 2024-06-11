@@ -16,7 +16,7 @@
 
     </head>
         {{-- NAVBAR --}}
-        <x-navbar></x-navbar>
+        <x-navigation></x-navigation>
             {{-- HERO --}}
     <section>
         <div class="container col-xxl-8 px-5 py-5 pt-0 mt-0" >

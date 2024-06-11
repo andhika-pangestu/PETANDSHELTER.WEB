@@ -20,6 +20,7 @@
     <div class="card-header">
         <h2>Edit User Details</h2>
     </div>
+    tes tes
     <div class="card-body">
         <form action="{{ route('admin.user.update', $user->id) }}" method="POST">
             @csrf

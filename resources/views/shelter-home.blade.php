@@ -1,5 +1,5 @@
 @include('layouts.head')
-@include('layouts.navbar')
+<x-navigation></x-navigation>
 
 <div class="container col-xxl-8 px-5 py-5 pt-0 mt-0" >
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5 mt-5 pt-0" >

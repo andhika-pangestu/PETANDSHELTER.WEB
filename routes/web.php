@@ -10,9 +10,13 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TipsController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
+
+use App\Http\Controllers\RescueFormController;
+
 use App\Http\Controllers\AdopsiController;
 use App\Http\Controllers\RescueFormController;
 use App\Http\Controllers\ShelterViewController;
+
 
 
 // Halaman Umum
@@ -74,6 +78,7 @@ Route::get('/donasi', function () {
 });
 
 Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
+
 
 // Rescue Form Routes
 Route::get('/rescue', [RescueFormController::class, 'create'])->name('rescue.create');
@@ -146,6 +151,9 @@ Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(fun
     Route::post('adopsi/{adopsi}/reject', [AdopsiController::class, 'reject'])->name('adopsi.reject');
     Route::post('adopsi/{adopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
     Route::post('adopsi/{adopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
+    Route::get('approved-adopsi', [AdopsiController::class, 'showApprovedAdopsi'])->name('approved_adopsi.index');
+    Route::post('approved-adopsi/{approvedAdopsi}/teradopsi', [AdopsiController::class, 'teradopsi'])->name('adopsi.teradopsi');
+    Route::post('approved-adopsi/{approvedAdopsi}/cancel', [AdopsiController::class, 'cancel'])->name('adopsi.cancel');
 });
 
 // List Adopsi Routes
@@ -161,3 +169,4 @@ require __DIR__.'/auth.php';
 
 //show shelter
 Route::get('/shelter', [ShelterViewController::class, 'showShelterData']);
+

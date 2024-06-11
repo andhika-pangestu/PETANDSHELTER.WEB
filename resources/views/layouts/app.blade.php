@@ -15,8 +15,6 @@
     
     <body class="font-sans antialiased">
         <div class="min-h-screen">
-            @include('layouts.navbar')
-
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">

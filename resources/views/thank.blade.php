@@ -12,7 +12,7 @@
 </head>
 <body>
 {{-- navbar --}}
-<x-navbar></x-navbar>
+<x-navigation></x-navigation>
 
 <div class="container text-center mt-5">
     <h1>Terima Kasih!</h1>

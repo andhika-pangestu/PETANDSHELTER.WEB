@@ -22,6 +22,7 @@ class RescueFormController extends Controller
     {
         // Validate the request data
         $request->validate([
+
             'namaHewan' => 'required | string  ',
             'bbHewan' => 'required | numeric | min:1  ',
             'jenisHewan' => 'required | string ',
@@ -40,6 +41,7 @@ class RescueFormController extends Controller
         // Handle the file uploads
         $fotoHewanPath = $request->file('fotoHewan')->store('uploads', 'public');
         $fotoLokasiPath = $request->file('fotoLokasi')->store('uploads', 'public');
+
 
 
         $rescue = new Rescue;

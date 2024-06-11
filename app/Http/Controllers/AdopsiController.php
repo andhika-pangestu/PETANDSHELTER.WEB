@@ -1,12 +1,22 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Adopsi;
 use App\Models\Hewan;
+use App\Models\Adopsi;
+use Illuminate\Http\Request;
+use App\Models\ApprovedAdopsi;
+use Illuminate\Support\Facades\DB;
 
 class AdopsiController extends Controller
 {
+    public function index()
+    {
+        $adopsi = Adopsi::whereHas('hewan', function ($query) {
+            $query->where('shelter_id', auth()->user()->shelter->id);
+        })->where('status', 'pending')->get();
+
+        return view('mitra.adopsi.index', compact('adopsi'));
+    }
     public function create(Hewan $hewan)
     {
         return view('adopsi.create', compact('hewan'));
@@ -35,7 +45,7 @@ class AdopsiController extends Controller
 
         Adopsi::create([
             'hewan_id' => $hewan->id,
-            'user_id' => auth()->id(),
+            'user_id' => auth()->user()->id, // Assuming the user is authenticated
             'nama_lengkap' => $request->nama_lengkap,
             'email' => $request->email,
             'alamat' => $request->alamat,
@@ -57,44 +67,64 @@ class AdopsiController extends Controller
 
         return redirect()->route('thank')->with('success', 'Permohonan adopsi berhasil dikirim.');
     }
-
-    public function index()
-    {
-        $adopsi = Adopsi::whereHas('hewan', function ($query) {
-            $query->where('shelter_id', auth()->user()->shelter->id);
-        })->get();
-
-        return view('mitra.adopsi.index', compact('adopsi'));
-    }
-
     public function approve(Adopsi $adopsi)
     {
+        // Update status adopsi
         $adopsi->update(['status' => 'approved']);
-        $adopsi->hewan->update(['status' => 'booking']);
 
+        // Call stored procedure to update hewan status to 'booking'
+        DB::statement('CALL UpdateHewanStatus(?, ?)', [$adopsi->hewan_id, 'booking']);
+
+        // Insert approved adopsi into approved_adopsi table
+        ApprovedAdopsi::create([
+            'hewan_id' => $adopsi->hewan_id,
+            'user_id' => $adopsi->user_id,
+            'nama_lengkap' => $adopsi->nama_lengkap,
+            'email' => $adopsi->email,
+            'alamat' => $adopsi->alamat,
+            'nomor_whatsapp' => $adopsi->nomor_whatsapp,
+        ]);
+
+        // Delete original adopsi request
+        $adopsi->delete();
+
+        // Redirect to WhatsApp link
         return redirect($this->createWhatsappLink($adopsi, 'approved'));
     }
 
     public function reject(Adopsi $adopsi)
     {
+        // Update status adopsi
         $adopsi->update(['status' => 'rejected']);
 
+        // Call stored procedure to update hewan status to 'tersedia'
+        DB::statement('CALL UpdateHewanStatus(?, ?)', [$adopsi->hewan_id, 'tersedia']);
+
+        // Redirect to WhatsApp link
         return redirect($this->createWhatsappLink($adopsi, 'rejected'));
     }
 
-    public function teradopsi(Adopsi $adopsi)
+    public function teradopsi(ApprovedAdopsi $approvedAdopsi)
     {
-        $adopsi->update(['status' => 'teradopsi']);
-        $adopsi->hewan->update(['status' => 'teradopsi']);
+        // Delete approved adopsi
+        $approvedAdopsi->delete();
 
-        return redirect($this->createWhatsappLink($adopsi, 'teradopsi'));
+        // Call stored procedure to update hewan status to 'teradopsi'
+        DB::statement('CALL UpdateHewanStatus(?, ?)', [$approvedAdopsi->hewan_id, 'teradopsi']);
+
+        // Redirect to WhatsApp link
+        return redirect($this->createWhatsappLink($approvedAdopsi, 'teradopsi'));
     }
 
-    public function cancel(Adopsi $adopsi)
+    public function cancel(ApprovedAdopsi $approvedAdopsi)
     {
-        $adopsi->update(['status' => 'pending']);
-        $adopsi->hewan->update(['status' => 'tersedia']);
+        // Delete approved adopsi
+        $approvedAdopsi->delete();
 
+        // Call stored procedure to update hewan status to 'tersedia'
+        DB::statement('CALL UpdateHewanStatus(?, ?)', [$approvedAdopsi->hewan_id, 'tersedia']);
+
+        // Redirect to adopsi index with success message
         return redirect()->route('mitra.adopsi.index')->with('success', 'Adopsi dibatalkan, status hewan kembali tersedia.');
     }
 
@@ -111,14 +141,20 @@ class AdopsiController extends Controller
             case 'teradopsi':
                 $message = "Hewan adopsi Anda telah diambil. Terima kasih telah mengadopsi!";
                 break;
-            case 'canceled':
-                $message = "Permohonan adopsi Anda telah dibatalkan.";
-                break;
         }
 
         $phone = $adopsi->nomor_whatsapp;
         $encodedMessage = urlencode($message);
 
         return "https://wa.me/{$phone}?text={$encodedMessage}";
+    }
+
+    public function showApprovedAdopsi()
+    {
+        $approvedAdopsi = ApprovedAdopsi::whereHas('hewan', function ($query) {
+            $query->where('shelter_id', auth()->user()->shelter->id);
+        })->get();
+
+        return view('mitra.adopsi.approved', compact('approvedAdopsi'));
     }
 }
