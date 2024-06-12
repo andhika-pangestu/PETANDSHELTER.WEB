@@ -11,16 +11,7 @@ class Shelter extends Model
 
     protected $table = 'shelter';
 
-    protected $fillable = [
-        'user_id',
-        'foto',
-        'nama_shelter',
-        'alamat_jalan',
-        'kota',
-        'jam_buka',
-        'hari_buka',
-        'nomor_telepon',
-    ];
+    protected $fillable = ['user_id', 'foto', 'nama_shelter', 'alamat_jalan', 'kota', 'jam_buka', 'hari_buka', 'nomor_telepon'];
 
     public function user()
     {

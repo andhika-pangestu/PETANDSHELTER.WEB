@@ -1,5 +1,6 @@
 <x-app-layout>
 <x-slot name="acara">
+  @include('navigation')
 {{-- section1 --}}
 <div class="container col-xxl-10 px-4 py-5">
 
@@ -31,9 +32,7 @@
                   <p class="card-text small">
                     <i class="fa-solid fa-location-dot fa-flip"></i> {{ $acara->first()->lokasi }}
                   </p>
-                  <div class="d-md-flex justify-content-md-end">
-                    <a href="#" class="btn btn-primary text-white">Saya Akan Hadir</a>
-                  </div>
+
                 </div>
               </div>
             </div>
@@ -68,9 +67,6 @@
                   <p class="card-text small">
                     <i class="fa-solid fa-location-dot fa-flip"></i> {{ $item->lokasi }}
                   </p>
-                  <div class="d-md-flex justify-content-md-end">
-                    <a href="#" class="btn btn-primary justify-content-md-end text-white">Saya Akan Hadir</a>
-                  </div>
                 </div>
               </div>
             </div>

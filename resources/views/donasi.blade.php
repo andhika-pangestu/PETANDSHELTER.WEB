@@ -7,6 +7,8 @@
         <title>donation</title>
         <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="css/style.css">
@@ -14,7 +16,7 @@
     </head>
     </head>
 <body>
-    <x-navbar></x-navbar>
+    <x-navigation></x-navigation>
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-12 col-lg-4"> <!-- Kolom yang berisi gambar -->

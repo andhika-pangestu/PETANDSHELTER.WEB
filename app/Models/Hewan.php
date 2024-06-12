@@ -17,6 +17,8 @@ class Hewan extends Model
         'jenis_hewan',
         'foto',
         'deskripsi',
+        'status', // Tambahkan ini
+        'kesehatan', // Tambahkan ini
     ];
 
     public function shelter()
@@ -24,4 +26,3 @@ class Hewan extends Model
         return $this->belongsTo(Shelter::class);
     }
 }
-
