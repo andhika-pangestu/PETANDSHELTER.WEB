@@ -71,83 +71,97 @@
     </div>
     <!-- Main Post Section End -->
 
-    <!-- Latest News Start -->
-    <div class="container-fluid latest-news py-5 h-100">
-        <div class="container py-5">
-            <h2 class="mb-4">Latest Article</h2>
-            <div class="latest-news-carousel owl-carousel">
-                @foreach ($tips as $tip)
-                    <div class="latest-news-item">
-                        <div class="bg-light rounded">
-                            <div class="rounded-top overflow-hidden">
-                                <img src="{{ Storage::url($tip->gambar) }}" class="img-zoomin img-fluid rounded-top" alt="{{ $tip->judul }}" style="object-fit: cover;">
-                            </div>
-                            <div class="d-flex flex-column p-4">
-                                <a href="#" class="h4">{{ $tip->judul }}</a>
-                                <br>
-                                <div class="d-flex justify-content-between">
-                                    <!-- Tampilkan nama penulis jika ada -->
-                                    @if ($tip->author)
-                                        <a href="#" class="small text-body link-hover">by {{ $tip->author->name }}</a>
-                                    @else
-                                        <span class="small text-body">Penulis tidak tersedia</span>
-                                    @endif
-                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> {{ $tip->created_at->format('M d, Y') }}</small>
-                                </div>
+   <!-- Latest News Start -->
+<div class="container-fluid latest-news py-5 h-100">
+    <div class="container py-5 h-100">
+        <h2 class="mb-4">Latest Article</h2>
+        <div class="latest-news-carousel owl-carousel h-100">
+            @foreach ($tips as $tip)
+                <div class="latest-news-item h-100 d-flex">
+                    <div class="bg-light rounded h-100 d-flex flex-column w-100">
+                        <div class="rounded-top overflow-hidden">
+                            <img src="{{ Storage::url($tip->gambar) }}" class="img-zoomin img-fluid rounded-top" alt="{{ $tip->judul }}" style="object-fit: cover; width: 100%; height: auto;">
+                        </div>
+                        <div class="d-flex flex-column p-4 flex-grow-1">
+                            <!-- Tambahkan data-id untuk mengidentifikasi judul yang diklik -->
+                            <a href="#" class="h4 tip-title" data-id="{{ $tip->id }}">{{ $tip->judul }}</a>
+                            <br>
+                            <div class="d-flex justify-content-between mt-auto">
+                                @if ($tip->author)
+                                    <a href="#" class="small text-body link-hover">by {{ $tip->author->name }}</a>
+                                @else
+                                    <span class="small text-body">Penulis tidak tersedia</span>
+                                @endif
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> {{ $tip->created_at->format('M d, Y') }}</small>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
+</div>
+
+    
     <!-- Latest News End -->
 
     <!-- Footer Start -->
     <x-footer></x-footer>
     <!-- Footer End -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".latest-news-carousel").owlCarousel({
-                autoplay: true,
-                smartSpeed: 2000,
-                center: false,
-                dots: true,
-                loop: true,
-                margin: 25,
-                nav: true,
-                navText: [
-                    '<i class="bi bi-arrow-left"></i>',
-                    '<i class="bi bi-arrow-right"></i>'
-                ],
-                responsiveClass: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    576: {
-                        items: 1
-                    },
-                    768: {
-                        items: 2
-                    },
-                    992: {
-                        items: 3
-                    },
-                    1200: {
-                        items: 4
-                    }
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".latest-news-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 2000,
+            center: false,
+            dots: true,
+            loop: true,
+            margin: 25,
+            nav: true,
+            navText: [
+                '<i class="bi bi-arrow-left"></i>',
+                '<i class="bi bi-arrow-right"></i>'
+            ],
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                576: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                992: {
+                    items: 3
+                },
+                1200: {
+                    items: 4
                 }
-            });
+            }
         });
-    </script>
+
+                $(".judul-artikel").click(function(){
+            // Ambil judul artikel yang diklik
+            var judulArtikel = $(this).text();
+
+            // Ambil deskripsi artikel yang sesuai dengan judul yang diklik
+            var deskripsiArtikel = $(".deskripsi-artikel[data-deskripsi='" + judulArtikel + "']").text();
+
+            // Gunakan deskripsi artikel yang sudah diambil
+            console.log(deskripsiArtikel);
+        });
+
+    });
+</script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

@@ -31,11 +31,12 @@ class TipsController extends Controller
         ]);
 
         $userId = Auth::id();
+        $path = $request->file('gambar')->store('public/images');
 
         Tips::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'gambar' => $request->file('gambar')->store('public/images'),
+            'gambar' => $path,
             'tanggal' => $request->tanggal,
             'user_id' => $userId,
         ]);
@@ -61,6 +62,9 @@ class TipsController extends Controller
         }
 
         $tips->update($request->except(['gambar']));
+        if (isset($path)) {
+            $tips->gambar = $path;
+        }
 
         return redirect()->route('admin.tips')->with('success', 'Postingan berhasil diupdate.');
     }
