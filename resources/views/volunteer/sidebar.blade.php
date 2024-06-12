@@ -3,7 +3,7 @@
         <i class="bx bx-menu menu-icon"></i>
         <span class="logo-name">Dashboard</span>
     </div>
-    <div class="sidebar">
+    <div class="sidebar" style="z-index: 1000;"> 
         <div class="logo">
             <i class="bx bx-menu menu-icon"></i>
             <span class="logo-name">Pet and Shelter</span>
@@ -11,7 +11,7 @@
         <div class="sidebar-content">
             <ul class="lists">
                 <li class="list">
-                    <a href="#" class="nav-link">
+                    <a href="/volunteer" class="nav-link">
                         <i class="bx bx-home-alt icon"></i>
                         <span class="link">Dashboard</span>
                     </a>

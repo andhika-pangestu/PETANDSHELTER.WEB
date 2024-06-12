@@ -131,30 +131,5 @@
         </tbody>
     </table>
 
-    <h2>Top 10 Donasi Terbesar</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Jumlah</th>
-                <th>Invoice</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($topDonations as $donation)
-                <tr>
-                    <td>{{ $donation->name }}</td>
-                    <td>{{ $donation->email }}</td>
-                    <td>{{ number_format($donation->amount, 2) }}</td>
-                    <td>{{ $donation->invoice }}</td>
-                    <td>{{ $donation->status }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-
 </body>
 </html>

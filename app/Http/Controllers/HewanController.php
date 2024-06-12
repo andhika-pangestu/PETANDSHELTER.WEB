@@ -28,6 +28,7 @@ class HewanController extends Controller
             'deskripsi' => 'required|string',
             'status' => 'required|in:tersedia,booking,teradopsi',
             'kesehatan' => 'required|in:sehat,cacat,rawat',
+
         ]);
     
         $hewan = new Hewan;

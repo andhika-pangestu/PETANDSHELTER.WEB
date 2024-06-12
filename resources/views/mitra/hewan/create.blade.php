@@ -18,6 +18,22 @@
             top: 0;
             z-index: 1000;
         }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        @include('mitra.sidebar')
+    </div>
+    <div class="sidebar">
+        @include('mitra.sidebar')
+    </div>
+    <h1>{{ isset($hewan) ? 'Edit' : 'Tambah' }} Hewan</h1>
 
 
     </style>

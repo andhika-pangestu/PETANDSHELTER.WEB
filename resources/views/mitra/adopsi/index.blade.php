@@ -37,6 +37,9 @@
     @include('layouts.head')
 
 <div class="container">
+    <div class="sidebar">
+        @include('mitra.sidebar')
+    </div>
     <h1>Daftar Permohonan Adopsi yang Menunggu Persetujuan</h1>
 
     @if (session('success'))

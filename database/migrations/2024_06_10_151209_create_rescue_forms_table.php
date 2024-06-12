@@ -26,6 +26,7 @@ class CreateRescueForm extends Migration
             $table->string('usiaPelapor');
             $table->string('nomorTelp');
             $table->string('jenisKelamin');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
