@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User; // Import model User
+use App\Models\User;
 
 class Tips extends Model
 {
@@ -12,10 +12,9 @@ class Tips extends Model
     protected $table = 'tips';
 
     protected $fillable = [
-        'judul', 'deskripsi', 'gambar', 'tanggal',
+        'judul', 'deskripsi', 'gambar', 'tanggal', 'user_id',
     ];
 
-    // Definisikan relasi dengan pengguna (user)
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');

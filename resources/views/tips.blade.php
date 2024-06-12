@@ -44,6 +44,7 @@
                             <a href="#" class="display-4 text-dark mb-0 link-hover">{{ $latestTip->judul }}</a>
                         </div>
                         <p class="mt-3 mb-4">{{ $latestTip->deskripsi }}</p>
+                        <p class="text-muted">by {{ $latestTip->author->name ?? 'Penulis tidak tersedia' }}</p>
                     @else
                         <p class="text-center">Tidak ada tips yang tersedia.</p>
                     @endif
@@ -54,12 +55,12 @@
                             @foreach ($tips as $tip)
                                 <div class="col-12">
                                     <div class="rounded overflow-hidden mb-3">
-                                        <img src="{{ Storage::url($tip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt = "{{ $tip->judul }}" style="object-fit: cover;">
-
+                                        <img src="{{ Storage::url($tip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt="{{ $tip->judul }}" style="object-fit: cover;">
                                     </div>
                                     <div class="d-flex flex-column mb-3">
                                         <a href="#" class="h4 mb-2">{{ $tip->judul }}</a>
-                                 </div>
+                                        <p class="text-muted">by {{ $tip->author->name ?? 'Penulis tidak tersedia' }}</p>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -68,7 +69,6 @@
             </div>
         </div>
     </div>
-    <!-- Latest News End -->
     <!-- Main Post Section End -->
 
     <!-- Latest News Start -->
@@ -77,27 +77,27 @@
             <h2 class="mb-4">Latest Article</h2>
             <div class="latest-news-carousel owl-carousel">
                 @foreach ($tips as $tip)
-                <div class="latest-news-item">
-                    <div class="bg-light rounded">
-                        <div class="rounded-top overflow-hidden">
-                            <img src="{{ Storage::url($tip->gambar) }}" class="img-zoomin img-fluid rounded-top" alt="{{ $tip->judul }}"  style="object-fit: cover;">
-                        </div>
-                        <div class="d-flex flex-column p-4">
-                            <a href="#" class="h4">{{ $tip->judul }}</a>
-                            <br>
-                            <div class="d-flex justify-content-between">
-                                <!-- Tampilkan nama penulis jika ada -->
-                                @if ($tip->author)
-                                    <a href="#" class="small text-body link-hover">by {{ $tip->author->name }}</a>
-                                @else
-                                    <span class="small text-body">Penulis tidak tersedia</span>
-                                @endif
-                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> {{ $tip->created_at->format('M d, Y') }}</small>
+                    <div class="latest-news-item">
+                        <div class="bg-light rounded">
+                            <div class="rounded-top overflow-hidden">
+                                <img src="{{ Storage::url($tip->gambar) }}" class="img-zoomin img-fluid rounded-top" alt="{{ $tip->judul }}" style="object-fit: cover;">
+                            </div>
+                            <div class="d-flex flex-column p-4">
+                                <a href="#" class="h4">{{ $tip->judul }}</a>
+                                <br>
+                                <div class="d-flex justify-content-between">
+                                    <!-- Tampilkan nama penulis jika ada -->
+                                    @if ($tip->author)
+                                        <a href="#" class="small text-body link-hover">by {{ $tip->author->name }}</a>
+                                    @else
+                                        <span class="small text-body">Penulis tidak tersedia</span>
+                                    @endif
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> {{ $tip->created_at->format('M d, Y') }}</small>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
             </div>
         </div>
     </div>

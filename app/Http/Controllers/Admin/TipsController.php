@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -10,17 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class TipsController extends Controller
 {
-    // Method untuk halaman admin
     public function index()
     {
-        $tips = Tips::orderBy('created_at', 'desc')->get();
+        $tips = Tips::with('author')->orderBy('created_at', 'desc')->get();
         return view('admin.tips', compact('tips'));
     }
 
-    // Method untuk halaman publik
     public function showPublic()
     {
-        $tips = Tips::orderBy('created_at', 'desc')->get();
+        $tips = Tips::with('author')->orderBy('created_at', 'desc')->get();
         return view('tips', compact('tips'));
     }
 
@@ -33,7 +30,6 @@ class TipsController extends Controller
             'tanggal' => 'required|date'
         ]);
 
-        // Dapatkan id pengguna yang sedang masuk
         $userId = Auth::id();
 
         Tips::create([
@@ -57,7 +53,6 @@ class TipsController extends Controller
         ]);
 
         if ($request->hasFile('gambar')) {
-            // Delete the old image
             if ($tips->gambar) {
                 Storage::delete($tips->gambar);
             }
