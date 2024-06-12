@@ -27,7 +27,7 @@ class HewanController extends Controller
             'foto' => 'nullable|image',
             'deskripsi' => 'required|string',
             'status' => 'required|in:tersedia,booking,teradopsi',
-            'kesehatan' => 'required|in:sehat,sakit',
+            'kesehatan' => 'required|in:sehat,sakit,dalam perawatan',
         ]);
     
         $hewan = new Hewan;
@@ -60,7 +60,7 @@ class HewanController extends Controller
             'foto' => 'nullable|image',
             'deskripsi' => 'required|string',
             'status' => 'required|in:tersedia,booking,teradopsi',
-            'kesehatan' => 'required|in:sehat,sakit',
+            'kesehatan' => 'required|in:sehat,sakit,dalam perawatan'
         ]);
     
         if ($request->hasFile('foto')) {

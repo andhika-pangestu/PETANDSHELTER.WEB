@@ -79,6 +79,7 @@
                     <select class="form-control" name="kesehatan" id="kesehatan" required>
                         <option value="sehat" {{ isset($hewan) && $hewan->kesehatan == 'sehat' ? 'selected' : '' }}>Sehat</option>
                         <option value="sakit" {{ isset($hewan) && $hewan->kesehatan == 'sakit' ? 'selected' : '' }}>Sakit</option>
+                        <option value="dalam perawatan" {{ isset($hewan) && $hewan->kesehatan == 'dalam perawatan' ? 'selected' : '' }}>dalam perawatan</option>
                     </select>
                 </div>
 
