@@ -131,30 +131,38 @@
         </tbody>
     </table>
 
-    <h2>Top 10 Donasi Terbesar</h2>
-    <table class="table">
+    <h1>Top 10 Donations</h1>
+    <table border="1">
         <thead>
             <tr>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Jumlah</th>
+                <th>Rank</th>
                 <th>Invoice</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Amount</th>
+                <th>Note</th>
                 <th>Status</th>
+                <th>Snap Token</th>
+                <th>Created At</th>
+                <th>Updated At</th>
             </tr>
         </thead>
         <tbody>
             @foreach($topDonations as $donation)
-                <tr>
-                    <td>{{ $donation->name }}</td>
-                    <td>{{ $donation->email }}</td>
-                    <td>{{ number_format($donation->amount, 2) }}</td>
-                    <td>{{ $donation->invoice }}</td>
-                    <td>{{ $donation->status }}</td>
-                </tr>
+            <tr>
+                <td>{{ $donation->rank }}</td>
+                <td>{{ $donation->invoice }}</td>
+                <td>{{ $donation->name }}</td>
+                <td>{{ $donation->email }}</td>
+                <td>{{ $donation->amount }}</td>
+                <td>{{ $donation->note }}</td>
+                <td>{{ $donation->status }}</td>
+                <td>{{ $donation->snap_token }}</td>
+                <td>{{ $donation->created_at }}</td>
+                <td>{{ $donation->updated_at }}</td>
+            </tr>
             @endforeach
         </tbody>
     </table>
-</div>
-
 </body>
 </html>

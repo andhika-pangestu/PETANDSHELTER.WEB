@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="{{ route('mitra.shelter.index') }}" class="nav-link">
+                    <a href="{{ url('/mitra/approved-adopsi') }}" class="nav-link">
                         <i class="fa-solid fa-user-check icon"></i>
                         <span class="link">Cek Status</span>
                     </a>
