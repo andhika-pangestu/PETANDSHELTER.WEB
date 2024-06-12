@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +13,7 @@
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 @include('admin.sidebar')
 
@@ -22,8 +26,9 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <form action="{{ route('admin.tips.store') }}" method="POST" enctype="multipart/form-data">
+            <form id="form" action="{{ route('admin.tips.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" id="method" name="_method" value="POST">
                 <div class="mb-3">
                     <label for="judul" class="form-label">Judul</label>
                     <input type="text" class="form-control" id="judul" name="judul" required>
@@ -68,7 +73,7 @@
 </div>
 
 <script>
-    function edit Tips(tips) {
+    function editTips(tips) {
         document.getElementById('judul').value = tips.judul;
         document.getElementById('deskripsi').value = tips.deskripsi;
         document.getElementById('tanggal').value = tips.tanggal;
@@ -76,4 +81,5 @@
         document.getElementById('method').value = 'PUT';
     }
 </script>
-
+</body>
+</html>

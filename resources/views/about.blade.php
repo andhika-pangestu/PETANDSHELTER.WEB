@@ -71,7 +71,7 @@
       <div class="container">
         <header class="section-header">
           <h3>Why choose us?</h3>
-          <p>Apa saja yang sudah kami dapatkan</p>
+          <p>Apa saja yang sudah kami lakukan</p>
         </header>
 
         <div class="row row-eq-height justify-content-center">
@@ -79,8 +79,8 @@
           <div class="col-lg-4 mb-4">
             <div class="card wow bounceInUp">
               <div class="card-body">
-                <h5 class="card-title">Pencapaian</h5>
-                <p class="card-text">Deleniti optio et nisi dolorem debitis. Aliquam nobis est temporibus sunt ab inventore officiis aut voluptatibus.</p>
+                <h5 class="card-title">Memperluas Jangkauan Adopsi</h5>
+                <p class="card-text">Membangun kemitraan dengan organisasi dan komunitas terkait hewan untuk memperluas jangkauan adopsi dan mendukung keberlanjutan program adopsi.</p>
               </div>
             </div>
           </div>
@@ -88,8 +88,8 @@
           <div class="col-lg-4 mb-4">
             <div class="card wow bounceInUp">
               <div class="card-body">
-                <h5 class="card-title">Pencapaian</h5>
-                <p class="card-text">Voluptates nihil et quis omnis et eaque omnis sint aut. Ducimus dolorum aspernatur.</p>
+                <h5 class="card-title">Menyediakan Web Informatif</h5>
+                <p class="card-text">Menyediakan sumber daya pendidikan tentang pentingnya adopsi hewan melalui artikel.</p>
               </div>
             </div>
           </div>
@@ -97,8 +97,8 @@
           <div class="col-lg-4 mb-4">
             <div class="card wow bounceInUp">
               <div class="card-body">
-                <h5 class="card-title">Pencapaian</h5>
-                <p class="card-text">Autem quod nesciunt eos ea aut amet laboriosam ab. Eos quis porro in non nemo ex. </p>
+                <h5 class="card-title">Melakukan Peninjauan Inovasi Baru</h5>
+                <p class="card-text">Memantau dan mengevaluasi dampak program adopsi serta mencari inovasi baru untuk meningkatkan efektivitas.</p>
               </div>
             </div>
           </div>
@@ -141,7 +141,6 @@
 
         <header class="section-header">
           <h3>Tujuan Kami</h3>
-          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
         </header>
 
         <div class="row">
@@ -208,14 +207,13 @@
       <div class="container">
         <div class="section-header">
           <h3>Stakeholders</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="member">
-              <img src="img/catt.jpg" class="img-fluid" alt="">
+              <img src="img/amandaa.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Amanda Jayanti Mulyana</h4>
@@ -233,11 +231,11 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="member">
-              <img src="img/catt.jpg" class="img-fluid" alt="">
+              <img src="img/Bruakakkaka.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Andhika Pangestu</h4>
-                  <span>Product Manager</span>
+                  <span>Polisi Militer</span>
                   <div class="social">
                     <a href=""><i class="fa fa-twitter"></i></a>
                     <a href=""><i class="fa fa-facebook"></i></a>
@@ -251,7 +249,7 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="member">
-              <img src="img/catt.jpg" class="img-fluid" alt="">
+              <img src="img/mika.jpeg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Mikacinta Gustina Amalan Toyibah</h4>
@@ -269,7 +267,7 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
             <div class="member">
-              <img src="img/catt.jpg" class="img-fluid" alt="">
+              <img src="img/yaALLAAAH.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Rully Bagja Abdurrahman Assides</h4>

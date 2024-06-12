@@ -11,11 +11,13 @@ use App\Http\Controllers\Admin\TipsController;
 use App\Http\Controllers\HewanController;
 use App\Http\Controllers\ListAdopsiController;
 
+
 use App\Http\Controllers\RescueFormController;
 
 use App\Http\Controllers\AdopsiController;
 
 use App\Http\Controllers\ShelterViewController;
+
 
 // Halaman Umum
 Route::view('/welcome2', 'welcome2');
@@ -33,8 +35,10 @@ Route::view('/shelter', 'shelter-home')->name('shelter');
 // Employees
 Route::get('/employees', [EmployeeController::class, 'index']);
 
+
 // Donation Routes
 Route::post('/finish', function () {
+
     return redirect()->route('welcome');
 })->name('donation.finish');
 Route::resource('/donations', DonationController::class)->only(['index', 'create', 'store']);
@@ -59,9 +63,8 @@ Route::get('/list', function () {
     return view('list');
 })->name('list');
 
-Route::get('/tips', function () {
-    return view('tips');
-})->name('tips');
+// Update route untuk halaman tips publik
+Route::get('/tips', [TipsController::class, 'showPublic'])->name('tips');
 
 Route::get('/login', function () {
     return view('login');
@@ -71,14 +74,15 @@ Route::get('/donasi', function () {
     return view('donasi');
 });
 
-Route::resource('/donations', \App\Http\Controllers\DonationController::class, ['only' => ['index', 'create', 'store']]);
 
 // Rescue Form Routes
 Route::get('/rescue', [RescueFormController::class, 'create'])->name('rescue.create');
 Route::post('/rescue', [RescueFormController::class, 'store'])->name('rescue.store');
 Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
 
+
 Route::get('/volunteer', [RescueFormController::class, 'dashboard']);
+
 
 Route::post('assignJob', [RescueFormController::class, 'assignJob'])->name('assignJob');
 Route::get('/assigned-jobs', [RescueFormController::class, 'showAssignedJobs'])->name('assigned-jobs');
@@ -163,6 +167,12 @@ Route::middleware(['auth', 'mitra'])
 Route::get('/list', [ListAdopsiController::class, 'index'])->name('list');
 Route::get('/shelter/{id}', [ListAdopsiController::class, 'show'])->name('shelter.show');
 
+
+
+Route::get('/tips/{id}', [TipsController::class, 'show']);
+// web.php
+Route::get('/tips/{id}', [TipsController::class, 'show'])->name('tips.show');
+
 // Adopsi Routes for Public
 Route::get('adopsi/{hewan}/create', [AdopsiController::class, 'create'])->name('adopsi.create');
 Route::post('adopsi/{hewan}', [AdopsiController::class, 'store'])->name('adopsi.store');
@@ -173,3 +183,4 @@ require __DIR__ . '/auth.php';
 //show shelter
 Route::get('/shelter', [ShelterViewController::class, 'showShelterData']);
 Route::get('/search', [ShelterViewController::class, 'search'])->name('search.shelters');
+

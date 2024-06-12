@@ -31,6 +31,7 @@
     </style>
 </head>
 <body>
+
     <div class="sidebar">
         @include('admin.sidebar')
     </div>
@@ -74,6 +75,7 @@
                     </div>
                     <button type="submit" class="btn btn-success-700 text-white">Simpan</button>
                 </form>
+
 
                 <div class="row mt-5">
                     @foreach ($acara as $item)
