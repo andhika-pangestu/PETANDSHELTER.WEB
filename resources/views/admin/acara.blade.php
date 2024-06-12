@@ -30,8 +30,8 @@
         }
         .card-img-top {
             width: 100%;
-            height: 0;
-            padding-top: 100%; /* 1:1 Aspect Ratio */
+            height: auto;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
         }
     </style>

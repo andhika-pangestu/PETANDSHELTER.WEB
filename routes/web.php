@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DonationController;
@@ -36,6 +37,32 @@ Route::get('/rescue', [RescueFormController::class, 'create'])->name('rescue.cre
 Route::post('/rescue', [RescueFormController::class, 'store'])->name('rescue.store');
 Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
 
+// Kalender
+Route::get('/kalender', function () {
+    $acara = Acara::orderBy('created_at', 'desc')->get();
+    return view('kalender', compact('acara'));
+})->name('kalender');
+
+// List Adopsi Routes
+Route::get('/list', [ListAdopsiController::class, 'index'])->name('list');
+Route::get('/shelter/{id}', [ListAdopsiController::class, 'show'])->name('shelter.show');
+
+// Adopsi Routes for Public
+Route::get('adopsi/{hewan}/create', [AdopsiController::class, 'create'])->name('adopsi.create');
+Route::post('adopsi/{hewan}', [AdopsiController::class, 'store'])->name('adopsi.store');
+
+// Tips
+Route::get('/tips', [TipsController::class, 'showPublic'])->name('tips.index');
+Route::get('/tips/{id}', [TipsController::class, 'show'])->name('tips.show');
+
+// Authentication Routes
+require __DIR__ . '/auth.php';
+
+// Show shelter
+Route::get('/shelter', [ShelterViewController::class, 'showShelterData']);
+Route::get('/search', [ShelterViewController::class, 'search'])->name('search.shelters');
+
+// Authentication Middleware
 Route::middleware(['auth', 'verified'])->group(function () {
     // Volunteer
     Route::middleware('volunteer')->group(function () {
@@ -86,28 +113,3 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-// Kalender
-Route::get('/kalender', function () {
-    $acara = Acara::orderBy('created_at', 'desc')->get();
-    return view('kalender', compact('acara'));
-})->name('kalender');
-
-// List Adopsi Routes
-Route::get('/list', [ListAdopsiController::class, 'index'])->name('list');
-Route::get('/shelter/{id}', [ListAdopsiController::class, 'show'])->name('shelter.show');
-
-// Adopsi Routes for Public
-Route::get('adopsi/{hewan}/create', [AdopsiController::class, 'create'])->name('adopsi.create');
-Route::post('adopsi/{hewan}', [AdopsiController::class, 'store'])->name('adopsi.store');
-
-// Authentication Routes
-require __DIR__ . '/auth.php';
-
-// Show shelter
-Route::get('/shelter', [ShelterViewController::class, 'showShelterData']);
-Route::get('/search', [ShelterViewController::class, 'search'])->name('search.shelters');
-
-// Tips
-Route::get('/tips', [TipsController::class, 'index'])->name('tips');
-Route::get('/tips/{id}', [TipsController::class, 'show'])->name('tips.show');
