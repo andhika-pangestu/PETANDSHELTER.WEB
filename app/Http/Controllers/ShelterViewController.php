@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Shelter; 
+use App\Models\Shelter;
 
 class ShelterViewController extends Controller
 {
@@ -19,7 +19,7 @@ class ShelterViewController extends Controller
     public function search(Request $request)
     {
         $searchTerm = $request->input('search');
-        
+
         if ($searchTerm) {
             $shelters = Shelter::where('nama_shelter', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('kota', 'LIKE', "%{$searchTerm}%")
@@ -28,7 +28,7 @@ class ShelterViewController extends Controller
         } else {
             $shelters = Shelter::all();
         }
-        
-        return view('shelter-home', compact('shelters','searchTerm'));
+
+        return view('shelter-home', compact('shelters', 'searchTerm'));
     }
 }

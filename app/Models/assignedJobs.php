@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 class assignedJobs extends Model
 {
     use HasFactory;
@@ -13,7 +12,6 @@ class assignedJobs extends Model
     protected $table = 'assigned_jobs';
 
     protected $fillable = ['rescue_id', 'volunteer_id', 'status'];
-
 
     public function rescue()
     {

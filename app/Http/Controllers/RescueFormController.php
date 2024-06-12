@@ -104,14 +104,14 @@ class RescueFormController extends Controller
     }
 
     public function dashboard(Request $request)
-    {$status = $request->query('status');
+    {
+        $status = $request->query('status');
         if ($status) {
             $rescues = Rescue::where('status', $status)->get();
         } else {
-            $rescues = Rescue::all();// Fetch all records from the 'rescues' table
-        } 
+            $rescues = Rescue::all(); // Fetch all records from the 'rescues' table
+        }
         return view('volunteer.dashboard', compact('rescues')); // Pass the $rescues variable to the view
-        
     }
     public function assignJob(Request $request)
     {
@@ -121,9 +121,9 @@ class RescueFormController extends Controller
         if ($existingJob) {
             return redirect()->back()->with('error', 'This job has already been taken!');
         }
-    
+
         // Create a new assigned job
-        $assignedJob = new assignedJobs;
+        $assignedJob = new assignedJobs();
         $assignedJob->rescue_id = $request->rescue_id;
         $assignedJob->volunteer_id = $user->id;
         $assignedJob->status = 'assigned';
@@ -132,7 +132,7 @@ class RescueFormController extends Controller
         $rescue = Rescue::find($request->rescue_id);
         $rescue->status = 'assigned';
         $rescue->save();
-    
+
         // Redirect back to the dashboard with a success message
         return redirect()->back()->with('success', 'Job assigned successfully!');
     }
@@ -140,7 +140,7 @@ class RescueFormController extends Controller
     {
         $user = Auth::user(); // Get the currently authenticated user
         $assignedJobs = assignedJobs::where('volunteer_id', $user->id)->get(); // Get the jobs assigned to the user
-    
+
         return view('volunteer.assigned-jobs', ['assignedJobs' => $assignedJobs]);
     }
     public function complete($id)
@@ -160,8 +160,7 @@ class RescueFormController extends Controller
             session()->flash('message', 'Failed to complete job.');
             session()->flash('alert-class', 'alert-danger');
         }
-    
+
         return redirect()->back();
     }
-
 }

@@ -42,7 +42,7 @@ class ShelterController extends Controller
             'nomor_telepon' => 'required|string|max:15',
         ]);
 
-        $shelter = new Shelter;
+        $shelter = new Shelter();
         $shelter->user_id = Auth::id();
 
         if ($request->hasFile('foto')) {
@@ -109,11 +109,8 @@ class ShelterController extends Controller
     {
         $shelterId = auth()->user()->shelter->id;
 
-        $hewanTeradopsi = DB::table('view_hewan_teradopsi')
-                            ->where('shelter_id', $shelterId)
-                            ->get();
+        $hewanTeradopsi = DB::table('view_hewan_teradopsi')->where('shelter_id', $shelterId)->get();
 
         return view('mitra.shelter.adopted_pets', compact('hewanTeradopsi'));
     }
 }
-

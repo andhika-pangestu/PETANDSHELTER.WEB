@@ -3,7 +3,7 @@
         <i class="bx bx-menu menu-icon"></i>
         <span class="logo-name">Dashboard</span>
     </div>
-    <div class="sidebar" style="z-index: 1000;"> 
+    <div class="sidebar" style="z-index: 1000;">
         <div class="logo">
             <i class="bx bx-menu menu-icon"></i>
             <span class="logo-name">Pet and Shelter</span>
@@ -16,10 +16,10 @@
                         <span class="link">Dashboard</span>
                     </a>
                 </li>
-                
+
                 <li class="list">
                     <a href="{{ route('assigned-jobs') }}" class="nav-link">
-                        <i class='bx bx-home-heart icon' ></i>
+                        <i class='bx bx-home-heart icon'></i>
                         <span class="link">Assigned Jobs</span>
                     </a>
                 </li>
@@ -33,7 +33,8 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a href="{{ route('logout') }}" class="nav-link"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bx bx-log-out icon"></i>
                         <span class="link">Logout</span>
                     </a>

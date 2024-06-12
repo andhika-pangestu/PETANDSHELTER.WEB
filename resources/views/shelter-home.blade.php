@@ -64,7 +64,8 @@
     <div class="row">
         @foreach ($shelters as $shelter)
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 py-4 d-flex justify-content-center card-container">
-                <div class="card shadow-shelter rounded-4 card-shelter text-sky-900" style="max-width: 18rem; padding:15px;">
+                <div class="card shadow-shelter rounded-4 card-shelter text-sky-900"
+                    style="max-width: 18rem; padding:15px;">
                     <img src="{{ asset('uploads/' . $shelter->foto) }}" class="card-img-top rounded" alt="..."
                         style="height: 200px; object-fit: cover; image-rendering: auto;">
                     <div class="card-body">
@@ -96,8 +97,20 @@
             <div class="col-12 col-md-10 col-lg-8 col-xl-10">
                 <h3 class="fs-6 mb-2 text-secondary fw-bold text-uppercase">Need Help?</h3>
                 <h1 class="display-3 fw-bold lh-1 mb-4">Ada apa kira kira?</h1>
-                <p class="fst-normal" style="text-align: justify;">Selamat datang di Shelter Hewan kami, di mana kami berusaha menciptakan tempat perlindungan yang aman bagi hewan-hewan yang membutuhkan. Misi kami adalah menyelamatkan, merehabilitasi, dan menempatkan kembali hewan-hewan yang ditinggalkan dan diabaikan. Kami bekerja sama dengan berbagai tempat penampungan dan organisasi penyelamatan untuk memastikan setiap hewan mendapatkan kesempatan untuk hidup yang lebih baik.
-                    <br><br> Kami percaya bahwa setiap hewan layak mendapatkan keluarga yang penuh kasih. Melalui program adopsi kami, kami dengan hati-hati mencocokkan hewan peliharaan dengan calon pemilik untuk memastikan kecocokan yang sempurna. Tujuan kami adalah membuat proses adopsi menjadi lancar dan bermanfaat, memberikan panduan dan dukungan kepada pemilik hewan peliharaan baru di setiap langkah. <br> <br>Bergabunglah dengan kami dalam misi kami untuk memberikan setiap hewan kesempatan untuk hidup yang bahagia dan sehat. Bersama-sama, kita dapat menciptakan dunia di mana setiap hewan dihargai, dicintai, dan dirawat. Jika Anda butuh bantuan atau ingin membantu, pintu kami selalu terbuka. Mari kita bekerja sama untuk membuat perubahan positif dalam kehidupan hewan-hewan yang layak ini.
+                <p class="fst-normal" style="text-align: justify;">Selamat datang di Shelter Hewan kami, di mana kami
+                    berusaha menciptakan tempat perlindungan yang aman bagi hewan-hewan yang membutuhkan. Misi kami
+                    adalah menyelamatkan, merehabilitasi, dan menempatkan kembali hewan-hewan yang ditinggalkan dan
+                    diabaikan. Kami bekerja sama dengan berbagai tempat penampungan dan organisasi penyelamatan untuk
+                    memastikan setiap hewan mendapatkan kesempatan untuk hidup yang lebih baik.
+                    <br><br> Kami percaya bahwa setiap hewan layak mendapatkan keluarga yang penuh kasih. Melalui
+                    program adopsi kami, kami dengan hati-hati mencocokkan hewan peliharaan dengan calon pemilik untuk
+                    memastikan kecocokan yang sempurna. Tujuan kami adalah membuat proses adopsi menjadi lancar dan
+                    bermanfaat, memberikan panduan dan dukungan kepada pemilik hewan peliharaan baru di setiap langkah.
+                    <br> <br>Bergabunglah dengan kami dalam misi kami untuk memberikan setiap hewan kesempatan untuk
+                    hidup yang bahagia dan sehat. Bersama-sama, kita dapat menciptakan dunia di mana setiap hewan
+                    dihargai, dicintai, dan dirawat. Jika Anda butuh bantuan atau ingin membantu, pintu kami selalu
+                    terbuka. Mari kita bekerja sama untuk membuat perubahan positif dalam kehidupan hewan-hewan yang
+                    layak ini.
 
                 </p>
             </div>

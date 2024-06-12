@@ -89,6 +89,6 @@
                 </tbody>
             </table>
         </div>
-        <script>
-            < /body> <
-            /html>
+</body>
+
+</html>

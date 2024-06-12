@@ -11,21 +11,7 @@ class rescue extends Model
 
     protected $table = 'rescues';
 
-    protected $fillable = [
-        'namaHewan',
-        'bbHewan',
-        'jenisHewan',
-        'deskripsiHewan',
-        'kondisiHewan',
-        'tglLokasiPenemuan',
-        'kondisiLingkungan',
-        'fotoHewan',
-        'fotoLokasi',
-        'namaPelapor',
-        'usiaPelapor',
-        'nomorTelp',
-        'jenisKelamin'
-    ];
+    protected $fillable = ['namaHewan', 'bbHewan', 'jenisHewan', 'deskripsiHewan', 'kondisiHewan', 'tglLokasiPenemuan', 'kondisiLingkungan', 'fotoHewan', 'fotoLokasi', 'namaPelapor', 'usiaPelapor', 'nomorTelp', 'jenisKelamin'];
 
     public function assignedJobs()
     {
