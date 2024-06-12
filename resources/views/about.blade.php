@@ -105,29 +105,6 @@
 
         </div>
 
-        <div class="row counters">
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">40</span>
-            <p>Shelters</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">421</span>
-            <p>Adoption</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1,364</span>
-            <p>Rescued Pets</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">18</span>
-            <p>Sponsors</p>
-          </div>
-  
-        </div>
 
       </div>
     </section>
@@ -231,11 +208,11 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="member">
-              <img src="img/Bruakakkaka.jpg" class="img-fluid" alt="">
+              <img src="img/Andhika.jpeg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Andhika Pangestu</h4>
-                  <span>Polisi Militer</span>
+                  <span>Project Manager/span>
                   <div class="social">
                     <a href=""><i class="fa fa-twitter"></i></a>
                     <a href=""><i class="fa fa-facebook"></i></a>

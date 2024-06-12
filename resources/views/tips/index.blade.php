@@ -37,9 +37,7 @@
                     @endphp
                     <div class="position-relative overflow-hidden rounded mb-4">
                         <img id="main-article-image" src="{{ Storage::url($latestTip->gambar) }}" class="img-fluid rounded img-zoomin w-100" alt="{{ $latestTip->judul }}" style="object-fit: cover;">
-                        <div class="d-flex justify-content-center px-4 position-absolute flex-wrap" style="bottom: 10px; left: 0;">
-                            <a href="#" class="text-white me-3 link-hover"><i class="fa fa-clock"></i> 06 minute read</a>
-                        </div>
+                       
                     </div>
                     <div class="border-bottom py-3">
                         <a id="main-article-title" href="#" class="display-4 text-dark mb-0 link-hover">{{ $latestTip->judul }}</a>
