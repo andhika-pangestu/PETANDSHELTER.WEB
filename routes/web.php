@@ -86,7 +86,10 @@ Route::post('/rescue', [RescueFormController::class, 'store'])->name('rescue.sto
 Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
 
 Route::get('/volunteer',[RescueFormController::class, 'dashboard']);
-Route::get('/volunteer/rescue/{id}', [RescueFormController::class, 'show'])->name('volunteer.rescue.show');
+
+Route::post('assignJob', [RescueFormController::class, 'assignJob'])->name('assignJob');
+Route::get('/assigned-jobs', [RescueFormController::class, 'showAssignedJobs'])->name('assigned-jobs');
+Route::post('/jobs/complete/{id}', [RescueFormController::class,'complete'])->name('jobs.complete');
 
 
 use App\Models\Acara;

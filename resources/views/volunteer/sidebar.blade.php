@@ -18,9 +18,9 @@
                 </li>
                 
                 <li class="list">
-                    <a href="{{ route('mitra.shelter.index') }}" class="nav-link">
+                    <a href="{{ route('assigned-jobs') }}" class="nav-link">
                         <i class='bx bx-home-heart icon' ></i>
-                        <span class="link">Shelter</span>
+                        <span class="link">Assigned Jobs</span>
                     </a>
                 </li>
                 <!-- Add more list items here -->

@@ -143,11 +143,11 @@
                     <div class="row g-3 mt-0">
                         <div class="input col-md-6 mt-0">
                             <label class="" for="">Foto Hewan</label>
-                            <input type="file" class="form-control" id="fotoHewan" name="fotoHewan" multiple required>
+                            <input type="file" class="form-control" id="fotoHewan" name="fotoHewan" required>
                           </div>
                         <div class="input col-md-6 mt-0">
                             <label class=""> Foto Lokasi Hewan Ditemukan</label>
-                            <input type="file" class="form-control" id="fotoLokasi" name="fotoLokasi" multiple required>
+                            <input type="file" class="form-control" id="fotoLokasi" name="fotoLokasi" required>
                         </div>
                     </div>
 

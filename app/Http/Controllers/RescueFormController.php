@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\rescue;
+use App\Models\assignedJobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class RescueFormController extends Controller
 {
@@ -101,14 +103,65 @@ class RescueFormController extends Controller
         return view('rescue', ['rescues' => $rescues]);
     }
 
-    public function dashboard()
-    {
-        $rescues = Rescue::all(); // Fetch all records from the 'rescues' table
+    public function dashboard(Request $request)
+    {$status = $request->query('status');
+        if ($status) {
+            $rescues = Rescue::where('status', $status)->get();
+        } else {
+            $rescues = Rescue::all();// Fetch all records from the 'rescues' table
+        } 
         return view('volunteer.dashboard', compact('rescues')); // Pass the $rescues variable to the view
+        
     }
-    public function show($id)
+    public function assignJob(Request $request)
     {
-        $rescue = Rescue::findOrFail($id); // Fetch the rescue report with the given ID
-        return view('volunteer.rescue', compact('rescue')); // Pass the rescue report to the view
+        $user = Auth::user(); // Get the currently authenticated user
+
+        $existingJob = assignedJobs::where('rescue_id', $request->rescue_id)->first();
+        if ($existingJob) {
+            return redirect()->back()->with('error', 'This job has already been taken!');
+        }
+    
+        // Create a new assigned job
+        $assignedJob = new assignedJobs;
+        $assignedJob->rescue_id = $request->rescue_id;
+        $assignedJob->volunteer_id = $user->id;
+        $assignedJob->status = 'assigned';
+        $assignedJob->save();
+
+        $rescue = Rescue::find($request->rescue_id);
+        $rescue->status = 'assigned';
+        $rescue->save();
+    
+        // Redirect back to the dashboard with a success message
+        return redirect()->back()->with('success', 'Job assigned successfully!');
     }
+    public function showAssignedJobs()
+    {
+        $user = Auth::user(); // Get the currently authenticated user
+        $assignedJobs = assignedJobs::where('volunteer_id', $user->id)->get(); // Get the jobs assigned to the user
+    
+        return view('volunteer.assigned-jobs', ['assignedJobs' => $assignedJobs]);
+    }
+    public function complete($id)
+    {
+        $job = assignedJobs::findOrFail($id);
+        $job->status = 'rescued';
+        $job->save();
+
+        $rescue = $job->rescue;
+        $rescue->status = 'rescued';
+        $rescue->save();
+
+        if ($job->save() && $rescue->save()) {
+            session()->flash('message', 'Job completed successfully!');
+            session()->flash('alert-class', 'alert-success');
+        } else {
+            session()->flash('message', 'Failed to complete job.');
+            session()->flash('alert-class', 'alert-danger');
+        }
+    
+        return redirect()->back();
+    }
+
 }

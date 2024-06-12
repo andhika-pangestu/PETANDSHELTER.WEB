@@ -26,4 +26,9 @@ class rescue extends Model
         'nomorTelp',
         'jenisKelamin'
     ];
+
+    public function assignedJobs()
+    {
+        return $this->hasOne('App\Models\assignedJobs');
+    }
 }
