@@ -60,12 +60,13 @@
 
     {{-- section2 --}}
     <div class="row justify-content-center mt-5">
-        @foreach($shelter->hewan as $hewan)
+        @foreach($shelter->hewan as $hewanItem)
         <div class="col-md-3 my-4 mx-4">
             <div class="card cardpet text-white">
-                <img src="{{ Storage::url($hewan->foto) }}" class="card-img">
+                <img src="{{ Storage::url($hewanItem->foto) }}" class="card-img">
                 <div class="card-img-overlay">
-                    <div class="adoption-button" onclick="redirectToAdoptionPage({{ $hewan->id }})">ADOPSI</div>     
+                    <div class="adoption-button" onclick="redirectToAdoptionPage({{ $hewanItem->id }})">ADOPSI</div>
+                    <div class="status-pet">{{ $hewanItem->status }}</div>
                 </div>
             </div>
         </div>

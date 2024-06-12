@@ -149,8 +149,8 @@
           <label for="exampleFormControlInput1" class="form-label">Kepemilikan <br> Rumah</label>
           <select class="form-select" id="jenisRumah" name="kepemilikan_rumah" required>
               <option selected disabled>Silahkan Pilih</option>
-              <option>Rumah</option>
-              <option>Apartemen</option>
+              <option>Milik Sendiri</option>
+              <option>Bersama Orang Tua/Saudara</option>
           </select>
       </div>
       

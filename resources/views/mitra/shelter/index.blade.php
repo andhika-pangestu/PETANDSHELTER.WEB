@@ -36,7 +36,9 @@
     @endif
     
     @if ($shelter)
-    {{ $shelter->foto }}
+    <div>
+        <img src="{{ asset('uploads/' . $shelter->foto) }}" alt="Foto Shelter" class="img-thumbnail img-fluid" style="width: 200px; height: 200px; object-fit: cover;">
+    </div>
     <h1 class="card-title mb-4">{{ $shelter->nama_shelter }}</h1>
         <div class="card w-100" style="max-width: 600px;">
             
