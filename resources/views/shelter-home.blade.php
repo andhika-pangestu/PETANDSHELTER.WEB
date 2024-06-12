@@ -64,7 +64,7 @@
     <div class="row">
         @foreach ($shelters as $shelter)
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 py-4 d-flex justify-content-center card-container">
-                <div class="card shadow-shelter rounded card-shelter text-sky-900" style="max-width: 18rem; padding:15px;">
+                <div class="card shadow-shelter rounded-4 card-shelter text-sky-900" style="max-width: 18rem; padding:15px;">
                     <img src="{{ asset('uploads/' . $shelter->foto) }}" class="card-img-top rounded" alt="..."
                         style="height: 200px; object-fit: cover; image-rendering: auto;">
                     <div class="card-body">
@@ -72,18 +72,18 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fa-solid fa-location-dot"
-                                style="margin-right: 5px;"></i>{{ $shelter->kota }}</li>
+                                style="margin-right: 5px;"></i>{{ $shelter->alamat_jalan }}, {{ $shelter->kota }}</li>
                         <li class="list-group-item"><i class="fa-solid fa-road "
-                                style="margin-right: 5px;"></i>{{ $shelter->alamat_jalan }}</li>
+                                style="margin-right: 5px;"></i>{{ $shelter->hari_buka }}: {{ $shelter->jam_buka }}</li>
                     </ul>
                     <div class="d-flex justify-content-start mt-2 ps-2 py-2">
-                        <a href="/shelter" class="btn btn-secondary">Shelter Page</a>
+                        <a href="/shelter/{{ $shelter->id }}" class="btn btn-secondary">Shelter Page</a>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-</div>>
+</div>
 
 
 <div class="w-100 bg-accent-300" style="height: 50px; "></div>

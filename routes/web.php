@@ -23,7 +23,7 @@ use App\Http\Controllers\ShelterViewController;
 Route::view('/welcome2', 'welcome2');
 Route::view('/about', 'about')->name('about');
 Route::view('/adopsi', 'adopsi')->name('adopsi');
-Route::view('/volunteer', 'volunteer')->name('volunteer');
+Route::view('/volunteer', 'volunteer.dashboard')->name('volunteer');
 Route::view('/rescue', 'rescue')->name('rescue');
 Route::view('/login', 'login')->name('login');
 Route::view('/donasi', 'donasi');
@@ -50,7 +50,7 @@ Route::get('/adopsi', function () {
 
 
 Route::get('/volunteer', function () {
-    return view('volunteer');
+    return view('volunteer.dashboard');
 })->name('volunteer');
 
 Route::get('/rescue', function () {
@@ -85,6 +85,9 @@ Route::get('/rescue', [RescueFormController::class, 'create'])->name('rescue.cre
 Route::post('/rescue', [RescueFormController::class, 'store'])->name('rescue.store');
 Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
 
+Route::get('/volunteer',[RescueFormController::class, 'dashboard']);
+Route::get('/volunteer/rescue/{id}', [RescueFormController::class, 'show'])->name('volunteer.rescue.show');
+
 
 use App\Models\Acara;
 
@@ -99,7 +102,7 @@ Route::get('/kalender', function () {
 // Dashboard Routes
 Route::middleware(['auth', 'verified'])->group(function () {
     // Volunteer
-    Route::view('/dashboard', 'dashboard')->middleware('volunteer')->name('dashboard');
+    Route::view('/volunteer/dashboard', 'volunteer.dashboard')->middleware('volunteer')->name('volunteer.dashboard');
 
     // Admin
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware('admin')->name('admin.dashboard');
