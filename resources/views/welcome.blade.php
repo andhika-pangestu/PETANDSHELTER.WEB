@@ -14,7 +14,7 @@
                         perlindungan hewan atau menjadi relawan hari ini, dan buat perbedaan nyata dalam kehidupan
                         mereka..</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="{{ route('adopsi') }}"
+                        <a href="{{ url('/shelter') }}"
                             class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Adopsi</a>
                         <a href="{{ route('about') }}" class="btn btn-outline-secondary-500 btn-lg px-4">Tentang</a>
                     </div>
@@ -67,7 +67,7 @@
                                 </span>
                                 <h5 class="mb-2 fw-bold">Pet Adopt </h5>
                                 <p class="mb-2">Adopsi hewan untuk menemanimu di rumah yang hangat</p>
-                                <a href="{{ route('adopsi') }}" class="fw-bold text-decoration-none link-primary p-6">
+                                <a href="{{ url('/shelter') }}" class="fw-bold text-decoration-none link-primary p-6">
                                     Cari tahu
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">

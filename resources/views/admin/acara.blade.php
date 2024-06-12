@@ -28,10 +28,15 @@
         .btn {
             margin-right: 5px;
         }
+        .card-img-top {
+            width: 100%;
+            height: 0;
+            padding-top: 100%; /* 1:1 Aspect Ratio */
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
-
     <div class="sidebar">
         @include('admin.sidebar')
     </div>
@@ -76,7 +81,6 @@
                     <button type="submit" class="btn btn-success-700 text-white">Simpan</button>
                 </form>
 
-
                 <div class="row mt-5">
                     @foreach ($acara as $item)
                         <div class="col-12 col-md-6 col-lg-4 my-3">
@@ -84,8 +88,15 @@
                                 <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $item->judul }}</h5>
-                                    <p class="card-text">{{ $item->deskripsi }}</p>
-                                    <p class="card-text"><small class="text-muted">{{ $item->tanggal }} • {{ $item->waktu }}</small></p>
+                                    <p class="card-text">
+                                        <span class="short-description">{{ \Illuminate\Support\Str::words($item->deskripsi, 30, '') }}</span>
+                                        <span class="full-description d-none">{{ $item->deskripsi }}</span>
+                                        @if (str_word_count($item->deskripsi) > 30)
+                                            ... <a href="#" class="text-decoration-none read-more" onclick="toggleDescription(event, true)">Baca Selengkapnya</a>
+                                            <a href="#" class="text-decoration-none read-less d-none" onclick="toggleDescription(event, false)">Tutup</a>
+                                        @endif
+                                    </p>
+                                    <p class="card-text"><small class="text-muted">{{ \Carbon\Carbon::parse($item->tanggal)->format('l, d F Y') }} • {{ \Carbon\Carbon::parse($item->waktu)->format('H:i') }}</small></p>
                                     <p class="card-text"><small class="text-muted">Lokasi: {{ $item->lokasi }}</small></p>
                                     <button class="btn btn-info-700" onclick="editAcara({{ json_encode($item) }})">Edit</button>
                                     <form action="{{ route('admin.acara.destroy', $item->id) }}" method="POST" class="d-inline">
@@ -103,6 +114,28 @@
     </div>
 
     <script>
+        function toggleDescription(event, showFull) {
+            event.preventDefault();
+            const link = event.target;
+            const cardBody = link.closest('.card-body');
+            const shortDescription = cardBody.querySelector('.short-description');
+            const fullDescription = cardBody.querySelector('.full-description');
+            const readMoreLink = cardBody.querySelector('.read-more');
+            const readLessLink = cardBody.querySelector('.read-less');
+
+            if (showFull) {
+                shortDescription.classList.add('d-none');
+                fullDescription.classList.remove('d-none');
+                readMoreLink.classList.add('d-none');
+                readLessLink.classList.remove('d-none');
+            } else {
+                shortDescription.classList.remove('d-none');
+                fullDescription.classList.add('d-none');
+                readMoreLink.classList.remove('d-none');
+                readLessLink.classList.add('d-none');
+            }
+        }
+
         function editAcara(acara) {
             document.getElementById('id').value = acara.id;
             document.getElementById('judul').value = acara.judul;

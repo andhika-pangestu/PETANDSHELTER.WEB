@@ -36,10 +36,10 @@ class Admin
         }
         // Volunteer
         elseif ($userRole == 3) {
-            return redirect()->route('dashboard');
+            return redirect()->route('volunteer.dashboard');
         }
 
         // Default redirect jika role tidak dikenali
-        return redirect()->route('dashboard');
+        return redirect()->route('volunteer.dashboard');
     }
 }

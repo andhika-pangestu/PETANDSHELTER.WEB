@@ -59,7 +59,7 @@
                 <div class="card bg-accent-200 rounded-3">
                     <div class="card-body m-4 ">
                         <h1 class="card-title text-info-500 fw-bold">MAU JADI VOLUNTEER?</h1>
-                        <p class="card-text text-white ">Pelajari lebih lanjut</p>
+                        <p class="card-text text-white ">Hubungi kami aja</p>
                     </div>
                 </div>
             </div>

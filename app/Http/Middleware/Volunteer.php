@@ -37,6 +37,6 @@ class Volunteer
         }
 
         // Default redirect jika role tidak dikenali
-        return redirect()->route('dashboard');
+        return redirect()->route('volunteer.dashboard');
     }
 }
