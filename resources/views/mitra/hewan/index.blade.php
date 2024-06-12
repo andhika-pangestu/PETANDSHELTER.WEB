@@ -41,7 +41,7 @@
     </div>
 
     
-    <div class="container" style="padding-top: 200px;">
+    <div class="container-fluid" style="padding-top: 200px;">
         <h1>Daftar Hewan</h1>
 
         @if(session('success'))
@@ -55,10 +55,9 @@
         </div>
         <div class="row">
             @foreach($hewan as $item)
-            <div class="col-md-4 my-3">
-                <div class="card mb-3 h-100" style="width: 18rem;">
-
-                    <img src="{{ Storage::url($item->foto) }}" class="card-img-top" alt="{{ $item->nama_hewan }}">
+            <div class="col-md-3 my-3">
+                <div class="card mb-3 h-100" style="width: 400px;">
+                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama_hewan }}" class="card-img-top" style="object-fit: cover; width: 400px; height: 400px;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->nama_hewan }}</h5>
                         <p class="card-text">

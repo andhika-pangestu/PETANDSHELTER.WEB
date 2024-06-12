@@ -34,7 +34,7 @@
     <div class="sidebar">
         @include('mitra.sidebar')
     </div>
-    @include('layouts.head')
+
 
 <div class="container">
     <div class="sidebar">
