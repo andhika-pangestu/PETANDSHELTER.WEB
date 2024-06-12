@@ -13,16 +13,8 @@ class AdminController extends Controller
         $users = User::all();
         $passwordResetTokens = DB::table('password_reset_tokens')->get();
         $sessions = DB::table('sessions')->get();
-        $topDonations = DB::table('donations')
-        ->select('id', 'invoice', 'name', 'email', 'amount', 'note', 'status', 'snap_token', 'created_at', 'updated_at', 
-                 DB::raw('RANK() OVER (ORDER BY amount DESC) as rank'))
-        ->where('status', 'SUCCESS')
-        ->orderBy('rank')
-        ->take(10)
-        ->get();
 
-
-        return view('admin.dashboard', compact('users', 'passwordResetTokens', 'sessions', 'topDonations'));
+        return view('admin.dashboard', compact('users', 'passwordResetTokens', 'sessions'));
     }
 
     public function editUser(User $user)

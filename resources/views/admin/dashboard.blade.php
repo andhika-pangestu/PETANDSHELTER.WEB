@@ -131,38 +131,5 @@
         </tbody>
     </table>
 
-    <h1>Top 10 Donations</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Rank</th>
-                <th>Invoice</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Amount</th>
-                <th>Note</th>
-                <th>Status</th>
-                <th>Snap Token</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($topDonations as $donation)
-            <tr>
-                <td>{{ $donation->rank }}</td>
-                <td>{{ $donation->invoice }}</td>
-                <td>{{ $donation->name }}</td>
-                <td>{{ $donation->email }}</td>
-                <td>{{ $donation->amount }}</td>
-                <td>{{ $donation->note }}</td>
-                <td>{{ $donation->status }}</td>
-                <td>{{ $donation->snap_token }}</td>
-                <td>{{ $donation->created_at }}</td>
-                <td>{{ $donation->updated_at }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
 </body>
 </html>
