@@ -128,5 +128,7 @@ Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(fun
 Route::get('/list', [ListAdopsiController::class, 'index'])->name('list');
 Route::get('/shelter/{id}', [ListAdopsiController::class, 'show'])->name('shelter.show');
 
-// Authentication Routes
-require __DIR__.'/auth.php';
+
+Route::get('/tips/{id}', [TipsController::class, 'show']);
+// web.php
+Route::get('/tips/{id}', [TipsController::class, 'show'])->name('tips.show');
