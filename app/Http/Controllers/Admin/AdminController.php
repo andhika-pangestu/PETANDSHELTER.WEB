@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(3); // Gunakan pagination untuk mengambil 3 pengguna per halaman
         $passwordResetTokens = DB::table('password_reset_tokens')->get();
         $sessions = DB::table('sessions')->get();
 

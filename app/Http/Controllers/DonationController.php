@@ -70,8 +70,8 @@ class DonationController extends Controller
             'amount'    => 'required',
             'note'      => 'required',
         ]);
-
-        //insert donation to database
+    
+        // Insert donation to database
         $donation = Donation::create([
             'invoice'   => 'INV-'.Str::upper(Str::random(5)),
             'name'      => $request->name,
@@ -80,8 +80,8 @@ class DonationController extends Controller
             'note'      => $request->note,
             'status'    => 'PENDING',
         ]);
-
-        // Buat transaksi ke midtrans kemudian save snap tokennya.
+    
+        // Buat transaksi ke Midtrans kemudian simpan snap tokennya.
         $payload = [
             'transaction_details' => [
                 'order_id'      => $donation->invoice,
@@ -92,14 +92,24 @@ class DonationController extends Controller
                 'email'            => $donation->email,
             ]
         ];
-
-        //create snap token
+    
+        // Create snap token
         $snapToken = Snap::getSnapToken($payload);
         $donation->snap_token = $snapToken;
         $donation->save();
-
+    
         if ($donation) {
-            return redirect()->route('donations.index')->with('success', 'Donation created successfully');
+            return response()->json([
+                'snapToken' => $snapToken,
+                'success' => true,
+                'message' => 'Donation created successfully'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Donation failed'
+            ]);
         }
     }
+    
 }
