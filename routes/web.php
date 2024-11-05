@@ -84,6 +84,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('tips', [TipsController::class, 'store'])->name('tips.store');
         Route::put('tips/{tips}', [TipsController::class, 'update'])->name('tips.update');
         Route::delete('tips/{tips}', [TipsController::class, 'destroy'])->name('tips.destroy');
+        Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+
     });
 
     // Mitra

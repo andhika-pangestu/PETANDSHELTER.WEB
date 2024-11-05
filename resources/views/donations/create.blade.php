@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="amount" class="form-label">Besaran Donasi (Rp.)</label>
-                                    <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter donation amount">
+                                    <input type="text" class="form-control" id="amount" name="amount" placeholder="Masukan nominal donasi">
                                 </div>
                                 <div class="mb-3">
                                     <label for="message" class="form-label">Catatan</label>
@@ -60,10 +60,24 @@
         </div>
     </div>
 
+    <x-footer></x-footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
+        // Format number with thousand separators
+        function formatNumber(input) {
+            var value = input.value.replace(/\D/g, '');
+            var formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            input.value = formattedValue;
+        }
+
+        // Apply the formatting on input
+        document.getElementById('amount').addEventListener('input', function(e) {
+            formatNumber(e.target);
+        });
+
         // Message with toastr
         @if(session()->has('success'))
             toastr.success('{{ session('success') }}', 'BERHASIL!');
@@ -74,10 +88,14 @@
         $('#donationForm').on('submit', function(e) {
             e.preventDefault();
 
+            var formData = $(this).serializeArray();
+            var amountValue = formData.find(field => field.name === 'amount').value;
+            formData.find(field => field.name === 'amount').value = amountValue.replace(/\./g, ''); // Remove dots for backend processing
+
             $.ajax({
                 url: "{{ route('donations.store') }}",
                 method: 'POST',
-                data: $(this).serialize(),
+                data: $.param(formData),
                 success: function(response) {
                     if(response.success) {
                         snap.pay(response.snapToken, {
