@@ -92,7 +92,7 @@ class RescueFormController extends Controller
         // ]);
 
         // Redirect the user to a success page
-        return redirect()->route('rescue')->with('success', 'Form berhasil dikirim.');
+        return redirect()->back()->with('success', 'Form berhasil dikirim.');
     }
     public function index()
     {
@@ -162,5 +162,26 @@ class RescueFormController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    protected function createWhatsappLink($status)
+    {
+        $message = '';
+        switch ($status) {
+            case 'positive':
+                $message = "Assalamualaikum Ukhti";
+                break;
+        }
+
+        $phone = '+6289503757226';
+        $encodedMessage = urlencode($message);
+
+        return "https://wa.me/{$phone}?text={$encodedMessage}";
+    }
+
+
+    public function hubungiKami()
+    {
+        return redirect($this->createWhatsappLink('positive'));
     }
 }

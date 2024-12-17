@@ -17,6 +17,10 @@
     <link rel="stylesheet"
         href="https://unpkg.com/bs-brain@2.0.4/components/services/service-4/assets/css/service-4.css">
 
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -79,7 +83,7 @@
                     <p class="fst-normal">Hubungi kami ketika kamu menemukan hewan disekitarmu yang membutuhkan
                         pertolongan.</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="#}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Hubungi Kami</a>
+                        <a href="{{ route('rescue.hubungiKami') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Hubungi Kami</a>
                     </div>
                 </div>
             </div>
@@ -238,26 +242,75 @@
     {{-- FOOTER --}}
     <x-footer></x-footer>
 
+   <!-- Success Modal -->
+   <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Your form has been successfully submitted!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmSubmit">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script>
-        document.getElementById('adoptionForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah form submit default
+<script>
+    document.getElementById('rescueForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from being submitted immediately
 
-            console.log('Form submitted'); // Check if the event listener is triggered
+        const form = event.target;
+        if (form.checkValidity()) {
+            console.log('Form is valid');
+            $('#successModal').modal('show');
+        } else {
+            console.log('Form is invalid');
+            alert('Mohon isi semua field yang diperlukan.');
+        }
+    });
 
-            // Validasi semua field form
-            const form = event.target;
-            if (form.checkValidity()) {
-                console.log('Form is valid'); // Check if form validation works
-                // Jika valid, alihkan ke halaman thank you
-                window.location.href = 'thank';
-            } else {
-                console.log('Form is invalid'); // Check if form validation works
-                // Jika tidak valid, tampilkan pesan error
-                alert('Mohon isi semua field yang diperlukan.');
-            }
-        });
+    // Add an event listener to the "OK" button in the success modal
+    document.getElementById('confirmSubmit').addEventListener('click', function() {
+        $('#successModal').modal('hide'); // Hide the modal
+        setTimeout(function() {
+            document.getElementById('rescueForm').removeEventListener('submit', preventDefaultSubmit, true);
+            document.getElementById('rescueForm').submit();
+        }, 500); // Adding a slight delay to ensure the modal hides properly
+    });
 
-        <
-        /body> <
-        /html>
+    function preventDefaultSubmit(event) {
+        event.preventDefault();
+    }
+</script>
+
+    <!-- Failure Modal -->
+    <div class="modal fade" id="failureModal" tabindex="-1" role="dialog" aria-labelledby="failureModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="failureModalLabel">Failure</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    There was an error submitting your form. Please try again.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+  </body>
+  </html>
