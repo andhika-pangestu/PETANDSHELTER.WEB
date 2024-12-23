@@ -21,29 +21,12 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
+    </head>
 
 <body>
     {{-- NAVBAR --}}
 
     <x-navigation></x-navigation>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-
-
 
     {{-- HERO --}}
     <section>
@@ -114,7 +97,7 @@
         <div class="container-fluid bg-secondary-300 rounded-top-4 mt-5" style="padding: 4%; margin-top:4% !important;">
             <h1 class="display-5 fw-bold text-center text-white">Rescue Form</h1>
             <div class="container-xl rounded-4 p-5 bg-white">
-                <form method="POST" action="{{ route('rescue.store') }}" enctype="multipart/form-data">
+                <form id="rescueForm"method="POST" action="{{ route('rescue.store') }}" enctype="multipart/form-data">
                     @csrf
                     {{-- identifikasi --}}
                     <h2 class="fw-bold pt-3"> Identifikasi</h2>
@@ -129,10 +112,19 @@
                             <input type="text" class="form-control" id="bbHewan" name="bbHewan" required
                                 placeholder="ex: 5kg">
                         </div>
-                        <div class=" col-md-6">
-                            <label for=""> Jenis Hewan</label>
-                            <input type="text" class="form-control" id="jenisHewan" name="jenisHewan" required
-                                placeholder="ex: kucing">
+                        <div class="col-md-6">
+                            <label for="jenisHewan">Jenis Hewan</label>
+                            <select class="form-control" id="jenisHewan" name="jenisHewan" required>
+                                <option value="" disabled>Pilih jenis hewan...</option>
+                                <option value="kucing">Kucing</option>
+                                <option value="anjing">Anjing</option>
+                                <option value="bebek">Bebek</option>
+                                <option value="sapi">Sapi</option>
+                                <option value="kambing">Kambing</option>
+                                <option value="udang">Udang</option>
+                                <option value="ikan">Ikan</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
                         </div>
                         <div class=" col-md-6">
                             <label for=""> Deskripsi Hewan (Ciri Khusus)</label>
@@ -232,7 +224,7 @@
                         
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-accent text-white mt-3">Submit Form</button>
+                        <button type="submit" class="btn btn-accent text-white mt-3" >Submit Form</button>
                     </div>
                     </id=>
             </div>
@@ -242,75 +234,76 @@
     {{-- FOOTER --}}
     <x-footer></x-footer>
 
-   <!-- Success Modal -->
-   <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="successModalLabel">Success</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Your form has been successfully submitted!
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="confirmSubmit">OK</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script>
-    document.getElementById('rescueForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from being submitted immediately
-
-        const form = event.target;
-        if (form.checkValidity()) {
-            console.log('Form is valid');
-            $('#successModal').modal('show');
-        } else {
-            console.log('Form is invalid');
-            alert('Mohon isi semua field yang diperlukan.');
-        }
-    });
-
-    // Add an event listener to the "OK" button in the success modal
-    document.getElementById('confirmSubmit').addEventListener('click', function() {
-        $('#successModal').modal('hide'); // Hide the modal
-        setTimeout(function() {
-            document.getElementById('rescueForm').removeEventListener('submit', preventDefaultSubmit, true);
-            document.getElementById('rescueForm').submit();
-        }, 500); // Adding a slight delay to ensure the modal hides properly
-    });
-
-    function preventDefaultSubmit(event) {
-        event.preventDefault();
-    }
-</script>
-
-    <!-- Failure Modal -->
-    <div class="modal fade" id="failureModal" tabindex="-1" role="dialog" aria-labelledby="failureModalLabel" aria-hidden="true">
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="failureModalLabel">Failure</h5>
+                    <h5 class="modal-title" id="successModalLabel">Success</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    There was an error submitting your form. Please try again.
+                    Your form has been successfully submitted!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-primary" id="confirmSubmit">OK</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+        document.getElementById('rescueForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from being submitted immediately
+
+            const form = event.target;
+            if (form.checkValidity()) {
+                console.log('Form is valid');
+                $('#successModal').modal('show');
+            } else {
+                console.log('Form is invalid');
+                alert('Mohon isi semua field yang diperlukan.');
+            }
+        });
+
+        // Add an event listener to the "OK" button in the success modal
+        document.getElementById('confirmSubmit').addEventListener('click', function() {
+            $('#successModal').modal('hide'); // Hide the modal
+            setTimeout(function() {
+                document.getElementById('rescueForm').removeEventListener('submit', preventDefaultSubmit, true);
+                document.getElementById('rescueForm').submit();
+            }, 500); // Adding a slight delay to ensure the modal hides properly
+        });
+
+        function preventDefaultSubmit(event) {
+            event.preventDefault();
+        }
+    </script>
+
+        <!-- Failure Modal -->
+        <div class="modal fade" id="failureModal" tabindex="-1" role="dialog" aria-labelledby="failureModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="failureModalLabel">Failure</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        There was an error submitting your form. Please try again.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-  </body>
-  </html>
+
+      </body>
+      </html>
