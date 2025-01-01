@@ -27,7 +27,7 @@
                 <h1 class="display-2 fw-bold lh-1 mb-3">AYO  DONASI UNTUK PELIHARAAN DI SHELTER</h1>
                 <p class="fst-normal">Mari berdonasi dalam bentuk apapun itu untuk menunjang kehidupan hewan di shelter lebih baik </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="{{ route('donations.create') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Berdonasi</a>
+                    <a href="{{ route('donations.index') }}" class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Berdonasi</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <h5 class="card-title fs-1 fw-bold">DONASI LEWAT DOMPET DIGITAL</h5>
                         <p class="card-text fs-5">kamu bisa transfer melalui rekening dibawah ini</p>
-                        <a href="{{ route('donations.create') }}" class="btn btn-outline-secondary-50">Ayo berdonasi!</a>
+                        <a href="{{ route('donations.index') }}" class="btn btn-outline-secondary-50">Ayo berdonasi!</a>
                     </div>
                  </div>
             </div>
