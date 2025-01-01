@@ -112,9 +112,9 @@
                                 placeholder="ex: baba">
                         </div>
                         <div class=" col-md-6 mt-0">
-                            <label for=""> Berat Badan Hewan</label>
-                            <input type="text" class="form-control" id="bbHewan" name="bbHewan" required
-                                placeholder="ex: 5kg">
+                            <label for=""> Berat Badan Hewan/kg</label>
+                            <input type="number" class="form-control" id="bbHewan" name="bbHewan" required
+                                placeholder="ex: 5">
                         </div>
                         <div class="col-md-6">
                             <label for="jenisHewan">Jenis Hewan</label>
@@ -151,29 +151,21 @@
                             <input type="hidden" id="longitude" name="longitude" />
                             {{-- <textarea type="text" class="form-control" id="tglLokasiPenemuan" name="tglLokasiPenemuan" required
                                 placeholder="ex: 12 april 2024, batubatu" style="height: 100px; resize:none;"></textarea> --}}
+                            </div>
 
-                        </div>
-                        <div class=" col-md-6 mt-0">
+                            <div class="col-md-6 mt-0">
                             <!-- Address Display -->
                             <label for="tglLokasiPenemuan" class="mt-3">Alamat Penemuan</label>
                             <input type="text" class="form-control" id="tglLokasiPenemuan" name="tglLokasiPenemuan" required placeholder="Alamat akan ditampilkan di sini" readonly/>
                             
                             <!-- Confirm Location Button -->
                             <button type="button" class="btn btn-primary mt-2" id="confirmLocation">This Location</button>
-                        </div>
 
-                    </div>
-                    <div class="row g-3 mt-0">
-                        <div class="col-md-6 mt-0">
+                            <div class="col-md-0 mt-5">
                             <label for="">Kondisi Lingkungan Hewan Ditemukan</label>
                             <textarea class="form-control rows=3" required placeholder="ex: kotor, basah" id="kondisiLingkungan"
                                 name="kondisiLingkungan" style="height: 100px; resize:none;"></textarea>
-                        </div>
-
-                        <div class="  col-md-6 mt-0">
-                            <label for=""> Kondisi Lingkungan Hewan Ditemukan</label>
-                            <textarea class="form-control rows=3" type="text" required placeholder="ex: kotor, basah" id="kondisiLingkungan"
-                                name="kondisiLingkungan" style="height: 100px; resize:none; "></textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -200,7 +192,7 @@
                         </div>
                         <div class=" col-md-6 mt-0">
                             <label for=""> Usia Pelapor</label>
-                            <input type="text" class="form-control" id="usiaPelapor" name="usiaPelapor" required
+                            <input type="number" class="form-control" id="usiaPelapor" name="usiaPelapor" required
                                 placeholder="ex: 26">
                         </div>
                         <div class=" col-md-6">
@@ -250,7 +242,7 @@
                     <div class="col-12">
                         <button type="submit" class="btn btn-accent text-white mt-3" >Submit Form</button>
                     </div>
-                    </id=>
+                </form>
             </div>
         </div>
     </section>
@@ -280,87 +272,100 @@
     </div>
 
     <script>
+        document.getElementById('rescueForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from being submitted immediately
+
+            const form = event.target;
+            if (form.checkValidity()) {
+                console.log('Form is valid');
+                $('#successModal').modal('show');
+            } else {
+                console.log('Form is invalid');
+                alert('Mohon isi semua field yang diperlukan.');
+            }
+        });
+
+        // Add an event listener to the "OK" button in the success modal
+        document.getElementById('confirmSubmit').addEventListener('click', function() {
+            $('#successModal').modal('hide'); // Hide the modal
+            setTimeout(function() {
+                document.getElementById('rescueForm').removeEventListener('submit', preventDefaultSubmit, true);
+                document.getElementById('rescueForm').submit();
+            }, 500); // Adding a slight delay to ensure the modal hides properly
+        });
+
+        function preventDefaultSubmit(event) {
+            event.preventDefault();
+        }
+
     // Initialize the map
     let map = L.map('map').setView([-2.5489, 118.0149], 5);
+
+    // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Initialize variables
+    // Initialize a single marker variable to manage all markers
     var marker = null;
     var currentPolygon = null;
 
-    // Initialize the geocoder service
-    let geocoderService = L.Control.Geocoder.nominatim();
+    // Function to set or move the marker
+    function setMarker(latlng) {
+        if (marker) {
+            marker.setLatLng(latlng);
+            console.log('Marker moved to:', latlng);
+        } else {
+            marker = L.marker(latlng).addTo(map);
+            console.log('Marker added at:', latlng);
+        }
 
-    // Initialize the geocoder control with the geocoder service
-    let geocoderControl = L.Control.geocoder({
-        geocoder: geocoderService,
-        defaultMarkGeocode: false
-    })
-    .on('markgeocode', function(e) {
-        console.log('Geocode event triggered');
         // Remove existing polygon if any
         if (currentPolygon) {
             map.removeLayer(currentPolygon);
+            console.log('Existing polygon removed.');
         }
 
-        let bbox = e.geocode.bbox;
-        currentPolygon = L.polygon([
-            bbox.getSouthEast(),
-            bbox.getNorthEast(),
-            bbox.getNorthWest(),
-            bbox.getSouthWest()
-        ]).addTo(map);
-        map.fitBounds(currentPolygon.getBounds());
-
-        if (marker) {
-            marker.setLatLng(e.geocode.center);
-        } else {
-            marker = L.marker(e.geocode.center).addTo(map);
-        }
-
-        // Update the address input field
-        document.getElementById('tglLokasiPenemuan').value = e.geocode.name;
-    })
-    .addTo(map);
-
-    // Handle map click
-    function onMapClick(e) {
-    console.log('Map clicked at:', e.latlng);
-    if (marker) {
-        marker.setLatLng(e.latlng);
-    } else {
-        marker = L.marker(e.latlng).addTo(map);
-        console.log('Marker added at:', e.latlng);
+        // Optionally, add a polygon around the marker
+        
+        currentPolygon = L.circle(latlng, {
+            fillColor: 'lightblue',
+            fillOpacity: 0.3,
+            radius: 500
+        }).addTo(map);
+        
     }
 
-    // Remove existing polygon if any
-    if (currentPolygon) {
-        map.removeLayer(currentPolygon);
-        console.log('Existing polygon removed.');
-    }
-
-    // Reverse geocode to get address using fetch
-    console.log('Initiating reverse geocoding...');
-    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.latlng.lat}&lon=${e.latlng.lng}&format=json`)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Reverse geocoding callback executed.');
-            if (data.display_name) {
-                document.getElementById('tglLokasiPenemuan').value = data.display_name;
-            } else {
+    // Function to update the address input field using reverse geocoding
+    function updateAddressField(latlng) {
+        console.log('Initiating reverse geocoding...');
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latlng.lat}&lon=${latlng.lng}&format=json`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Reverse geocoding callback executed.');
+                if (data.display_name) {
+                    document.getElementById('tglLokasiPenemuan').value = data.display_name;
+                    console.log('Address updated:', data.display_name);
+                } else {
+                    document.getElementById('tglLokasiPenemuan').value = 'Alamat tidak ditemukan';
+                    console.log('No address found for selected location.');
+                }
+            })
+            .catch(error => {
+                console.error('Error during reverse geocoding:', error);
                 document.getElementById('tglLokasiPenemuan').value = 'Alamat tidak ditemukan';
-                console.log('No address found for clicked location.');
-            }
-        })
-        .catch(error => {
-            console.error('Error during reverse geocoding:', error);
-            document.getElementById('tglLokasiPenemuan').value = 'Alamat tidak ditemukan';
-        });
-}
-map.on('click', onMapClick);
+            });
+    }
+
+    // Handle map clicks
+    function onMapClick(e) {
+        console.log('Map clicked at:', e.latlng);
+        setMarker(e.latlng);
+        updateAddressField(e.latlng);
+    }
+
+    map.on('click', onMapClick);
 
     // Handle confirming location
     document.getElementById('confirmLocation').addEventListener('click', function() {
@@ -369,24 +374,39 @@ map.on('click', onMapClick);
             document.getElementById('latitude').value = latlng.lat;
             document.getElementById('longitude').value = latlng.lng;
             alert('Lokasi telah disimpan.');
+            console.log('Location confirmed:', latlng);
         } else {
             alert('Silakan pilih lokasi di peta terlebih dahulu.');
+            console.log('Confirm button clicked without selecting a location.');
         }
     });
+        // Initialize Leaflet Control Geocoder
+        L.Control.geocoder({
+        defaultMarkGeocode: false
+    })
+    .on('markgeocode', function(e) {
+        console.log('Geocode event triggered');
+        var latlng = e.geocode.center;
+        setMarker(latlng);
+        map.setView(latlng, 13);
+        updateAddressField(latlng);
+    })
+    .addTo(map);
 
+    // Add "Show My Location" button as a Leaflet control
     L.Control.ShowMyLocation = L.Control.extend({
         onAdd: function(map) {
             var container = L.DomUtil.create('div', 'show-my-location-button leaflet-bar');
             var btn = L.DomUtil.create('a', '', container);
-            btn.innerHTML = '<span class="material-symbols-outlined">my_location</span>';
+            btn.innerHTML = '<span class="material-symbols-outlined">my_location</span>'; // Replaced emoji with Material Symbol
             btn.title = 'Show My Location';
             btn.href = '#';
-            btn.style.backgroundColor = '#fff';
             btn.style.display = 'flex';
             btn.style.alignItems = 'center';
             btn.style.justifyContent = 'center';
             btn.style.width = '30px';          // Set a fixed width
-            btn.style.height = '30px';  
+            btn.style.height = '30px';   
+            btn.style.backgroundColor = '#fff';
             btn.style.padding = '10px 10px';
             btn.style.cursor = 'pointer';
             btn.style.textDecoration = 'none';
@@ -403,35 +423,14 @@ map.on('click', onMapClick);
 
                         console.log('User coordinates obtained:', userLatLng);
 
-                        if (marker) {
-                            marker.setLatLng(userLatLng);
-                            console.log('Marker moved to user location:', userLatLng);
-                        } else {
-                            marker = L.marker(userLatLng).addTo(map);
-                            console.log('Marker added at user location:', userLatLng);
-                        }
+                        setMarker(userLatLng);
 
                         // Center the map on user's location
                         map.setView(userLatLng, 13);
 
                         // Reverse geocode to get address
                         console.log('Initiating reverse geocoding for user location...');
-                        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
-                            .then(response => response.json())
-                            .then(data => {
-                                console.log('Reverse geocoding callback executed for user location.');
-                                if (data.display_name) {
-                                    document.getElementById('tglLokasiPenemuan').value = data.display_name;
-                                    console.log('Address updated via "Show My Location":', data.display_name);
-                                } else {
-                                    document.getElementById('tglLokasiPenemuan').value = 'Alamat tidak ditemukan';
-                                    console.log('No address found for user location.');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error during reverse geocoding for user location:', error);
-                                document.getElementById('tglLokasiPenemuan').value = 'Alamat tidak ditemukan';
-                            });
+                        updateAddressField(userLatLng);
                     }, function(error) {
                         console.error('Error obtaining location:', error);
                         alert('Unable to retrieve your location.');
@@ -449,51 +448,13 @@ map.on('click', onMapClick);
         }
     });
 
-        // Create and add the control to the map
-        L.control.showMyLocation = function(opts) {
+    // Create and add the control to the map
+    L.control.showMyLocation = function(opts) {
         return new L.Control.ShowMyLocation(opts);
     }
 
     L.control.showMyLocation({ position: 'topright' }).addTo(map);
-
-    
-
-    
-
-    document.getElementById('rescueForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from being submitted immediately
-
-    const form = event.target;
-    const tglLokasiPenemuan = document.getElementById('tglLokasiPenemuan').value.trim();
-
-    if (tglLokasiPenemuan === '') {
-        alert('Mohon pilih lokasi di peta terlebih dahulu.');
-        console.log('Alamat Penemuan tidak boleh kosong.');
-        return;
-    }
-
-    if (form.checkValidity()) {
-        console.log('Form is valid');
-        $('#successModal').modal('show');
-    } else {
-        console.log('Form is invalid');
-        alert('Mohon isi semua field yang diperlukan.');
-    }
-});
-
-        // Add an event listener to the "OK" button in the success modal
-        document.getElementById('confirmSubmit').addEventListener('click', function() {
-            $('#successModal').modal('hide'); // Hide the modal
-            setTimeout(function() {
-                document.getElementById('rescueForm').removeEventListener('submit', preventDefaultSubmit, true);
-                document.getElementById('rescueForm').submit();
-            }, 500); // Adding a slight delay to ensure the modal hides properly
-        });
-
-        function preventDefaultSubmit(event) {
-            event.preventDefault();
-        }
-    </script>
+ </script>
     
 
         <!-- Failure Modal -->
