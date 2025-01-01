@@ -118,4 +118,5 @@
     </div>
 </div>
 
-<x-footer></x-footer>
+@include('layouts.footer')
+
