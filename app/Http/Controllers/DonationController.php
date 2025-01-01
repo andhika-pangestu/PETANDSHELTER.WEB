@@ -2,21 +2,12 @@
 
 namespace App\Http\Controllers;
 
-//import Snap midtrans
 use Midtrans\Snap;
-
-//import model Donation
-use App\Models\Donation;
-
-//import Str
-use Illuminate\Support\Str;
-
-//import request
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DonationController extends Controller
 {
-
     /**
      * __construct
      *
@@ -24,12 +15,12 @@ class DonationController extends Controller
      */
     public function __construct()
     {
-        // Set midtrans configuration
+        // Set Midtrans configuration
         \Midtrans\Config::$serverKey    = config('services.midtrans.serverKey');
         \Midtrans\Config::$isProduction = config('services.midtrans.isProduction');
         \Midtrans\Config::$isSanitized  = config('services.midtrans.isSanitized');
         \Midtrans\Config::$is3ds        = config('services.midtrans.is3ds');
-    } 
+    }
 
     /**
      * index
@@ -38,22 +29,7 @@ class DonationController extends Controller
      */
     public function index()
     {
-        //get data donations
-        $donations = Donation::latest()->paginate(10);
-
-        //render view
-        return view('donations.index', compact('donations'));
-    }
-
-    /**
-     * create
-     *
-     * @return void
-     */
-    public function create()
-    {
-        //render view
-        return view('donations.create');
+        return view('donations.index');
     }
 
     /**
@@ -67,39 +43,29 @@ class DonationController extends Controller
         $request->validate([
             'name'      => 'required',
             'email'     => 'required|email',
-            'amount'    => 'required',
-            'note'      => 'required',
+            'amount'    => 'required|numeric|min:1000',
+            'note'      => 'nullable|string',
         ]);
 
-        //insert donation to database
-        $donation = Donation::create([
-            'invoice'   => 'INV-'.Str::upper(Str::random(5)),
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'amount'    => $request->amount,
-            'note'      => $request->note,
-            'status'    => 'PENDING',
-        ]);
-
-        // Buat transaksi ke midtrans kemudian save snap tokennya.
+        // Create the transaction payload for Midtrans
         $payload = [
             'transaction_details' => [
-                'order_id'      => $donation->invoice,
-                'gross_amount'  => $donation->amount,
+                'order_id'      => 'INV-' . Str::upper(Str::random(8)),
+                'gross_amount'  => $request->amount,
             ],
             'customer_details' => [
-                'first_name'       => $donation->name,
-                'email'            => $donation->email,
-            ]
+                'first_name' => $request->name,
+                'email'      => $request->email,
+            ],
         ];
 
-        //create snap token
+        // Get Snap Token from Midtrans
         $snapToken = Snap::getSnapToken($payload);
-        $donation->snap_token = $snapToken;
-        $donation->save();
 
-        if ($donation) {
-            return redirect()->route('donations.index')->with('success', 'Donation created successfully');
-        }
+        // Return Snap Token for payment pop-up
+        return response()->json([
+            'snapToken' => $snapToken,
+            'redirect_url' => route('donations.index'),
+        ]);
     }
 }
