@@ -79,6 +79,7 @@ Route::get('/donasi', function () {
 Route::get('/rescue', [RescueFormController::class, 'create'])->name('rescue.create');
 Route::post('/rescue', [RescueFormController::class, 'store'])->name('rescue.store');
 Route::get('/rescue', [RescueFormController::class, 'index'])->name('rescue');
+Route::get('/rescue/hubungikami', [RescueFormController::class, 'hubungiKami'])->name('rescue.hubungiKami');
 
 
 Route::get('/volunteer', [RescueFormController::class, 'dashboard']);
