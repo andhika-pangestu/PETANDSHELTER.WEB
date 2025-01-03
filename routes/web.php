@@ -23,7 +23,7 @@ use App\Http\Controllers\ShelterViewController;
 Route::view('/welcome2', 'welcome2');
 Route::view('/about', 'about')->name('about');
 Route::view('/adopsi', 'adopsi')->name('adopsi');
-Route::view('/volunteer', 'volunteer.dashboard')->name('volunteer');
+// Route::view('/volunteer', 'volunteer.dashboard')->name('volunteer');
 Route::view('/rescue', 'rescue')->name('rescue');
 Route::view('/login', 'login')->name('login');
 Route::view('/donasi', 'donasi');
@@ -47,9 +47,9 @@ Route::get('/adopsi', function () {
     return view('adopsi');
 })->name('adopsi');
 
-Route::get('/volunteer', function () {
-    return view('volunteer.dashboard');
-})->name('volunteer');
+// Route::get('/volunteer', function () {
+//     return view('volunteer.dashboard');
+// })->name('volunteer');
 
 Route::get('/rescue', function () {
     return view('rescue');

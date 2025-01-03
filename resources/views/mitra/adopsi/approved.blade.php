@@ -7,28 +7,54 @@
     <title>Pet and Shelter</title>
     <link rel="icon" href="img/icon-trans.png" />
     <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/css/styleDashboard.css">
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
         .sidebar {
             width: 100%;
             position: fixed;
             top: 0;
             z-index: 1000;
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 30vh;
-            padding-top: 60px; /* Adjust according to sidebar height */
+            margin-top: 80px;
+            padding: 20px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow-x: auto;
         }
-        .card {
+        h1 {
+            text-align: center;
             margin-bottom: 20px;
+            color: #343a40;
+        }
+        table {
+            table-layout: auto;
+            word-wrap: break-word;
+        }
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #343a40;
+            color: white;
         }
     </style>
 </head>
@@ -38,14 +64,14 @@
     </div>
     <div class="container">
         <h1>Daftar Permohonan Adopsi yang Disetujui</h1>
-    
+
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
-    
-        <table class="table table-bordered">
+
+        <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Nama Lengkap</th>
@@ -94,16 +120,16 @@
                         @if($a->status == 'approved')
                             <form action="{{ route('mitra.adopsi.teradopsi', $a) }}" method="POST" style="display:inline-block;">
                                 @csrf
-                                <button type="submit" class="btn btn-primary">Teradopsi</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Teradopsi</button>
                             </form>
                             <form action="{{ route('mitra.adopsi.cancel', $a) }}" method="POST" style="display:inline-block;">
                                 @csrf
-                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                <button type="submit" class="btn btn-warning btn-sm">Cancel</button>
                             </form>
                         @elseif($a->status == 'canceled')
                             <form action="{{ route('mitra.adopsi.approve', $a) }}" method="POST" style="display:inline-block;">
                                 @csrf
-                                <button type="submit" class="btn btn-success">Setujui Lagi</button>
+                                <button type="submit" class="btn btn-success btn-sm">Setujui Lagi</button>
                             </form>
                         @else
                             {{ ucfirst($a->status) }}
@@ -116,5 +142,3 @@
     </div>
 </body>
 </html>
-
-

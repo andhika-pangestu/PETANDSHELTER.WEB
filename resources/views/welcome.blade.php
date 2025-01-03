@@ -16,7 +16,7 @@
                         perlindungan hewan atau menjadi relawan hari ini, dan buat perbedaan nyata dalam kehidupan
                         mereka..</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="{{ route('adopsi') }}"
+                        <a href="{{ url('/shelter') }}"
                             class="btn btn-primary-500 btn-lg px-4 me-md-2 text-white">Adopsi</a>
                         <a href="{{ route('about') }}" class="btn btn-outline-secondary-500 btn-lg px-4">Tentang</a>
                     </div>
@@ -72,7 +72,7 @@
                                 </span>
                                 <h5 class="mb-2 fw-bold">PET ADOPT</h5>
                                 <p class="mb-2">Adopsi hewan dan temukan sahabat setia di rumah</p>
-                                <a href="{{ route('adopsi') }}"
+                                <a href="{{ url('/shelter') }}" 
                                     class="fw-bold text-decoration-none link-primary p-2 mt-auto">
                                     Cari tahu
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -122,7 +122,7 @@
                                 </span>
                                 <h5 class="mb-2 fw-bold">DONATE</h5>
                                 <p class="mb-2">Dukung kami dengan donasi moril dan material</p>
-                                <a href="{{ route('donations.create') }}"
+                                <a href="{{ url('/donasi') }}"
                                     class="fw-bold text-decoration-none link-primary p-2 mt-auto">
                                     Cari tahu
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -147,7 +147,7 @@
                                 </span>
                                 <h5 class="mb-2 fw-bold">BE VOLUNTEER</h5>
                                 <p class="mb-2">Bantu selamatkan hewan peliharaan</p>
-                                <a href="#!" class="fw-bold text-decoration-none link-primary p-2 mt-auto">
+                                <a href="{{ url('/volunteer') }}" class="fw-bold text-decoration-none link-primary p-2 mt-auto">
                                     Cari tahu
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">

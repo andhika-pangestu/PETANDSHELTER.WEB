@@ -46,7 +46,19 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        
+        $loggedInUserRole = $request->user()->role;
 
-        return redirect(route('dashboard', absolute: false));
+        // Admin
+        if ($loggedInUserRole == 1) {
+            return redirect()->intended(route('admin.dashboard'));
+        }
+        // Mitra
+        elseif ($loggedInUserRole == 2) {
+            return redirect()->intended(route('mitra.dashboard'));
+        }
+
+        // Volunteer
+        return redirect()->intended(route('dashboard'));
     }
 }

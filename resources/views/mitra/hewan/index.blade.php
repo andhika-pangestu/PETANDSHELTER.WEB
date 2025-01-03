@@ -15,23 +15,101 @@
     <link rel="stylesheet" href="/css/styleDashboard.css">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <style>
-        .sidebar {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
+        body {
+            
+            font-family: Helvetica, sans-serif;
+            margin: 0;
+
+
+        .container-fluid {
+            margin-left: 250px;
+            margin-top: 20px;
+            padding-top: 20px;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding-top: 60px; /* Adjust according to sidebar height */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
+
+        .alert {
+            margin-bottom: 20px;
+        }
+
+        .my-3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-success-400 {
+            background-color: #28a745;
+        }
+
+        .btn-info-400 {
+            background-color: #17a2b8;
+        }
+
+        .btn-danger-400 {
+            background-color: #dc3545;
+        }
+
         .card {
             margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 14px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .col-md-3 {
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .col-md-3 {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .col-md-3 {
+                width: 100%;
+            }
+
+            .container-fluid {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -40,8 +118,7 @@
         @include('mitra.sidebar')
     </div>
 
-    
-    <div class="container-fluid" style="padding-top: 200px;">
+    <div class="container-fluid">
         <h1>Daftar Hewan</h1>
 
         @if(session('success'))
@@ -50,14 +127,14 @@
             </div>
         @endif
 
-        <div class="my-3"> <!-- Memindahkan bagian "Tambah Hewan" ke bawah -->
+        <div class="my-3">
             <a href="{{ route('mitra.hewan.create') }}" class="btn btn-success-400">Tambah Hewan</a>
         </div>
         <div class="row">
             @foreach($hewan as $item)
             <div class="col-md-3 my-3">
-                <div class="card mb-3 h-100" style="width: 400px;">
-                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama_hewan }}" class="card-img-top" style="object-fit: cover; width: 400px; height: 400px;">
+                <div class="card mb-3 h-100">
+                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama_hewan }}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->nama_hewan }}</h5>
                         <p class="card-text">
@@ -72,21 +149,14 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger-400" onclick="return confirm('Apakah Anda yakin ingin menghapus hewan ini?')">Delete</button>
-
                         </form>
                     </div>
                 </div>
             </div>
             @endforeach
-
         </div>
-    
-
     </div>
-    
 
-
-    <!-- Tambahkan JS yang diperlukan di sini -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 </body>

@@ -28,7 +28,7 @@ class Admin
         // Admin
         if ($userRole == 1) {
             return $next($request);
-
+            return redirect()->route('dashboard');
         }
         // mitra
         elseif ($userRole == 2) {

@@ -29,6 +29,7 @@
             <form id="form" action="{{ route('admin.tips.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" id="method" name="_method" value="POST">
+                <input type="hidden" id="tip_id" name="tip_id"> <!-- Hidden field for the tip ID -->
                 <div class="mb-3">
                     <label for="judul" class="form-label">Judul</label>
                     <input type="text" class="form-control" id="judul" name="judul" required>
@@ -74,11 +75,13 @@
 
 <script>
     function editTips(tips) {
+        document.getElementById('tip_id').value = tips.id; // Set the tip ID to the hidden field
         document.getElementById('judul').value = tips.judul;
         document.getElementById('deskripsi').value = tips.deskripsi;
         document.getElementById('tanggal').value = tips.tanggal;
-        document.getElementById('form').action = '/admin/tips/' + tips.id;
-        document.getElementById('method').value = 'PUT';
+        document.getElementById('gambar').required = false; // Allow updating without requiring a new image
+        document.getElementById('form').action = '/admin/tips/' + tips.id; // Change form action to the update route
+        document.getElementById('method').value = 'PUT'; // Change method to PUT for update
     }
 </script>
 </body>
