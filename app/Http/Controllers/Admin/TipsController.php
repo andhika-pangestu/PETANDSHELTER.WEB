@@ -19,20 +19,16 @@ class TipsController extends Controller
     {
         $tips = Tips::with('author')->orderBy('created_at', 'desc')->get();
         return view('tips', compact('tips'));
-       
     }
-    // TipsController.php
-// TipsController.php
-public function show($id)
-{
-    $tip = Tips::with('author')->findOrFail($id);
-    $relatedTips = Tips::where('id', '!=', $id)->latest()->take(5)->get();
-    $latestTips = Tips::latest()->take(5)->get();
 
-    return view('tips.show', compact('tip', 'relatedTips', 'latestTips'));
-}
+    public function show($id)
+    {
+        $tip = Tips::with('author')->findOrFail($id);
+        $relatedTips = Tips::where('id', '!=', $id)->latest()->take(5)->get();
+        $latestTips = Tips::latest()->take(5)->get();
 
-    
+        return view('tips.show', compact('tip', 'relatedTips', 'latestTips'));
+    }
 
     public function store(Request $request)
     {
